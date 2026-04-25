@@ -1,0 +1,54 @@
+name: dievas_workspace
+description: A design system.
+version: 0.0.1
+publish_to: none
+
+environment:
+    sdk: ">=3.11.4 <4.0.0"
+
+workspace:
+    - packages/dievas
+    - packages/dievas_gallery
+    - packages/dievas_tokens
+
+dev_dependencies:
+    lints: ^6.1.0
+    melos: ^7.5.1
+melos:
+    packages:
+        - packages/*
+
+    scripts:
+        # ─── Analysis & Quality
+        analyze:
+            exec: dart analyze .
+            description: Run dart analyzer across all packages
+            concurrency: 1
+
+        format:
+            exec: dart format . --line-length 120
+            description: Format all Dart files
+
+        format:check:
+            exec: dart format . --line-length 120 --set-exit-if-changed
+            description: Check formatting without modifying files
+
+        # ─── Testing
+        test:
+            exec: dart test
+            packageFilters:
+                dirExists: test
+            description: Run tests across all packages
+
+        # ─── Code gen
+        codegen:
+            exec: dart run build_runner build --delete-conflicting-outputs
+            packageFilters:
+                dependsOn: build_runner
+            description: Run build_runner across packages that need it
+
+        codegen:watch:
+            exec: dart run build_runner watch --delete-conflicting-outputs
+            packageFilters:
+                dependsOn: build_runner
+            description: Watch mode for build_runner
