@@ -68,14 +68,14 @@ Colour roles use **grouped semantic naming** — `textPrimary`, `bgBase`, `actio
 
 ### Token families
 
-| Family | Primitives file | Semantic file |
-| --- | --- | --- |
-| Colour | `colour_primitives.dart` | `colour_semantic_light/dark.dart` |
-| Typography | `typography_primitives.dart` | `typography_semantic.dart` |
-| Spacing | `spacing_primitives.dart` | `spacing_semantic.dart` |
-| Radius | `radius_primitives.dart` | `radius_semantic.dart` |
-| Elevation | `elevation_primitives.dart` | `elevation_semantic.dart` |
-| Opacity | `opacity_primitives.dart` | `opacity_semantic.dart` |
+| Family     | Primitives file              | Semantic file                     |
+| ---------- | ---------------------------- | --------------------------------- |
+| Colour     | `colour_primitives.dart`     | `colour_semantic_light/dark.dart` |
+| Elevation  | `elevation_primitives.dart`  | `elevation_semantic.dart`         |
+| Opacity    | `opacity_primitives.dart`    | `opacity_semantic.dart`           |
+| Radius     | `radius_primitives.dart`     | `radius_semantic.dart`            |
+| Spacing    | `spacing_primitives.dart`    | `spacing_semantic.dart`           |
+| Typography | `typography_primitives.dart` | `typography_semantic.dart`        |
 
 Typography uses **Maison Neue** (body, label, title) and **Maison Neue Extended** (display, heading), with JetBrains Mono for code.
 
@@ -214,9 +214,9 @@ Dart 3 idioms throughout — pattern matching with `switch` expressions, sealed 
 
 ## Reference Systems
 
-| Reference | Role in Dievas |
-| --- | --- |
-| [Moon Design System](https://flutter.moon.io) | Component catalogue, visual language |
+| Reference                                                        | Role in Dievas                                                     |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [Moon Design System](https://flutter.moon.io)                    | Component catalogue, visual language                               |
 | [Genesis Design System](https://github.com/bushadigital/warlock) | Architectural pattern, theme inheritance, InheritedModel structure |
 
 ---
@@ -225,13 +225,13 @@ Dart 3 idioms throughout — pattern matching with `switch` expressions, sealed 
 
 `v0.0.1-dev` — **M1 complete** (semantic token layer). Theme architecture in progress. Target: complete system by **May 21, 2026**.
 
-| Milestone | Status | Window |
-| --- | --- | --- |
-| M1 — Semantic token layer | ✅ Done | May 7–9 |
-| M2 — Theme architecture | 🔄 Next | May 10–12 |
-| M3 — Core components | ⬜ Pending | May 12–15 |
+| Milestone                 | Status     | Window    |
+| ------------------------- | ---------- | --------- |
+| M1 — Semantic token layer | ✅ Done    | May 7–9   |
+| M2 — Theme architecture   | 🔄 Next    | May 10–12 |
+| M3 — Core components      | ⬜ Pending | May 12–15 |
 | M4 — Composite components | ⬜ Pending | May 16–18 |
-| M5 — Gallery + polish | ⬜ Pending | May 19–21 |
+| M5 — Gallery + polish     | ⬜ Pending | May 19–21 |
 
 ---
 

@@ -14,7 +14,7 @@ import '../primitives/colour_primitives.dart';
 /// References [DievasColourPrimitives] exclusively — no raw hex values
 /// are permitted in this file.
 abstract final class DievasColourSemanticDark {
-  // ─── Core / Brand
+  //  Core / Brand
 
   /// Primary brand colour. Interactive elements, CTAs, selected states.
   static const int brand = DievasColourPrimitives.indigo400;
@@ -25,7 +25,7 @@ abstract final class DievasColourSemanticDark {
   /// Text or icons placed on top of [brand] surfaces.
   static const int onBrand = DievasColourPrimitives.white;
 
-  // ─── Text
+  // Text
 
   /// Highest-contrast body text on dark backgrounds.
   static const int textPrimary = DievasColourPrimitives.slate50;
@@ -45,7 +45,7 @@ abstract final class DievasColourSemanticDark {
   /// Text placed directly on a [brand]-coloured background.
   static const int textOnBrand = DievasColourPrimitives.white;
 
-  // ─── Icon
+  // Icon
 
   /// Default icon fill on dark backgrounds.
   static const int iconPrimary = DievasColourPrimitives.slate50;
@@ -59,7 +59,7 @@ abstract final class DievasColourSemanticDark {
   /// Icons placed on a [brand]-coloured surface.
   static const int iconOnBrand = DievasColourPrimitives.white;
 
-  // ─── Background
+  // Background
 
   /// Page / scaffold background. The base dark layer.
   static const int bgBase = DievasColourPrimitives.slate950;
@@ -73,7 +73,7 @@ abstract final class DievasColourSemanticDark {
   /// Scrim / overlay behind modals and bottom sheets.
   static const int bgOverlay = DievasColourPrimitives.black;
 
-  // ─── Border
+  // Border
 
   /// Default dividers and container strokes.
   static const int borderDefault = DievasColourPrimitives.slate700;
@@ -90,7 +90,7 @@ abstract final class DievasColourSemanticDark {
   /// Brand-coloured border. Selected states, brand highlights.
   static const int borderBrand = DievasColourPrimitives.indigo400;
 
-  // ─── Action
+  // Action
 
   /// Primary CTA background.
   static const int actionPrimary = DievasColourPrimitives.indigo500;
@@ -119,7 +119,7 @@ abstract final class DievasColourSemanticDark {
   /// Success / constructive action surface.
   static const int actionSuccess = DievasColourPrimitives.green500;
 
-  // ─── Feedback — Success
+  // Feedback — Success
 
   /// Success alert background on dark surfaces.
   static const int feedbackSuccessBackground = DievasColourPrimitives.green950;
@@ -133,7 +133,7 @@ abstract final class DievasColourSemanticDark {
   /// Success body text.
   static const int feedbackSuccessText = DievasColourPrimitives.green200;
 
-  // ─── Feedback — Warning
+  // Feedback — Warning
 
   /// Warning alert background.
   static const int feedbackWarningBackground = DievasColourPrimitives.amber950;
@@ -147,7 +147,7 @@ abstract final class DievasColourSemanticDark {
   /// Warning body text.
   static const int feedbackWarningText = DievasColourPrimitives.amber200;
 
-  // ─── Feedback — Error
+  // Feedback — Error
 
   /// Error alert background.
   static const int feedbackErrorBackground = DievasColourPrimitives.red950;
@@ -161,7 +161,7 @@ abstract final class DievasColourSemanticDark {
   /// Error body text.
   static const int feedbackErrorText = DievasColourPrimitives.red200;
 
-  // ─── Feedback — Info
+  // Feedback — Info
 
   /// Informational alert background.
   static const int feedbackInfoBackground = DievasColourPrimitives.sky950;
@@ -175,7 +175,7 @@ abstract final class DievasColourSemanticDark {
   /// Info body text.
   static const int feedbackInfoText = DievasColourPrimitives.sky200;
 
-  // ─── Input
+  // Input
 
   /// Input field background surface.
   static const int inputBg = DievasColourPrimitives.slate800;
@@ -195,7 +195,7 @@ abstract final class DievasColourSemanticDark {
   /// Input placeholder / hint text colour.
   static const int inputPlaceholder = DievasColourPrimitives.slate500;
 
-  // ─── Switch
+  // Switch
 
   /// Track colour when the switch is ON.
   static const int switchTrackOn = DievasColourPrimitives.indigo500;
@@ -209,7 +209,7 @@ abstract final class DievasColourSemanticDark {
   /// Switch track border (outlined switch variant).
   static const int switchBorder = DievasColourPrimitives.slate600;
 
-  // ─── Static
+  // Static
 
   /// Pure white. Theme-invariant. Never flips.
   static const int staticWhite = DievasColourPrimitives.white;
