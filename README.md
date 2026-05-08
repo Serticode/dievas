@@ -228,8 +228,8 @@ Dart 3 idioms throughout — pattern matching with `switch` expressions, sealed 
 | Milestone                 | Status     | Window    |
 | ------------------------- | ---------- | --------- |
 | M1 — Semantic token layer | ✅ Done    | May 7–9   |
-| M2 — Theme architecture   | 🔄 Next    | May 10–12 |
-| M3 — Core components      | ⬜ Pending | May 12–15 |
+| M2 — Theme architecture   | ✅ Done    | May 10–12 |
+| M3 — Core components      | 🔄 Next    | May 12–15 |
 | M4 — Composite components | ⬜ Pending | May 16–18 |
 | M5 — Gallery + polish     | ⬜ Pending | May 19–21 |
 

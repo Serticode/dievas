@@ -79,7 +79,7 @@ class DievasScope extends StatefulWidget {
 }
 
 /// Controller API exposed by [DievasScope.of].
-mixin DievasScopeController on SingleTickerProviderStateMixin<DievasScope> {
+mixin DievasScopeController on TickerProviderStateMixin<DievasScope> {
   late final AnimationController _bannerAnimationController;
   late final AnimationController _snackbarAnimationController;
   late final ValueNotifier<ThemeMode> _themeModeNotifier;
@@ -150,7 +150,7 @@ mixin DievasScopeController on SingleTickerProviderStateMixin<DievasScope> {
 
 /// Mutable state for [DievasScope].
 class DievasScopeState extends State<DievasScope>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver, DievasScopeController {
+    with TickerProviderStateMixin, WidgetsBindingObserver, DievasScopeController {
   late Brightness _brightness;
 
   @override
