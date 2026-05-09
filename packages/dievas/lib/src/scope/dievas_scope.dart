@@ -196,16 +196,16 @@ class DievasScopeState extends State<DievasScope>
           return DievasTheme(
             data: theme,
             child: Stack(
-              fit: StackFit.expand,
+              fit: .expand,
               children: [
                 content,
                 _DievasOverlaySlot(
-                  alignment: Alignment.topCenter,
+                  alignment: .topCenter,
                   animation: _bannerAnimationController,
                   notifier: _bannerNotifier,
                 ),
                 _DievasOverlaySlot(
-                  alignment: Alignment.bottomCenter,
+                  alignment: .bottomCenter,
                   animation: _snackbarAnimationController,
                   notifier: _snackbarNotifier,
                 ),
@@ -220,7 +220,7 @@ class DievasScopeState extends State<DievasScope>
     if (!widget.global) return scope;
 
     return Directionality(
-      textDirection: TextDirection.ltr,
+      textDirection: .ltr,
       child: Overlay(initialEntries: [OverlayEntry(builder: (_) => scope)]),
     );
   }

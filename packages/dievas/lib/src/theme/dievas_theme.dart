@@ -25,10 +25,10 @@ enum DievasThemeAspect { border, colors, components, elevation, opacity, sizing,
 ///
 /// Aspect-scoped reading — only the changed sub-system triggers a rebuild:
 /// ```dart
-/// // Granular: rebuilds only when colors change
+/// Granular: rebuilds only when colors change
 /// DievasTheme.colorsOf(context);
 ///
-/// // Full theme (rare — prefer granular access)
+/// Full theme (rare — prefer granular access)
 /// DievasTheme.of(context);
 /// ```
 class DievasTheme extends InheritedModel<DievasThemeAspect> {
