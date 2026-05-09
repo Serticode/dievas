@@ -60,13 +60,12 @@ mixin DievasButtonStateAnimatedLoaderProviderMixin<T extends DievasButtonStateAn
   @override
   void didUpdateWidget(T oldWidget) {
     super.didUpdateWidget(oldWidget);
-    switch ((oldWidget.state, widget.state)) {
-      case (.idle, .loading):
-        _loaderController.repeat();
-      case (.loading, .idle):
-        _loaderController.stop();
-      case _:
-        break;
+    final wasLoading = oldWidget.state == .loading;
+    final isLoading = widget.state == .loading;
+    if (isLoading && !wasLoading) {
+      _loaderController.repeat();
+    } else if (!isLoading && wasLoading) {
+      _loaderController.stop();
     }
   }
 
