@@ -9,8 +9,8 @@ import '../../theme/component/button/dievas_button_theme_style.dart';
 import 'dievas_button_state_animated_loader_mixin.dart';
 import 'dievas_button_state_switcher.dart';
 import 'dievas_button_press_mixin.dart';
-import 'types/dievas_button_icon_style_behavior.dart';
-import 'types/dievas_button_state.dart';
+import 'button_types/dievas_button_icon_style_behavior.dart';
+import 'button_types/dievas_button_state.dart';
 
 /// The internal layout-and-gesture layer shared by [DievasFilledButton] and
 /// [DievasOutlinedButton].
@@ -125,9 +125,9 @@ class _DievasButtonBuilderState extends State<DievasButtonBuilder>
               // Fixed-size bounding box ensures consistent Row alignment regardless
               // of how the inner icon widget reports its own intrinsic size.
               Widget sizedIcon(Widget? icon) => SizedBox.square(
-                    dimension: widget.iconSize,
-                    child: Center(child: icon),
-                  );
+                dimension: widget.iconSize,
+                child: Center(child: icon),
+              );
 
               final content = Row(
                 mainAxisSize: .min,

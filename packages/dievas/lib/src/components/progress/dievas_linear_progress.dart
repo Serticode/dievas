@@ -1,26 +1,30 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+
+import '../../theme/dievas_theme.dart';
 
 /// Visual style of [DievasLinearProgress].
 enum DievasLinearProgressStyle {
-  /// Solid brand-coloured track.
+  /// Solid brand-coloured fill.
   primary,
 
-  /// Success-green track.
+  /// Success-green fill.
   success,
 
-  /// Error-red track.
+  /// Error-red fill.
   error,
 }
 
 /// A horizontal progress bar.
 ///
-/// Pass `value: null` for an indeterminate (animated) indicator.
+/// Pass `value: null` for an indeterminate (animated) indicator. Pass a value
+/// in [0.0, 1.0] for a determinate fill.
 ///
 /// Moon reference: LinearProgress
 ///
 /// ```dart
 /// DievasLinearProgress(value: 0.6)
-/// DievasLinearProgress(value: null) // indeterminate
+/// const DievasLinearProgress()                               // indeterminate
+/// DievasLinearProgress(value: 0.8, style: .success)
 /// ```
 class DievasLinearProgress extends StatelessWidget {
   const DievasLinearProgress({super.key, this.value, this.style = .primary});
@@ -32,11 +36,25 @@ class DievasLinearProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Implementation lands in M3.
-    assert(false, 'DievasLinearProgress is not yet implemented — it renders nothing. Implementation lands in M3.');
-    return const SizedBox.shrink();
+    final theme = DievasTheme.componentsOf(context).linearProgress;
+
+    final color = switch (style) {
+      DievasLinearProgressStyle.primary => theme.colorPrimary,
+      DievasLinearProgressStyle.success => theme.colorSuccess,
+      DievasLinearProgressStyle.error => theme.colorError,
+    };
+
+    return ClipRRect(
+      borderRadius: theme.borderRadius,
+      child: SizedBox(
+        height: theme.height,
+        child: LinearProgressIndicator(
+          value: value,
+          color: color,
+          backgroundColor: theme.trackColor,
+          borderRadius: theme.borderRadius,
+        ),
+      ),
+    );
   }
-  //       DievasTheme.componentsOf(context).linearProgress,
-  //       height from DievasTheme.sizingOf(context)
-  //return const SizedBox.shrink();
 }

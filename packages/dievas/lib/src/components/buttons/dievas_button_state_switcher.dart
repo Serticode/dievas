@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 
-import 'types/dievas_button_state.dart';
+import 'button_types/dievas_button_state.dart';
 
 /// Switches between [content] and [loader] based on [state].
 ///

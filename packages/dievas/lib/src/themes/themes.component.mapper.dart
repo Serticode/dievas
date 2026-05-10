@@ -16,6 +16,15 @@ DievasComponentThemeData _deriveDievasComponentThemeData(
   outlinedButton: override?.outlinedButton ?? _createOutlinedButtonGroup(colors, typography, spacing, sizing, border),
   textButton: override?.textButton ?? _createTextButtonGroup(colors, typography),
   iconButton: override?.iconButton ?? _createIconButtonGroup(colors, sizing, border),
+  badge: override?.badge ?? _createBadgeTheme(typography, spacing, border),
+  avatar: override?.avatar ?? _createAvatarTheme(colors, typography, sizing, border),
+  tag: override?.tag ?? _createTagTheme(typography, spacing, border),
+  linearProgress: override?.linearProgress ?? _createLinearProgressTheme(colors, border),
+  circularProgress: override?.circularProgress ?? _createCircularProgressTheme(colors),
+  checkbox: override?.checkbox ?? _createCheckboxTheme(colors, typography, spacing, border),
+  toggle: override?.toggle ?? _createSwitchTheme(colors, typography, spacing),
+  radio: override?.radio ?? _createRadioTheme(colors, typography, spacing),
+  textInput: override?.textInput ?? _createTextInputTheme(colors, typography, spacing, sizing, border),
 );
 
 // Shared layout helper
@@ -219,3 +228,182 @@ DievasIconButtonGroupThemeData _createIconButtonGroup(
     )),
   );
 }
+
+// Badge
+DievasBadgeThemeData _createBadgeTheme(
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasBorderThemeData border,
+) => DievasBadgeThemeData(
+  textStyle: typography.labelXs,
+  borderRadius: border.full,
+  padding: EdgeInsets.symmetric(horizontal: spacing.sm, vertical: spacing.xs / 2),
+  iconSize: 10.0,
+  iconSpacing: spacing.xs,
+);
+
+// Avatar
+DievasAvatarThemeData _createAvatarTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+) => DievasAvatarThemeData(
+  sizeXs: sizing.avatarXs,
+  sizeSm: sizing.avatarSm,
+  sizeMd: sizing.avatarMd,
+  sizeLg: sizing.avatarLg,
+  sizeXl: sizing.avatarXl,
+  borderRadiusSquare: border.md,
+  initialsStyleXs: typography.labelXs,
+  initialsStyleSm: typography.labelSm,
+  initialsStyleMd: typography.labelMd,
+  initialsStyleLg: typography.labelLg,
+  initialsStyleXl: typography.titleSm,
+  backgroundColor: colors.background.bgSubtle,
+  initialsColor: colors.text.textSecondary,
+  placeholderColor: colors.icon.iconSecondary,
+);
+
+// Tag
+DievasTagThemeData _createTagTheme(
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasBorderThemeData border,
+) => DievasTagThemeData(
+  textStyle: typography.labelSm,
+  borderRadius: border.sm,
+  padding: EdgeInsets.symmetric(horizontal: spacing.smPlus, vertical: spacing.xs),
+  iconSize: 14.0,
+  iconSpacing: spacing.xs,
+  removeIconSize: 14.0,
+  removeIconSpacing: spacing.xs,
+  minHeight: 28.0,
+);
+
+// LinearProgress
+DievasLinearProgressThemeData _createLinearProgressTheme(
+  DievasColourThemeData colors,
+  DievasBorderThemeData border,
+) => DievasLinearProgressThemeData(
+  height: 4.0,
+  borderRadius: border.full,
+  trackColor: colors.background.bgSubtle,
+  colorPrimary: colors.action.actionPrimary,
+  colorSuccess: colors.feedback.feedbackSuccess.icon,
+  colorError: colors.feedback.feedbackError.icon,
+);
+
+// CircularProgress
+DievasCircularProgressThemeData _createCircularProgressTheme(
+  DievasColourThemeData colors,
+) => DievasCircularProgressThemeData(
+  sizeSm: 16.0,
+  sizeMd: 24.0,
+  sizeLg: 32.0,
+  strokeWidth: 2.5,
+  colorPrimary: colors.action.actionPrimary,
+  colorOnBrand: colors.core.onBrand,
+  trackColor: colors.background.bgSubtle,
+);
+
+// Checkbox
+DievasCheckboxThemeData _createCheckboxTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasBorderThemeData border,
+) => DievasCheckboxThemeData(
+  size: 20.0,
+  borderRadius: border.xs,
+  strokeWidth: 2.0,
+  colorChecked: colors.action.actionPrimary,
+  colorUnchecked: const Color(0x00000000),
+  colorDisabled: colors.action.actionPrimaryDisabled,
+  borderColorUnchecked: colors.border.borderDefault,
+  borderColorDisabled: colors.border.borderDisabled,
+  checkColor: colors.core.onBrand,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  labelStyle: typography.bodyMd,
+  labelSpacing: spacing.sm,
+);
+
+// Switch
+DievasSwitchThemeData _createSwitchTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+) => DievasSwitchThemeData(
+  trackWidth: 44.0,
+  trackHeight: 24.0,
+  trackRadius: BorderRadius.circular(DievasRadiusSemantic.full),
+  thumbSize: 18.0,
+  thumbRadius: BorderRadius.circular(DievasRadiusSemantic.full),
+  thumbPadding: 3.0,
+  trackColorOn: colors.switchColours.switchTrackOn,
+  trackColorOff: colors.switchColours.switchTrackOff,
+  thumbColor: colors.switchColours.switchThumb,
+  borderColorOff: colors.switchColours.switchBorder,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  animationDuration: const Duration(milliseconds: 200),
+  labelStyle: typography.bodyMd,
+  labelSpacing: spacing.sm,
+);
+
+// Radio
+DievasRadioThemeData _createRadioTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+) => DievasRadioThemeData(
+  size: 20.0,
+  strokeWidth: 2.0,
+  dotSize: 8.0,
+  colorSelected: colors.action.actionPrimary,
+  colorUnselected: const Color(0x00000000),
+  colorDisabled: colors.action.actionPrimaryDisabled,
+  borderColorUnselected: colors.border.borderDefault,
+  borderColorDisabled: colors.border.borderDisabled,
+  dotColor: colors.core.onBrand,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  labelStyle: typography.bodyMd,
+  labelSpacing: spacing.sm,
+);
+
+// TextInput (shared with TextArea)
+DievasTextInputThemeData _createTextInputTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+) => DievasTextInputThemeData(
+  inputStyle: (sm: typography.bodySm, md: typography.bodyMd, lg: typography.bodyLg),
+  labelStyle: typography.labelSm.copyWith(color: colors.text.textSecondary),
+  helperStyle: typography.bodySm.copyWith(color: colors.text.textSecondary),
+  errorStyle: typography.bodySm,
+  placeholderStyle: (
+    sm: typography.bodySm.copyWith(color: colors.input.inputPlaceholder),
+    md: typography.bodyMd.copyWith(color: colors.input.inputPlaceholder),
+    lg: typography.bodyLg.copyWith(color: colors.input.inputPlaceholder),
+  ),
+  height: (sm: sizing.inputHeightSm, md: sizing.inputHeightMd, lg: sizing.inputHeightLg),
+  contentPadding: (
+    sm: EdgeInsets.symmetric(horizontal: spacing.smPlus, vertical: spacing.xs),
+    md: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.sm),
+    lg: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
+  ),
+  borderRadius: border.md,
+  strokeWidth: 1.0,
+  strokeWidthFocused: 1.5,
+  bgColor: colors.input.inputBg,
+  borderColor: colors.input.inputBorder,
+  borderColorFocused: colors.input.inputBorderFocus,
+  borderColorError: colors.input.inputBorderError,
+  iconColor: colors.icon.iconSecondary,
+  iconSize: 20.0,
+  iconSpacing: spacing.xs,
+  labelSpacing: spacing.xs,
+  helperSpacing: spacing.xs,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+);

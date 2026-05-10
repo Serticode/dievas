@@ -1,5 +1,5 @@
 import 'dievas_button.dart';
-import 'types/dievas_button_style.dart';
+import 'button_types/dievas_button_style.dart';
 
 /// A button with a transparent background and a visible border.
 ///

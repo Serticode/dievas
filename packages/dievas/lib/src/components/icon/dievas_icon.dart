@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../../theme/dievas_theme.dart';
+
 /// Size variants for [DievasIcon].
 enum DievasIconSize {
   /// 16 dp — inline with body text.
@@ -33,17 +35,29 @@ class DievasIcon extends StatelessWidget {
   final IconData icon;
   final DievasIconSize size;
 
-  /// Explicit colour override. Falls back to the ambient [IconTheme] colour.
+  /// Explicit colour override. Falls back to the primary icon colour from the
+  /// active [DievasTheme].
   final Color? color;
 
   final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
-    // Implementation lands in M3.
-    assert(false, 'DievasIcon is not yet implemented — it renders nothing. Implementation lands in M3.');
-    return const SizedBox.shrink();
+    final sizing = DievasTheme.sizingOf(context);
+    final colors = DievasTheme.colorsOf(context);
+
+    final dimension = switch (size) {
+      DievasIconSize.xs => sizing.iconXs,
+      DievasIconSize.sm => sizing.iconSm,
+      DievasIconSize.md => sizing.iconMd,
+      DievasIconSize.lg => sizing.iconLg,
+    };
+
+    return Icon(
+      icon,
+      size: dimension,
+      color: color ?? colors.icon.iconPrimary,
+      semanticLabel: semanticLabel,
+    );
   }
-  //       DievasTheme.sizingOf(context)
-  //return const SizedBox.shrink();
 }

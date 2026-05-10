@@ -6,3 +6,5 @@
 .claude/
 .codex/
 .ite/
+
+node_modules/

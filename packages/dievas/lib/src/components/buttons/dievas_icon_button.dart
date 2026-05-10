@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:dievas_tokens/dievas_tokens.dart';
 import '../../theme/dievas_theme.dart';
 import 'dievas_button_press_mixin.dart';
-import 'types/dievas_button_shape.dart';
-import 'types/dievas_button_size.dart';
+import 'button_types/dievas_button_shape.dart';
+import 'button_types/dievas_button_size.dart';
 
 /// Visual style variants for [DievasIconButton].
 enum DievasIconButtonStyle {

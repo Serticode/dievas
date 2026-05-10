@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'types/dievas_button_state.dart';
+import 'button_types/dievas_button_state.dart';
 
 /// Duration of one full loader rotation cycle.
 const Duration _kLoaderRotationDuration = Duration(milliseconds: 800);

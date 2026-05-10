@@ -1,5 +1,5 @@
 import 'dievas_button.dart';
-import 'types/dievas_button_style.dart';
+import 'button_types/dievas_button_style.dart';
 
 /// A filled button with a solid background colour.
 ///

@@ -8,37 +8,31 @@ class FooterComponent extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return footer(
-      classes: 'max-w-5xl mx-auto px-10 w-full '
+      classes:
+          'max-w-5xl mx-auto px-10 w-full '
           'py-8 border-t border-border '
           'flex items-center justify-between flex-wrap gap-4',
       [
-        span(
-          classes: 'font-mono text-xs text-text-lo',
-          [
-            Component.text('Dievas — built by '),
+        span(classes: 'font-mono text-xs text-text-lo', [
+          Component.text('Dievas — built by '),
+          a(
+            href: 'https://serticode.dev',
+            attributes: const {'target': '_blank', 'rel': 'noopener'},
+            classes: 'text-brand no-underline hover:underline',
+            [Component.text('Serticode Inc.')],
+          ),
+        ]),
+        nav(classes: 'flex items-center gap-5', [
+          for (final lnk in _links)
             a(
-              href: 'https://serticode.dev',
-              attributes: const {'target': '_blank', 'rel': 'noopener'},
-              classes: 'text-brand no-underline hover:underline',
-              [Component.text('Adonis')],
+              href: lnk.$2,
+              attributes: lnk.$3 != null ? {'target': '_blank', 'rel': 'noopener'} : {},
+              classes:
+                  'font-mono text-xs text-text-lo no-underline '
+                  'transition-colors duration-200 hover:text-text-mid',
+              [Component.text(lnk.$1)],
             ),
-          ],
-        ),
-        nav(
-          classes: 'flex items-center gap-5',
-          [
-            for (final lnk in _links)
-              a(
-                href: lnk.$2,
-                attributes: lnk.$3 != null
-                    ? {'target': '_blank', 'rel': 'noopener'}
-                    : {},
-                classes: 'font-mono text-xs text-text-lo no-underline '
-                    'transition-colors duration-200 hover:text-text-mid',
-                [Component.text(lnk.$1)],
-              ),
-          ],
-        ),
+        ]),
       ],
     );
   }

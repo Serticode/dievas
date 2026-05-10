@@ -7,11 +7,11 @@ import '../../theme/component/button/dievas_button_theme_data.dart';
 import '../../theme/component/button/dievas_button_theme_style.dart';
 import '../../theme/dievas_theme.dart';
 import 'dievas_button_builder.dart';
-import 'types/dievas_button_icon_style_behavior.dart';
-import 'types/dievas_button_shape.dart';
-import 'types/dievas_button_size.dart';
-import 'types/dievas_button_state.dart';
-import 'types/dievas_button_style.dart';
+import 'button_types/dievas_button_icon_style_behavior.dart';
+import 'button_types/dievas_button_shape.dart';
+import 'button_types/dievas_button_size.dart';
+import 'button_types/dievas_button_state.dart';
+import 'button_types/dievas_button_style.dart';
 
 /// Internal base widget shared by [DievasFilledButton] and [DievasOutlinedButton].
 ///
