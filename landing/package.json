@@ -1,0 +1,13 @@
+{
+    "name": "dievas-landing",
+    "version": "0.0.1",
+    "private": true,
+    "devDependencies": {
+        "tailwindcss": "^4.0.0",
+        "@tailwindcss/cli": "^4.0.0"
+    },
+    "scripts": {
+        "build:css": "tailwindcss -i web/styles.css -o web/output.css --minify",
+        "dev:css": "tailwindcss -i web/styles.css -o web/output.css --watch"
+    }
+}

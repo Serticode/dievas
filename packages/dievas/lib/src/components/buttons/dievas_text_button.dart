@@ -4,8 +4,8 @@ import '../../theme/dievas_theme.dart';
 import 'dievas_button_state_animated_loader_mixin.dart';
 import 'dievas_button_state_switcher.dart';
 import 'dievas_button_press_mixin.dart';
-import 'types/dievas_button_size.dart';
-import 'types/dievas_button_state.dart';
+import 'button_types/dievas_button_size.dart';
+import 'button_types/dievas_button_state.dart';
 
 /// Visual style variants for [DievasTextButton].
 enum DievasTextButtonStyle {

@@ -1,0 +1,113 @@
+name: Publish Gallery
+
+# Deploys dievas_gallery (Widgetbook) to Cloudflare Pages.
+#
+# The landing page (dievas_landing Jaspr server) is deployed separately via
+# Railway — it auto-deploys on push through Railway's GitHub integration.
+# No CI step needed here for the landing.
+
+on:
+    workflow_dispatch:
+        inputs:
+            keep_previews:
+                description: Keep existing preview deployments
+                required: true
+                type: boolean
+                default: true
+    workflow_call:
+        inputs:
+            keep_previews:
+                description: Keep existing preview deployments
+                type: boolean
+                default: true
+    push:
+        branches:
+            - master
+        paths:
+            - "packages/dievas_gallery/**"
+            - "packages/dievas/**"
+            - "packages/dievas_tokens/**"
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+    cancel-in-progress: true
+
+env:
+    gallery_source: ./packages/dievas_gallery
+    gallery_build:  ./packages/dievas_gallery/build/web
+
+jobs:
+    publish-gallery:
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+            contents: read
+
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Set up Flutter
+              uses: subosito/flutter-action@v2
+              with:
+                  channel: stable
+                  cache: true
+
+            - name: Install dependencies
+              run: flutter pub get
+
+            - name: Build Widgetbook (web)
+              working-directory: ${{ env.gallery_source }}
+              # base-href is / because CF Pages serves the Widgetbook at the
+              # root of the dievas-gallery project (not a subdirectory).
+              run: flutter build web --no-tree-shake-icons --base-href "/"
+
+            - name: Deploy to Cloudflare Pages (production)
+              if: github.ref_name == 'master'
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+              run: |
+                  npx wrangler pages deploy ${{ env.gallery_build }} \
+                    --project-name=dievas-gallery \
+                    --branch=master \
+                    --commit-hash=${{ github.sha }}
+
+            - name: Deploy to Cloudflare Pages (PR preview)
+              if: github.ref_name != 'master'
+              id: cf_deploy
+              env:
+                  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+              run: |
+                  OUTPUT=$(npx wrangler pages deploy ${{ env.gallery_build }} \
+                    --project-name=dievas-gallery \
+                    --branch=pr-${{ github.event.pull_request.number }} \
+                    --commit-hash=${{ github.sha }} 2>&1)
+                  echo "$OUTPUT"
+                  PREVIEW_URL=$(echo "$OUTPUT" | grep -oP 'https://[a-z0-9-]+\.dievas-gallery\.pages\.dev' | head -1)
+                  echo "preview_url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+
+            - name: Find existing bot comment
+              uses: peter-evans/find-comment@v3
+              if: github.ref_name != 'master' && github.event.pull_request.number != ''
+              id: fc
+              with:
+                  issue-number: ${{ github.event.pull_request.number }}
+                  comment-author: "github-actions[bot]"
+                  body-includes: "Dievas Gallery preview"
+
+            - name: Post preview URL comment
+              uses: peter-evans/create-or-update-comment@v4
+              if: github.ref_name != 'master' && github.event.pull_request.number != ''
+              with:
+                  comment-id: ${{ steps.fc.outputs.comment-id }}
+                  issue-number: ${{ github.event.pull_request.number }}
+                  edit-mode: replace
+                  body: |
+                      ### Dievas Gallery preview
+
+                      Widgetbook → ${{ steps.cf_deploy.outputs.preview_url }}
+
+                      Deployed from commit `${{ github.sha }}`.

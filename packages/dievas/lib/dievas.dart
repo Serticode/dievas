@@ -11,12 +11,16 @@
 /// - Context extensions (`context.colors`, `context.typography`, ...)
 /// - Button components: [DievasFilledButton], [DievasOutlinedButton],
 ///   [DievasTextButton], [DievasIconButton]
+/// - Form components: [DievasTextInput], [DievasTextArea], [DievasCheckbox],
+///   [DievasSwitch], [DievasRadio]
+/// - Display components: [DievasAvatar], [DievasBadge], [DievasTag],
+///   [DievasDivider], [DievasIcon], [DievasLinearProgress], [DievasCircularProgress]
 library;
 
 //  Scope
 export 'src/scope/dievas_scope.dart';
 
-//  Theme row barrels
+//  Theme barrels
 export 'src/theme.dart';
 export 'src/themes.dart';
 
@@ -25,13 +29,20 @@ export 'src/components/buttons/dievas_filled_button.dart';
 export 'src/components/buttons/dievas_icon_button.dart';
 export 'src/components/buttons/dievas_outlined_button.dart';
 export 'src/components/buttons/dievas_text_button.dart';
-export 'src/components/buttons/types/dievas_button_icon_style_behavior.dart';
-export 'src/components/buttons/types/dievas_button_shape.dart';
-export 'src/components/buttons/types/dievas_button_size.dart';
-export 'src/components/buttons/types/dievas_button_state.dart';
-export 'src/components/buttons/types/dievas_button_style.dart';
+export 'src/components/buttons/button_types/dievas_button_icon_style_behavior.dart';
+export 'src/components/buttons/button_types/dievas_button_shape.dart';
+export 'src/components/buttons/button_types/dievas_button_size.dart';
+export 'src/components/buttons/button_types/dievas_button_state.dart';
+export 'src/components/buttons/button_types/dievas_button_style.dart';
 
-//  Components — Stubs (M3 in-progress)
+//  Components — Form
+export 'src/components/checkbox/dievas_checkbox.dart';
+export 'src/components/radio/dievas_radio.dart';
+export 'src/components/switch/dievas_switch.dart';
+export 'src/components/text_area/dievas_text_area.dart';
+export 'src/components/text_input/dievas_text_input.dart';
+
+//  Components — Display
 export 'src/components/avatar/dievas_avatar.dart';
 export 'src/components/badge/dievas_badge.dart';
 export 'src/components/divider/dievas_divider.dart';

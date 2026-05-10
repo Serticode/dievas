@@ -1,5 +1,5 @@
 name: dievas_gallery
-description: "A new Flutter project."
+description: "Dievas design system — Widgetbook component gallery."
 
 publish_to: "none"
 
@@ -7,19 +7,28 @@ version: 0.0.1+1
 resolution: workspace
 
 environment:
-    sdk: ^3.11.4
+    sdk: ">=3.11.4 <4.0.0"
+    flutter: ">=3.22.0"
 
 dependencies:
     flutter:
         sdk: flutter
 
-    cupertino_icons: ^1.0.8
+    dievas:
+        path: ../dievas
+    widgetbook: ^3.20.2
 
 dev_dependencies:
     flutter_test:
         sdk: flutter
 
     flutter_lints: ^6.0.0
+
+dependency_overrides:
+    # widgetbook ^3.20.2 pulls an older accessibility_tools incompatible
+    # with Flutter >= 3.38. Override to the latest compatible version.
+    # https://github.com/widgetbook/widgetbook/issues/1733
+    accessibility_tools: ^2.8.0
 
 flutter:
     uses-material-design: true

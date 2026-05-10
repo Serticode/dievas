@@ -49,3 +49,53 @@ melos:
             packageFilters:
                 dependsOn: build_runner
             description: Watch mode for build_runner
+
+        # ── Landing (Jaspr + Tailwind) ───────────────────────────────────
+        # Run from landing/ directory. These are NOT Melos package scripts —
+        # they are convenience wrappers since landing/ is outside packages/.
+
+        landing:theme:
+            run: cd landing && dart run tool/generate_theme.dart
+            description: >
+                Generate landing/web/styles.css @theme block from dievas_tokens.
+                Run this whenever tokens change, then follow with landing:css.
+
+        landing:css:
+            run: cd landing && npm run build:css
+            description: Compile Tailwind CSS → landing/web/output.css
+
+        landing:dev:css:
+            run: cd landing && npm run dev:css
+            description: Watch mode for Tailwind CSS compilation
+
+        landing:codegen:
+            run: cd landing && dart run build_runner build --delete-conflicting-outputs
+            description: Generate jaspr_options.dart (registers @client components)
+
+        landing:build:
+            run: cd landing && dart pub global run jaspr build --release
+            description: Build the Jaspr server release artifact (requires global jaspr activation)
+
+        landing:serve:
+            # Quick server — runs the Dart binary directly, no hot reload.
+            # Good for verifying the page renders correctly.
+            run: cd landing && dart run lib/main.dart
+            description: Run Jaspr server locally (no hot reload)
+
+        landing:serve:dev:
+            # Full dev server with hot reload. Requires:
+            #   1. dart pub global activate jaspr
+            #   2. export PATH="$PATH":"$HOME/.pub-cache/bin"  (add to ~/.zshrc)
+            # After that, `jaspr serve` is on PATH and this works.
+            run: cd landing && jaspr serve
+            description: Run Jaspr dev server with hot reload (requires global jaspr activation + ~/.pub-cache/bin in PATH)
+
+        landing:setup:
+            run: |
+                cd landing
+                dart pub get
+                npm install
+                dart run tool/generate_theme.dart
+                npm run build:css
+                dart run build_runner build
+            description: Full first-time setup for landing (deps + codegen + CSS)

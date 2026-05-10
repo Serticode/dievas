@@ -1,4 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+
+import '../../theme/dievas_theme.dart';
 
 /// Size variants for [DievasCircularProgress].
 enum DievasCircularProgressSize {
@@ -17,20 +19,20 @@ enum DievasCircularProgressStyle {
   /// Solid brand-coloured stroke.
   primary,
 
-  /// On-brand (inverted) stroke for use on filled surfaces.
+  /// On-brand (inverted) stroke — use on filled brand surfaces.
   onBrand,
 }
 
 /// A circular spinner / progress ring.
 ///
 /// Pass `value: null` for an indeterminate (spinning) indicator. Pass a value
-/// between 0.0 and 1.0 to show a determinate arc.
+/// in [0.0, 1.0] for a determinate arc.
 ///
 /// Moon reference: CircularProgress
 ///
 /// ```dart
 /// const DievasCircularProgress()          // indeterminate
-/// DievasCircularProgress(value: 0.4)      // determinate
+/// DievasCircularProgress(value: 0.4)      // 40% determinate
 /// ```
 class DievasCircularProgress extends StatelessWidget {
   const DievasCircularProgress({super.key, this.value, this.size = .md, this.style = .primary});
@@ -43,10 +45,28 @@ class DievasCircularProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Implementation lands in M3.
-    assert(false, 'DievasCircularProgress is not yet implemented — it renders nothing. Implementation lands in M3.');
-    return const SizedBox.shrink();
+    final theme = DievasTheme.componentsOf(context).circularProgress;
+
+    final diameter = switch (size) {
+      DievasCircularProgressSize.sm => theme.sizeSm,
+      DievasCircularProgressSize.md => theme.sizeMd,
+      DievasCircularProgressSize.lg => theme.sizeLg,
+    };
+
+    final color = switch (style) {
+      DievasCircularProgressStyle.primary => theme.colorPrimary,
+      DievasCircularProgressStyle.onBrand => theme.colorOnBrand,
+    };
+
+    return SizedBox.square(
+      dimension: diameter,
+      child: CircularProgressIndicator(
+        value: value,
+        strokeWidth: theme.strokeWidth,
+        color: color,
+        backgroundColor: theme.trackColor,
+        strokeCap: StrokeCap.round,
+      ),
+    );
   }
-  //       DievasTheme.componentsOf(context).circularProgress
-  //return const SizedBox.shrink();
 }
