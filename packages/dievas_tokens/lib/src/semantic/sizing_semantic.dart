@@ -10,22 +10,22 @@ import '../primitives/sizing_primitives.dart';
 /// References [DievasSizingPrimitives] exclusively.
 abstract final class DievasSizingSemantic {
   /// Extra-small button height.
-  static const double buttonHeightXs = DievasSizingPrimitives.s28;
+  static const double buttonHeightXs = DievasSizingPrimitives.s40;
 
   /// Small button height.
-  static const double buttonHeightSm = DievasSizingPrimitives.s32;
+  static const double buttonHeightSm = DievasSizingPrimitives.s44;
 
   /// Medium button height.
-  static const double buttonHeightMd = DievasSizingPrimitives.s40;
+  static const double buttonHeightMd = DievasSizingPrimitives.s48;
 
   /// Large button height.
-  static const double buttonHeightLg = DievasSizingPrimitives.s48;
+  static const double buttonHeightLg = DievasSizingPrimitives.s52;
 
   /// Small input height.
-  static const double inputHeightSm = DievasSizingPrimitives.s36;
+  static const double inputHeightSm = DievasSizingPrimitives.s40;
 
   /// Medium input height.
-  static const double inputHeightMd = DievasSizingPrimitives.s44;
+  static const double inputHeightMd = DievasSizingPrimitives.s48;
 
   /// Large input height.
   static const double inputHeightLg = DievasSizingPrimitives.s52;

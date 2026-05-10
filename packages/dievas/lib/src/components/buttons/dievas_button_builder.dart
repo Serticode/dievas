@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -104,20 +106,36 @@ class _DievasButtonBuilderState extends State<DievasButtonBuilder>
                 );
               }
 
-              // Estimate text height for padding calculation.
+              // Estimate content height for padding calculation.
+              // When icons are present the Row height is driven by iconSize, not
+              // the text line-height — so we take the larger of the two to ensure
+              // the content area is tall enough for the icons to fit without
+              // overflowing the vertical constraint applied by UnconstrainedBox.
               final textScaler = MediaQuery.textScalerOf(context);
               final placeholderFontSize = 14.0;
               final placeholderTextHeight = 1.4;
               final fontSize = widget.textStyle.fontSize ?? placeholderFontSize;
               final scaledSize = textScaler.scale(fontSize);
-              final estimatedTextHeight = scaledSize * (widget.textStyle.height ?? placeholderTextHeight);
+              final hasIcon = widget.leadingIcon != null || widget.trailingIcon != null;
+              final estimatedTextHeight = math.max(
+                scaledSize * (widget.textStyle.height ?? placeholderTextHeight),
+                hasIcon ? widget.iconSize : 0.0,
+              );
+
+              // Fixed-size bounding box ensures consistent Row alignment regardless
+              // of how the inner icon widget reports its own intrinsic size.
+              Widget sizedIcon(Widget? icon) => SizedBox.square(
+                    dimension: widget.iconSize,
+                    child: Center(child: icon),
+                  );
 
               final content = Row(
                 mainAxisSize: .min,
                 mainAxisAlignment: .center,
+                crossAxisAlignment: .center,
                 spacing: widget.iconSpacing,
                 children: [
-                  ?maybeColourIcon(widget.leadingIcon),
+                  if (widget.leadingIcon != null) sizedIcon(maybeColourIcon(widget.leadingIcon)),
                   if (widget.label.isNotEmpty)
                     AnimatedDefaultTextStyle(
                       duration: DievasButtonPressMixin.kAnimationDuration,
@@ -125,7 +143,7 @@ class _DievasButtonBuilderState extends State<DievasButtonBuilder>
                       textAlign: .center,
                       child: Text(widget.label),
                     ),
-                  ?maybeColourIcon(widget.trailingIcon),
+                  if (widget.trailingIcon != null) sizedIcon(maybeColourIcon(widget.trailingIcon)),
                 ],
               );
 

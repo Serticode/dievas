@@ -1,0 +1,27 @@
+name: dievas_landing
+description: Dievas design system — Jaspr server landing page.
+
+publish_to: none
+version: 0.0.1
+
+environment:
+    sdk: ">=3.11.4 <4.0.0"
+
+dependencies:
+    jaspr: ^0.23.0
+    jaspr_router: ^0.8.2
+    dio: ^5.8.0
+    fpdart: ^1.1.0
+
+    # Pure Dart token layer — no Flutter dep. The whole point.
+    dievas_tokens:
+        path: ../packages/dievas_tokens
+
+dev_dependencies:
+    build_runner: ^2.10.0
+    build_web_compilers: ^4.4.17
+    jaspr_builder: ^0.23.0
+    lints: ^6.1.0
+
+jaspr:
+    mode: server
