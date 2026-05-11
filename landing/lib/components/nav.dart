@@ -40,14 +40,12 @@ class Nav extends StatelessComponent {
             // Logo mark
             a(
               href: '/',
-              classes: 'no-underline flex items-center gap-px',
-              attributes: const {
-                'style':
-                    'font-family: "Maison Neue Extended", system-ui, sans-serif; font-weight: 500; font-size: 1.25rem; letter-spacing: 0.02em; color: rgba(248,250,252,1);',
-              },
+              classes:
+                  'no-underline flex items-center gap-px '
+                  'font-display font-medium text-xl tracking-[0.02em] text-text-hi',
               [
                 Component.text('die'),
-                span(attributes: const {'style': 'color: rgba(129,140,248,1);'}, [Component.text('v')]),
+                span(classes: 'text-brand', [Component.text('v')]),
                 Component.text('as'),
               ],
             ),
@@ -57,13 +55,12 @@ class Nav extends StatelessComponent {
               for (final lnk in _links)
                 a(
                   href: lnk.$2,
-                  classes: 'nav-link',
+                  classes:
+                      'font-body font-medium text-xs tracking-[0.08em] uppercase '
+                      'text-text-mid no-underline '
+                      'transition-colors duration-200 '
+                      'hover:text-white hover:underline hover:underline-offset-[3px]',
                   attributes: {
-                    'style':
-                        'font-family: "Maison Neue", system-ui, sans-serif; '
-                        'font-weight: 500; font-size: 0.75rem; letter-spacing: 0.08em; '
-                        'text-transform: uppercase; color: rgba(148,163,184,1); '
-                        'text-decoration: none;',
                     if (lnk.$3) 'target': '_blank',
                     if (lnk.$3) 'rel': 'noopener',
                   },

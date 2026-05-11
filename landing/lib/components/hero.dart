@@ -39,10 +39,9 @@ class Hero extends StatelessComponent {
         // Display headline
         h1(
           classes:
-              'text-[clamp(50px,6.5vw,86px)] font-black leading-[0.93] '
+              'font-display text-[clamp(50px,6.5vw,86px)] font-black leading-[0.93] '
               'tracking-[-0.025em] mb-8 '
               'opacity-0 animate-[fade-up_0.7s_ease_0.2s_forwards]',
-          attributes: const {'style': 'font-family: "Maison Neue Extended", system-ui, sans-serif;'},
           [
             span(classes: 'text-text-lo', [Component.text('Build')]),
             br(),
@@ -346,16 +345,14 @@ class Hero extends StatelessComponent {
           div(classes: 'flex flex-col gap-2.5', [
             div(classes: 'flex items-baseline justify-between', [
               span(
-                classes: 'text-2xl font-black text-text-hi leading-none',
-                attributes: const {'style': 'font-family: "Maison Neue Extended", system-ui, sans-serif;'},
+                classes: 'font-display text-2xl font-black text-text-hi leading-none',
                 [Component.text('Aa')],
               ),
               span(classes: 'font-mono text-[9px] text-text-lo', [Component.text('displayLg · Extended 500')]),
             ]),
             div(classes: 'flex items-baseline justify-between', [
               span(
-                classes: 'text-lg font-bold text-text-mid leading-none',
-                attributes: const {'style': 'font-family: "Maison Neue", system-ui, sans-serif;'},
+                classes: 'font-body text-lg font-bold text-text-mid leading-none',
                 [Component.text('Aa')],
               ),
               span(classes: 'font-mono text-[9px] text-text-lo', [Component.text('headingMd · Maison 500')]),

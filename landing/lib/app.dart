@@ -30,16 +30,6 @@ class App extends StatelessComponent {
         link(rel: 'preconnect', href: 'https://fonts.gstatic.com', attributes: const {'crossorigin': ''}),
         link(rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap'),
         link(rel: 'stylesheet', href: '/output.css'),
-        RawText(
-          '<style>'
-          'a.nav-link{transition:color .2s ease}'
-          'a.nav-link:hover{'
-          'color:rgba(255,255,255,1)!important;'
-          'text-decoration:underline!important;'
-          'text-underline-offset:3px'
-          '}'
-          '</style>',
-        ),
       ],
       body: const _AppBody(),
     );
