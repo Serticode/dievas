@@ -57,8 +57,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Copy compiled server binary + web assets
-COPY --from=dart-builder /build/landing/build/ ./
+# Copy compiled server binary + web assets.
+# jaspr build outputs to build/jaspr/ (relative to the landing package),
+# so the binary lives at /build/landing/build/jaspr/server in the builder stage.
+# Copying that subdirectory directly puts /app/server where CMD expects it.
+COPY --from=dart-builder /build/landing/build/jaspr/ ./
 
 # Overlay the generated CSS (Tailwind output) into the web assets dir
 COPY --from=css-builder /build/landing/web/output.css ./web/output.css
