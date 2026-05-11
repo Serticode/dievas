@@ -48,7 +48,11 @@ jobs:
             - name: Run tests
               run: melos run test
 
-            # Analyze landing (outside melos workspace)
+            # Analyze landing (outside melos workspace — needs its own pub get)
+            - name: Get landing dependencies
+              run: dart pub get
+              working-directory: landing
+
             - name: Analyze landing
               run: dart analyze .
               working-directory: landing

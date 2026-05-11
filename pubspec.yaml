@@ -33,7 +33,7 @@ melos:
             description: Check formatting without modifying files
 
         test:
-            exec: dart test
+            exec: flutter test
             packageFilters:
                 dirExists: test
             description: Run tests across all packages
