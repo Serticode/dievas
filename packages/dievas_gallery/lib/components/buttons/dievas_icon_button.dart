@@ -14,20 +14,20 @@ final iconButtonComponent = WidgetbookComponent(
 );
 
 Widget _playground(BuildContext context) {
-  final style = context.knobs.list<DievasIconButtonStyle>(
+  final style = context.knobs.object.dropdown<DievasIconButtonStyle>(
     label: 'Style',
     options: DievasIconButtonStyle.values,
     labelBuilder: (v) => v.name,
   );
 
-  final size = context.knobs.list<DievasButtonSize>(
+  final size = context.knobs.object.dropdown<DievasButtonSize>(
     label: 'Size',
     options: DievasButtonSize.values,
     labelBuilder: (v) => v.name,
     initialOption: DievasButtonSize.md,
   );
 
-  final shape = context.knobs.list<DievasButtonShape>(
+  final shape = context.knobs.object.dropdown<DievasButtonShape>(
     label: 'Shape',
     options: DievasButtonShape.values,
     labelBuilder: (v) => v.name,

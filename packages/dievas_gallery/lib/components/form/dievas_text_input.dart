@@ -14,7 +14,7 @@ final textInputComponent = WidgetbookComponent(
 );
 
 Widget _playground(BuildContext context) {
-  final size = context.knobs.list<DievasTextInputSize>(
+  final size = context.knobs.object.dropdown<DievasTextInputSize>(
     label: 'Size',
     options: DievasTextInputSize.values,
     labelBuilder: (v) => v.name,

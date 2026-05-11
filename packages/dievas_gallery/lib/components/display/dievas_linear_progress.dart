@@ -16,7 +16,7 @@ final linearProgressComponent = WidgetbookComponent(
 Widget _playground(BuildContext context) {
   final value = context.knobs.double.slider(label: 'Value (0 = indeterminate)', initialValue: 0.6, min: 0, max: 1);
 
-  final style = context.knobs.list<DievasLinearProgressStyle>(
+  final style = context.knobs.object.dropdown<DievasLinearProgressStyle>(
     label: 'Style',
     options: DievasLinearProgressStyle.values,
     labelBuilder: (v) => v.name,

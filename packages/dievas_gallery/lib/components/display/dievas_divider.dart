@@ -13,7 +13,7 @@ final dividerComponent = WidgetbookComponent(
 );
 
 Widget _playground(BuildContext context) {
-  final orientation = context.knobs.list<DievasDividerOrientation>(
+  final orientation = context.knobs.object.dropdown<DievasDividerOrientation>(
     label: 'Orientation',
     options: DievasDividerOrientation.values,
     labelBuilder: (v) => v.name,

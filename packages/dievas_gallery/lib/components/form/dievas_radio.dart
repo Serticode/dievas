@@ -17,7 +17,7 @@ final radioComponent = WidgetbookComponent(
 Widget _playground(BuildContext context) {
   final options = ['Option A', 'Option B', 'Option C'];
 
-  final initialSelection = context.knobs.list<String>(
+  final initialSelection = context.knobs.object.dropdown<String>(
     label: 'Selected',
     options: options,
     labelBuilder: (v) => v,

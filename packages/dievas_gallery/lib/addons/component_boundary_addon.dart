@@ -17,6 +17,6 @@ class ComponentBoundaryAddon extends WidgetbookAddon<bool> {
   bool valueFromQueryGroup(Map<String, String> group) => valueOf('show_boundary', group) ?? false;
 
   @override
-  Widget buildUseCase(BuildContext context, Widget child, bool show) =>
-      ComponentBoundaryScope(show: show, child: child);
+  Widget buildUseCase(BuildContext context, Widget child, bool setting) =>
+      ComponentBoundaryScope(show: setting, child: child);
 }

@@ -13,7 +13,7 @@ final iconComponent = WidgetbookComponent(
 );
 
 Widget _playground(BuildContext context) {
-  final size = context.knobs.list<DievasIconSize>(
+  final size = context.knobs.object.dropdown<DievasIconSize>(
     label: 'Size',
     options: DievasIconSize.values,
     labelBuilder: (v) => v.name,

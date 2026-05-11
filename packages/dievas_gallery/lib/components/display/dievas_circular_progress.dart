@@ -16,14 +16,14 @@ final circularProgressComponent = WidgetbookComponent(
 Widget _playground(BuildContext context) {
   final value = context.knobs.double.slider(label: 'Value (0 = indeterminate)', initialValue: 0.6, min: 0, max: 1);
 
-  final size = context.knobs.list<DievasCircularProgressSize>(
+  final size = context.knobs.object.dropdown<DievasCircularProgressSize>(
     label: 'Size',
     options: DievasCircularProgressSize.values,
     labelBuilder: (v) => v.name,
     initialOption: DievasCircularProgressSize.md,
   );
 
-  final style = context.knobs.list<DievasCircularProgressStyle>(
+  final style = context.knobs.object.dropdown<DievasCircularProgressStyle>(
     label: 'Style',
     options: DievasCircularProgressStyle.values,
     labelBuilder: (v) => v.name,

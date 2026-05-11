@@ -14,7 +14,7 @@ final checkboxComponent = WidgetbookComponent(
 );
 
 Widget _playground(BuildContext context) {
-  final value = context.knobs.list<DievasCheckboxValue>(
+  final value = context.knobs.object.dropdown<DievasCheckboxValue>(
     label: 'Value',
     options: DievasCheckboxValue.values,
     labelBuilder: (v) => v.name,
