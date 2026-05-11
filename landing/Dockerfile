@@ -27,7 +27,7 @@ FROM dart:stable AS dart-builder
 WORKDIR /build
 
 # Copy workspace root pubspec so path resolution is consistent
-COPY pubspec.yaml pubspec.lock ./
+COPY pubspec.yaml ./
 
 # Copy dievas_tokens (path dependency for landing)
 COPY packages/dievas_tokens/ ./packages/dievas_tokens/

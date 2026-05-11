@@ -284,9 +284,11 @@ class _HintBadge extends StatelessWidget {
           decoration: const BoxDecoration(color: DievasHomePage._brand, shape: .circle),
         ),
         const SizedBox(width: 12),
-        const Text(
-          'Select a component from the sidebar to explore use cases',
-          style: TextStyle(fontFamily: 'monospace', fontSize: 12, color: DievasHomePage._textMid),
+        const Flexible(
+          child: Text(
+            'Select a component from the sidebar to explore use cases',
+            style: TextStyle(fontFamily: 'monospace', fontSize: 12, color: DievasHomePage._textMid),
+          ),
         ),
       ],
     ),
