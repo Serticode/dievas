@@ -1,6 +1,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
+import '../constants.dart';
+
 /// Component status strip — shipped vs. in-progress.
 ///
 /// White-background section continuing the light treatment after the dark hero.
@@ -52,7 +54,7 @@ class ComponentsSection extends StatelessComponent {
                 Component.text('test viewports — in the live gallery.'),
               ]),
               a(
-                href: 'https://master.dievas-gallery.pages.dev',
+                href: DievasUrls.gallery,
                 attributes: const {'target': '_blank', 'rel': 'noopener'},
                 classes:
                     'inline-flex items-center gap-2 '
@@ -108,7 +110,7 @@ class ComponentsSection extends StatelessComponent {
   }
 
   static String _galleryHref(String componentName) {
-    const base = 'https://master.dievas-gallery.pages.dev';
+    const base = DievasUrls.gallery;
     // Widgetbook uses hash routing — the slug is the component name lowercased,
     // no hyphens. e.g. OutlinedButton → outlinedbutton, TextInput → textinput.
     final slug = _gallerySlug[componentName] ?? componentName.toLowerCase();

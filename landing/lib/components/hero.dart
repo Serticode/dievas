@@ -1,6 +1,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 
+import '../constants.dart';
+
 /// Hero section — above-the-fold landing content.
 ///
 /// Left copy column in normal flow, right side handled by two absolutely-
@@ -14,11 +16,36 @@ class Hero extends StatelessComponent {
   const Hero({super.key});
 
   @override
-  Component build(BuildContext context) => section(classes: 'relative min-h-screen overflow-hidden flex items-start lg:items-center', [
+  Component build(
+    BuildContext context,
+  ) => section(classes: 'relative min-h-screen overflow-hidden flex items-start lg:items-center', [
     // Ambient glow behind everything
     div(classes: 'pointer-events-none absolute inset-0 flex items-center justify-center', [
       div(classes: 'w-[700px] h-[500px] rounded-full bg-brand/8 blur-[120px]', []),
     ]),
+
+    // Background word mark — desktop only, pinned to the bottom of the hero.
+    // Hidden on mobile; mobile gets an in-flow version inside the left column
+    // so it sits precisely above the gallery preview.
+    div(
+      classes:
+          'pointer-events-none select-none '
+          'absolute inset-x-0 bottom-0 '
+          'hidden lg:flex justify-center overflow-hidden',
+      [
+        span(
+          classes: 'font-display font-bold whitespace-nowrap text-brand',
+          attributes: const {
+            'style':
+                'font-size: clamp(120px, 24vw, 340px); '
+                'line-height: 0.85; '
+                'letter-spacing: -0.02em; '
+                'opacity: 0.05;',
+          },
+          [Component.text('DIEVAS')],
+        ),
+      ],
+    ),
 
     // ── LEFT COLUMN — editorial copy ──────────────────────────────────────
     // padding-right: 56% pushes the content box to stay within the left 44%
@@ -82,7 +109,7 @@ class Hero extends StatelessComponent {
               'opacity-0 animate-[fade-up_0.7s_ease_0.48s_forwards]',
           [
             a(
-              href: 'https://pub.dev/publishers/serticode.com/packages',
+              href: DievasUrls.pubDev,
               attributes: const {'target': '_blank', 'rel': 'noopener'},
               classes:
                   'inline-flex items-center gap-2 '
@@ -98,7 +125,7 @@ class Hero extends StatelessComponent {
               ],
             ),
             a(
-              href: 'https://master.dievas-gallery.pages.dev',
+              href: DievasUrls.gallery,
               attributes: const {'target': '_blank', 'rel': 'noopener'},
               classes:
                   'inline-flex items-center gap-2 '
@@ -125,6 +152,22 @@ class Hero extends StatelessComponent {
             _stat('∞', 'brand configs'),
           ],
         ),
+
+        // Mobile word mark — in-flow so it sits directly above the preview image.
+        // Desktop uses the absolutely-positioned bottom version instead.
+        div(classes: 'lg:hidden w-full text-center overflow-hidden mt-8 -mb-24', [
+          span(
+            classes: 'font-display font-bold whitespace-nowrap text-brand',
+            attributes: const {
+              'style':
+                  'font-size: clamp(80px, 24vw, 140px); '
+                  'line-height: 0.85; '
+                  'letter-spacing: -0.02em; '
+                  'opacity: 0.12;',
+            },
+            [Component.text('DIEVAS')],
+          ),
+        ]),
 
         // Mobile preview — gallery app window peek, desktop hides this
         div(
@@ -260,7 +303,7 @@ class Hero extends StatelessComponent {
           'opacity-0 animate-[fade-up_0.6s_ease_1.0s_forwards]',
       [
         a(
-          href: 'https://portfolio.serticode.com',
+          href: DievasUrls.portfolio,
           attributes: const {'target': '_blank', 'rel': 'noopener'},
           classes:
               'flex items-center gap-2.5 '
@@ -270,13 +313,10 @@ class Hero extends StatelessComponent {
               'shadow-[0_8px_32px_rgba(0,0,0,0.5)] '
               'transition-all duration-200 '
               'hover:border-brand hover:text-brand hover:-translate-y-px',
-          [
-            div(classes: 'w-2 h-2 rounded-full bg-brand flex-shrink-0', []),
-            Component.text('Serticode Inc.'),
-          ],
+          [div(classes: 'w-2 h-2 rounded-full bg-brand flex-shrink-0', []), Component.text('Serticode Inc.')],
         ),
         a(
-          href: 'https://flutter.moon.io',
+          href: DievasUrls.moonDs,
           attributes: const {'target': '_blank', 'rel': 'noopener'},
           classes:
               'flex items-center gap-2.5 '
@@ -286,10 +326,7 @@ class Hero extends StatelessComponent {
               'shadow-[0_8px_32px_rgba(0,0,0,0.5)] '
               'transition-all duration-200 '
               'hover:border-brand/50 hover:text-brand hover:-translate-y-px',
-          [
-            div(classes: 'w-2 h-2 rounded-full bg-brand/50 flex-shrink-0', []),
-            Component.text('Moon DS'),
-          ],
+          [div(classes: 'w-2 h-2 rounded-full bg-brand/50 flex-shrink-0', []), Component.text('Moon DS')],
         ),
       ],
     ),
@@ -388,17 +425,11 @@ class Hero extends StatelessComponent {
         _block('Typography Scale', [
           div(classes: 'flex flex-col gap-2.5', [
             div(classes: 'flex items-baseline justify-between', [
-              span(
-                classes: 'font-display text-2xl font-black text-text-hi leading-none',
-                [Component.text('Aa')],
-              ),
+              span(classes: 'font-display text-2xl font-black text-text-hi leading-none', [Component.text('Aa')]),
               span(classes: 'font-mono text-[9px] text-text-lo', [Component.text('displayLg · Extended 500')]),
             ]),
             div(classes: 'flex items-baseline justify-between', [
-              span(
-                classes: 'font-body text-lg font-bold text-text-mid leading-none',
-                [Component.text('Aa')],
-              ),
+              span(classes: 'font-body text-lg font-bold text-text-mid leading-none', [Component.text('Aa')]),
               span(classes: 'font-mono text-[9px] text-text-lo', [Component.text('headingMd · Maison 500')]),
             ]),
             div(classes: 'flex items-baseline justify-between', [
@@ -451,9 +482,22 @@ class Hero extends StatelessComponent {
   ]);
 
   static const _shipped = [
-    'FilledButton', 'OutlinedButton', 'TextButton', 'IconButton',
-    'Avatar', 'Badge', 'Checkbox', 'Switch', 'TextArea', 'TextField',
-    'Radio', 'Tag', 'Divider', 'CircularProgress', 'LinearProgress', 'Icon',
+    'FilledButton',
+    'OutlinedButton',
+    'TextButton',
+    'IconButton',
+    'Avatar',
+    'Badge',
+    'Checkbox',
+    'Switch',
+    'TextArea',
+    'TextField',
+    'Radio',
+    'Tag',
+    'Divider',
+    'CircularProgress',
+    'LinearProgress',
+    'Icon',
   ];
   static const _wip = ['BottomSheet', 'Toast', 'Modal', 'Tooltip'];
 }
