@@ -17,8 +17,20 @@ class ArchitectureSection extends StatelessComponent {
           [
             // Section label
             p(
-              classes: 'section-eyebrow font-display text-sm tracking-[0.16em] uppercase mb-12',
+              classes: 'section-eyebrow font-display text-sm tracking-[0.16em] uppercase mb-6',
               [Component.text('✶  Architecture')],
+            ),
+
+            // Section intro
+            p(
+              classes:
+                  'max-w-2xl font-body font-light text-sm leading-[1.8] text-slate-500 mb-12',
+              [
+                Component.text(
+                  'Dievas separates token definition, theme composition, and component '
+                  'behaviour into distinct layers. Each layer has exactly one responsibility.',
+                ),
+              ],
             ),
 
             // Two-column: principle cards left, layer stack right
@@ -27,25 +39,46 @@ class ArchitectureSection extends StatelessComponent {
               [
                 // Principles
                 div(
-                  classes: 'flex flex-col gap-px border border-slate-200 rounded-lg overflow-hidden',
+                  classes: 'flex flex-col',
                   [
-                    for (final p in _principles) _principleCard(p.$1, p.$2, p.$3),
+                    p(
+                      classes:
+                          'font-mono text-[11px] text-slate-400 tracking-[0.10em] uppercase mb-4',
+                      [Component.text('Design principles')],
+                    ),
+                    div(
+                      classes:
+                          'flex flex-col gap-px border border-slate-200 rounded-lg overflow-hidden',
+                      [
+                        for (final p in _principles) _principleCard(p.$1, p.$2, p.$3),
+                      ],
+                    ),
                   ],
                 ),
 
                 // Layer stack
                 div(
-                  classes: 'flex flex-col gap-0.5',
+                  classes: 'flex flex-col',
                   [
-                    for (int i = 0; i < _layers.length; i++) ...[
-                      _layerRow(_layers[i].$1, _layers[i].$2, _layers[i].$3),
-                      if (i < _layers.length - 1)
-                        div(
-                          classes: 'flex justify-center py-1 '
-                              'font-mono text-xs text-slate-400',
-                          [Component.text('↓')],
-                        ),
-                    ],
+                    p(
+                      classes:
+                          'font-mono text-[11px] text-slate-400 tracking-[0.10em] uppercase mb-4',
+                      [Component.text('Package stack')],
+                    ),
+                    div(
+                      classes: 'flex flex-col gap-0.5',
+                      [
+                        for (int i = 0; i < _layers.length; i++) ...[
+                          _layerRow(_layers[i].$1, _layers[i].$2, _layers[i].$3),
+                          if (i < _layers.length - 1)
+                            div(
+                              classes:
+                                  'flex justify-center py-1 font-mono text-xs text-slate-400',
+                              [Component.text('↓')],
+                            ),
+                        ],
+                      ],
+                    ),
                   ],
                 ),
               ],

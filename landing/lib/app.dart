@@ -21,9 +21,9 @@ class App extends StatelessComponent {
       lang: 'en',
       meta: const {
         'description':
-            'A token-driven Flutter design system porting Moon Design '
-            'System. Multi-brand. '
-            'InheritedModel-first. Production-ready.',
+            'Dievas — a token-driven Flutter design system. '
+            'InheritedModel-first. Multi-brand. Zero hardcoded values. '
+            'Production-ready components built from the token layer up.',
       },
       head: [
         link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),

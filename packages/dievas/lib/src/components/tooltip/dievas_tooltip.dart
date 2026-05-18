@@ -16,12 +16,7 @@ import '../../theme/dievas_theme.dart';
 ///
 /// Moon reference: Tooltip
 class DievasTooltip extends StatelessWidget {
-  const DievasTooltip({
-    super.key,
-    required this.message,
-    required this.child,
-    this.preferBelow = true,
-  });
+  const DievasTooltip({super.key, required this.message, required this.child, this.preferBelow = true});
 
   /// The tooltip message text.
   final String message;
@@ -42,10 +37,7 @@ class DievasTooltip extends StatelessWidget {
       verticalOffset: theme.verticalOffset,
       waitDuration: theme.waitDuration,
       showDuration: theme.showDuration,
-      decoration: BoxDecoration(
-        color: theme.backgroundColor,
-        borderRadius: theme.borderRadius,
-      ),
+      decoration: BoxDecoration(color: theme.backgroundColor, borderRadius: theme.borderRadius),
       textStyle: theme.textStyle,
       padding: theme.padding,
       child: child,

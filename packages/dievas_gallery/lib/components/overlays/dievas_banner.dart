@@ -21,10 +21,7 @@ class _Playground extends StatelessWidget {
       labelBuilder: (v) => v.name,
       initialOption: .warning,
     );
-    final message = context.knobs.string(
-      label: 'Message',
-      initialValue: 'You are currently in offline mode.',
-    );
+    final message = context.knobs.string(label: 'Message', initialValue: 'You are currently in offline mode.');
     final showDismiss = context.knobs.boolean(label: 'Dismissible', initialValue: true);
 
     return ComponentBoundary(

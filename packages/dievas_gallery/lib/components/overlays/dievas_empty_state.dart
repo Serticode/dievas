@@ -74,9 +74,7 @@ class _Defaults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: ComponentBoundary(
-      child: DievasEmptyState(icon: const _InboxIcon()),
-    ),
+    child: ComponentBoundary(child: DievasEmptyState(icon: const _InboxIcon())),
   );
 }
 

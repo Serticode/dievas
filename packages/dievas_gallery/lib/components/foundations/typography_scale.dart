@@ -177,13 +177,12 @@ class _TypeRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = DievasTheme.typographyOf(context).labelXs.copyWith(
-      color: DievasTheme.colorsOf(context).text.textTertiary,
-      fontFamily: 'monospace',
-    );
+    final labelStyle = DievasTheme.typographyOf(
+      context,
+    ).labelXs.copyWith(color: DievasTheme.colorsOf(context).text.textTertiary, fontFamily: 'monospace');
 
     final size = style.fontSize;
-    final weight = style.fontWeight?.index ?? 3;
+    final weight = style.fontWeight?.value ?? 3;
     final meta = size != null ? '${size.toStringAsFixed(0)}sp · w${(weight + 1) * 100}' : '';
 
     return Row(
@@ -202,12 +201,7 @@ class _TypeRow extends StatelessWidget {
         ),
         SizedBox(width: context.spacing.lg),
         Expanded(
-          child: Text(
-            sample ?? 'The quick brown fox',
-            style: style,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
+          child: Text(sample ?? 'The quick brown fox', style: style, maxLines: 1, overflow: TextOverflow.ellipsis),
         ),
       ],
     );

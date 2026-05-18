@@ -42,10 +42,7 @@ class _AllSizes extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          for (final size in DievasLoaderSize.values)
-            ComponentBoundary(child: DievasLoader(size: size)),
-        ],
+        children: [for (final size in DievasLoaderSize.values) ComponentBoundary(child: DievasLoader(size: size))],
       ),
     ),
   );

@@ -48,18 +48,16 @@ class _SpacingScale extends StatelessWidget {
                     width: 80, // label column — gallery-only fixed width
                     child: Text(
                       name,
-                      style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                        fontFamily: 'monospace',
-                        color: colors.text.textTertiary,
-                      ),
+                      style: DievasTheme.typographyOf(
+                        context,
+                      ).labelXs.copyWith(fontFamily: 'monospace', color: colors.text.textTertiary),
                     ),
                   ),
                   Text(
                     '${value.toStringAsFixed(0)}dp',
-                    style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                      color: colors.text.textSecondary,
-                      fontFamily: 'monospace',
-                    ),
+                    style: DievasTheme.typographyOf(
+                      context,
+                    ).labelXs.copyWith(color: colors.text.textSecondary, fontFamily: 'monospace'),
                   ),
                   SizedBox(width: context.spacing.md),
                   Container(
@@ -120,10 +118,9 @@ class _BorderRadii extends StatelessWidget {
                 SizedBox(height: context.spacing.sm),
                 Text(
                   name,
-                  style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                    fontFamily: 'monospace',
-                    color: colors.text.textTertiary,
-                  ),
+                  style: DievasTheme.typographyOf(
+                    context,
+                  ).labelXs.copyWith(fontFamily: 'monospace', color: colors.text.textTertiary),
                 ),
               ],
             ),

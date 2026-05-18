@@ -56,12 +56,7 @@ class _WithHandle extends StatelessWidget {
     child: ComponentBoundary(
       child: DievasBottomSheet(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
-            context.spacing.lg,
-            context.spacing.md,
-            context.spacing.lg,
-            context.spacing.xl,
-          ),
+          padding: EdgeInsets.fromLTRB(context.spacing.lg, context.spacing.md, context.spacing.lg, context.spacing.xl),
           child: Text('Content with drag handle', style: DievasTheme.typographyOf(context).bodyMd),
         ),
       ),

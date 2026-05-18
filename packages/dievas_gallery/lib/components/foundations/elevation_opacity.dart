@@ -28,10 +28,7 @@ class _ElevationLevels extends StatelessWidget {
     ];
 
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.spacing.lg,
-        vertical: context.spacing.xlPlus,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: context.spacing.lg, vertical: context.spacing.xlPlus),
       child: Wrap(
         spacing: context.spacing.xl,
         runSpacing: context.spacing.xlPlus,
@@ -52,10 +49,9 @@ class _ElevationLevels extends StatelessWidget {
                 SizedBox(height: context.spacing.smPlus),
                 Text(
                   name,
-                  style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                    fontFamily: 'monospace',
-                    color: colors.text.textTertiary,
-                  ),
+                  style: DievasTheme.typographyOf(
+                    context,
+                  ).labelXs.copyWith(fontFamily: 'monospace', color: colors.text.textTertiary),
                 ),
               ],
             ),
@@ -96,18 +92,16 @@ class _OpacityTokens extends StatelessWidget {
                     width: 80, // label column — gallery-only fixed width
                     child: Text(
                       name,
-                      style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                        fontFamily: 'monospace',
-                        color: colors.text.textTertiary,
-                      ),
+                      style: DievasTheme.typographyOf(
+                        context,
+                      ).labelXs.copyWith(fontFamily: 'monospace', color: colors.text.textTertiary),
                     ),
                   ),
                   Text(
                     '${(value * 100).round()}%',
-                    style: DievasTheme.typographyOf(context).labelXs.copyWith(
-                      color: colors.text.textSecondary,
-                      fontFamily: 'monospace',
-                    ),
+                    style: DievasTheme.typographyOf(
+                      context,
+                    ).labelXs.copyWith(color: colors.text.textSecondary, fontFamily: 'monospace'),
                   ),
                   SizedBox(width: context.spacing.lg),
                   Opacity(

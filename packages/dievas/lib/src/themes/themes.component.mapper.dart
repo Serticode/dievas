@@ -37,12 +37,12 @@ DievasComponentThemeData _deriveDievasComponentThemeData(
 // Component-level constants — values with no general-purpose token family.
 // Stroke widths, thumb padding, and scrim colour are component-specific;
 // layout extents (minWidth/maxWidth) are overlay-sizing constraints.
-const double _kStrokeThin = 1.0;          // input/alert border default
-const double _kStrokeFocused = 1.5;       // input border focused
-const double _kStrokeControl = 2.0;       // checkbox / radio ring
-const double _kStrokeProgress = 2.5;      // circular progress arc
-const double _kStrokeLoader = 3.0;        // loader spinner
-const double _kSwitchThumbPadding = 3.0;  // inset between thumb and track edge
+const double _kStrokeThin = 1.0; // input/alert border default
+const double _kStrokeFocused = 1.5; // input border focused
+const double _kStrokeControl = 2.0; // checkbox / radio ring
+const double _kStrokeProgress = 2.5; // circular progress arc
+const double _kStrokeLoader = 3.0; // loader spinner
+const double _kSwitchThumbPadding = 3.0; // inset between thumb and track edge
 const double _kSnackbarMinWidth = 280.0;
 const double _kSnackbarMaxWidth = 480.0;
 const double _kModalMinWidth = 320.0;
@@ -193,11 +193,7 @@ DievasTextButtonGroupThemeData _createTextButtonGroup(
 
   DievasTextButtonThemeData make(DievasTextButtonThemeStateStyle style) => DievasTextButtonThemeData(
     textStyle: (sm: typography.labelSm, md: typography.labelMd, lg: typography.labelLg),
-    iconSize: (
-      sm: DievasSizingPrimitives.s14,
-      md: DievasSizingPrimitives.s16,
-      lg: DievasSizingPrimitives.s18,
-    ),
+    iconSize: (sm: DievasSizingPrimitives.s14, md: DievasSizingPrimitives.s16, lg: DievasSizingPrimitives.s18),
     iconSpacing: (sm: DievasSpacingPrimitives.s1, md: DievasSpacingPrimitives.s1, lg: 6.0),
     disabledOpacity: DievasOpacitySemantic.disabled,
     style: style,

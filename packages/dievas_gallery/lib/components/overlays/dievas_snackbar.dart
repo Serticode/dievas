@@ -56,9 +56,7 @@ class _MessageOnly extends StatelessWidget {
   Widget build(BuildContext context) => Center(
     child: Padding(
       padding: EdgeInsets.all(context.spacing.lg),
-      child: ComponentBoundary(
-        child: DievasSnackbar(message: 'Your profile has been updated.'),
-      ),
+      child: ComponentBoundary(child: DievasSnackbar(message: 'Your profile has been updated.')),
     ),
   );
 }

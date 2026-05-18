@@ -46,12 +46,12 @@ class ComponentsSection extends StatelessComponent {
                 classes:
                     'text-[clamp(36px,5vw,60px)] font-black tracking-[-0.025em] '
                     'leading-[1.05] mb-5 text-text-hi',
-                [Component.text('See it in action.')],
+                [Component.text('The gallery is the proof.')],
               ),
               p(classes: 'font-body text-sm text-text-mid mb-10', [
-                Component.text('Interact with every component, toggle themes,'),
+                Component.text('Every component. Every state. Toggle themes,'),
                 br(),
-                Component.text('test viewports — in the live gallery.'),
+                Component.text('test viewports — directly in the gallery.'),
               ]),
               a(
                 href: DievasUrls.gallery,

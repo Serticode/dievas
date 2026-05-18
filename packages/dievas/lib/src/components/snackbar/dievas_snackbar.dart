@@ -1,6 +1,6 @@
+import 'package:dievas/src/extensions/dievas_theme_context_extension.dart';
+import 'package:dievas/src/theme/dievas_theme.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../theme/dievas_theme.dart';
 
 /// A brief, non-blocking message shown at the bottom of the viewport.
 ///
@@ -18,13 +18,7 @@ import '../../theme/dievas_theme.dart';
 ///
 /// Moon reference: Toast
 class DievasSnackbar extends StatelessWidget {
-  const DievasSnackbar({
-    super.key,
-    required this.message,
-    this.leadingIcon,
-    this.action,
-    this.backgroundColor,
-  });
+  const DievasSnackbar({super.key, required this.message, this.leadingIcon, this.action, this.backgroundColor});
 
   /// The message to display.
   final String message;
@@ -45,35 +39,30 @@ class DievasSnackbar extends StatelessWidget {
 
     final bg = backgroundColor ?? colors.background.bgElevated;
     final fgColor = colors.text.textPrimary;
+    final spacing = context.spacing;
 
     return Padding(
-      padding: EdgeInsets.only(bottom: theme.bottomInset, left: 16, right: 16),
+      padding: .only(bottom: theme.bottomInset, left: spacing.md, right: spacing.md),
       child: ConstrainedBox(
         constraints: BoxConstraints(minWidth: theme.minWidth, maxWidth: theme.maxWidth),
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: bg,
             borderRadius: theme.borderRadius,
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x1A000000),
-                blurRadius: 12,
-                offset: const Offset(0, 4),
-              ),
-            ],
+            boxShadow: [BoxShadow(color: const Color(0x1A000000), blurRadius: 12, offset: const Offset(0, 4))],
           ),
           child: Padding(
             padding: theme.padding,
             child: Row(
               mainAxisSize: .min,
               children: [
-                if (leadingIcon != null) ...[
+                if (leadingIcon case final icon?) ...[
                   SizedBox.square(
                     dimension: theme.iconSize,
                     child: Center(
                       child: IconTheme(
                         data: IconThemeData(color: fgColor, size: theme.iconSize),
-                        child: leadingIcon!,
+                        child: icon,
                       ),
                     ),
                   ),
@@ -87,16 +76,11 @@ class DievasSnackbar extends StatelessWidget {
                     overflow: .ellipsis,
                   ),
                 ),
-                if (action != null) ...[
-                  const SizedBox(width: 16),
+                if (action case final action?) ...[
+                  SizedBox(width: spacing.md),
                   GestureDetector(
-                    onTap: action!.onPressed,
-                    child: Text(
-                      action!.label,
-                      style: theme.actionStyle.copyWith(
-                        color: colors.action.actionPrimary,
-                      ),
-                    ),
+                    onTap: action.onPressed,
+                    child: Text(action.label, style: theme.actionStyle.copyWith(color: colors.action.actionPrimary)),
                   ),
                 ],
               ],

@@ -56,11 +56,7 @@ class _WithActions extends StatelessWidget {
           body: 'This will permanently delete the item. This action cannot be undone.',
           actions: [
             DievasTextButton(label: 'Cancel', onPressed: () {}),
-            DievasFilledButton(
-              label: 'Delete',
-              style: .destructive,
-              onPressed: () {},
-            ),
+            DievasFilledButton(label: 'Delete', style: .destructive, onPressed: () {}),
           ],
         ),
       ),

@@ -34,7 +34,7 @@ class FooterComponent extends StatelessComponent {
               [Component.text('Gallery')],
             ),
             span(classes: 'font-mono text-sm text-slate-400', [
-              Component.text('Inspired by '),
+              Component.text('Component catalogue: '),
               a(
                 href: DievasUrls.moonDs,
                 attributes: const {'target': '_blank', 'rel': 'noopener'},

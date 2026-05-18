@@ -39,10 +39,7 @@ class _OnIconButton extends StatelessWidget {
     child: ComponentBoundary(
       child: DievasTooltip(
         message: 'Delete item',
-        child: DievasIconButton(
-          icon: const _TrashIcon(),
-          onPressed: () {},
-        ),
+        child: DievasIconButton(icon: const _TrashIcon(), onPressed: () {}),
       ),
     ),
   );

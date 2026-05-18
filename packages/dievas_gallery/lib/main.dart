@@ -14,12 +14,7 @@ class DievasGallery extends StatelessWidget {
     directories: [
       WidgetbookCategory(
         name: 'Foundations',
-        children: [
-          colorTokensComponent,
-          typographyScaleComponent,
-          spacingTokensComponent,
-          elevationOpacityComponent,
-        ],
+        children: [colorTokensComponent, typographyScaleComponent, spacingTokensComponent, elevationOpacityComponent],
       ),
       WidgetbookCategory(
         name: 'Components',
@@ -44,18 +39,9 @@ class DievasGallery extends StatelessWidget {
             name: 'Form',
             children: [checkboxComponent, radioComponent, switchComponent, textInputComponent, textAreaComponent],
           ),
-          WidgetbookFolder(
-            name: 'Feedback',
-            children: [alertComponent, bannerComponent, snackbarComponent],
-          ),
-          WidgetbookFolder(
-            name: 'Overlays',
-            children: [bottomSheetComponent, modalComponent, tooltipComponent],
-          ),
-          WidgetbookFolder(
-            name: 'Utility',
-            children: [loaderComponent, emptyStateComponent],
-          ),
+          WidgetbookFolder(name: 'Feedback', children: [alertComponent, bannerComponent, snackbarComponent]),
+          WidgetbookFolder(name: 'Overlays', children: [bottomSheetComponent, modalComponent, tooltipComponent]),
+          WidgetbookFolder(name: 'Utility', children: [loaderComponent, emptyStateComponent]),
         ],
       ),
     ],

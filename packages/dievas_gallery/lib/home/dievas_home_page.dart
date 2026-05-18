@@ -20,10 +20,7 @@ class DievasHomePage extends StatelessWidget {
   Widget _build(BuildContext context) => Scaffold(
     backgroundColor: context.colors.background.bgBase,
     body: SingleChildScrollView(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.spacing.x2l,
-        vertical: context.spacing.x3l,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: context.spacing.x2l, vertical: context.spacing.x3l),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
@@ -86,10 +83,7 @@ class _Eyebrow extends StatelessWidget {
       SizedBox(width: context.spacing.sm),
       Text(
         'FLUTTER DESIGN SYSTEM',
-        style: context.typography.codeSm.copyWith(
-          letterSpacing: 2.5,
-          color: context.colors.core.brand,
-        ),
+        style: context.typography.codeSm.copyWith(letterSpacing: 2.5, color: context.colors.core.brand),
       ),
     ],
   );
@@ -99,11 +93,7 @@ class _Headline extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     'Dievas',
-    style: context.typography.displayLg.copyWith(
-      fontWeight: FontWeight.w900,
-      height: 0.92,
-      letterSpacing: -3,
-    ),
+    style: context.typography.displayLg.copyWith(fontWeight: FontWeight.w900, height: 0.92, letterSpacing: -3),
   );
 }
 
@@ -112,10 +102,7 @@ class _Subtitle extends StatelessWidget {
   Widget build(BuildContext context) => Text(
     "Ports Moon Design System's component catalogue.\n"
     'Token-driven. InheritedModel-first. Multi-brand.',
-    style: context.typography.bodyMd.copyWith(
-      height: 1.75,
-      color: context.colors.text.textSecondary,
-    ),
+    style: context.typography.bodyMd.copyWith(height: 1.75, color: context.colors.text.textSecondary),
   );
 }
 
@@ -147,20 +134,11 @@ class _StatCell extends StatelessWidget {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          value,
-          style: context.typography.headingXl.copyWith(
-            height: 1,
-            letterSpacing: -1,
-          ),
-        ),
+        Text(value, style: context.typography.headingXl.copyWith(height: 1, letterSpacing: -1)),
         SizedBox(height: context.spacing.sm),
         Text(
           label.toUpperCase(),
-          style: context.typography.codeSm.copyWith(
-            letterSpacing: 1.8,
-            color: context.colors.text.textTertiary,
-          ),
+          style: context.typography.codeSm.copyWith(letterSpacing: 1.8, color: context.colors.text.textTertiary),
         ),
       ],
     ),
@@ -184,10 +162,7 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text.toUpperCase(),
-    style: context.typography.codeSm.copyWith(
-      letterSpacing: 2,
-      color: context.colors.text.textTertiary,
-    ),
+    style: context.typography.codeSm.copyWith(letterSpacing: 2, color: context.colors.text.textTertiary),
   );
 }
 
@@ -205,10 +180,7 @@ class _ComponentCategory extends StatelessWidget {
       border: Border.all(color: context.colors.border.borderDefault),
       borderRadius: context.border.lg,
     ),
-    padding: EdgeInsets.symmetric(
-      horizontal: context.spacing.mdPlus,
-      vertical: context.spacing.md,
-    ),
+    padding: EdgeInsets.symmetric(horizontal: context.spacing.mdPlus, vertical: context.spacing.md),
     child: Row(
       children: [
         Container(
@@ -219,10 +191,7 @@ class _ComponentCategory extends StatelessWidget {
         SizedBox(width: context.spacing.smPlus),
         SizedBox(
           width: 80, // label column — gallery-only fixed width
-          child: Text(
-            name,
-            style: context.typography.codeSm.copyWith(color: context.colors.text.textPrimary),
-          ),
+          child: Text(name, style: context.typography.codeSm.copyWith(color: context.colors.text.textPrimary)),
         ),
         Expanded(
           child: Wrap(
@@ -231,28 +200,19 @@ class _ComponentCategory extends StatelessWidget {
             children: [
               for (final c in components)
                 Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: context.spacing.sm,
-                    vertical: context.spacing.xs,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: context.spacing.sm, vertical: context.spacing.xs),
                   decoration: BoxDecoration(
                     color: context.colors.background.bgElevated,
                     borderRadius: context.border.sm,
                     border: Border.all(color: context.colors.border.borderDefault.withAlpha(100)),
                   ),
-                  child: Text(
-                    c,
-                    style: context.typography.codeSm.copyWith(color: context.colors.text.textSecondary),
-                  ),
+                  child: Text(c, style: context.typography.codeSm.copyWith(color: context.colors.text.textSecondary)),
                 ),
             ],
           ),
         ),
         SizedBox(width: context.spacing.md),
-        Text(
-          '$count',
-          style: context.typography.codeSm.copyWith(color: context.colors.text.textTertiary),
-        ),
+        Text('$count', style: context.typography.codeSm.copyWith(color: context.colors.text.textTertiary)),
       ],
     ),
   );
@@ -261,10 +221,7 @@ class _ComponentCategory extends StatelessWidget {
 class _HintBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
-    padding: EdgeInsets.symmetric(
-      horizontal: context.spacing.md,
-      vertical: context.spacing.smPlus,
-    ),
+    padding: EdgeInsets.symmetric(horizontal: context.spacing.md, vertical: context.spacing.smPlus),
     decoration: BoxDecoration(
       color: context.colors.background.bgSubtle,
       border: Border.all(color: context.colors.core.brand.withAlpha(80)),

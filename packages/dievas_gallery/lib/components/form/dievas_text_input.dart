@@ -97,20 +97,12 @@ class _AllStates extends StatelessWidget {
           SizedBox(height: context.spacing.mdPlus),
           _StateBlock(
             'With Label + Helper',
-            child: DievasTextInput(
-              label: 'Full name',
-              hint: 'John Appleseed',
-              helperText: 'As it appears on your ID.',
-            ),
+            child: DievasTextInput(label: 'Full name', hint: 'John Appleseed', helperText: 'As it appears on your ID.'),
           ),
           SizedBox(height: context.spacing.mdPlus),
           _StateBlock(
             'Error',
-            child: DievasTextInput(
-              label: 'Email',
-              hint: 'you@example.com',
-              errorText: 'This email is already in use.',
-            ),
+            child: DievasTextInput(label: 'Email', hint: 'you@example.com', errorText: 'This email is already in use.'),
           ),
           SizedBox(height: context.spacing.mdPlus),
           _StateBlock(

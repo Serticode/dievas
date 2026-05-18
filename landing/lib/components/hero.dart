@@ -86,14 +86,14 @@ class Hero extends StatelessComponent {
                 'tracking-[-0.025em] mb-8 '
                 'opacity-0 animate-[fade-up_0.7s_ease_0.2s_forwards]',
             [
-              span(classes: 'text-text-lo', [Component.text('Build')]),
+              span(classes: 'text-text-lo', [Component.text('Every')]),
               br(),
-              Component.text('Once'),
+              Component.text('token'),
               span(classes: 'text-brand', [Component.text('.')]),
               br(),
-              span(classes: 'text-text-lo', [Component.text('Ship')]),
+              span(classes: 'text-text-lo', [Component.text('Every')]),
               br(),
-              Component.text('Anywhere'),
+              Component.text('brand'),
               span(classes: 'text-brand', [Component.text('.')]),
             ],
           ),
@@ -106,8 +106,8 @@ class Hero extends StatelessComponent {
                 'opacity-0 animate-[fade-up_0.7s_ease_0.35s_forwards]',
             [
               Component.text(
-                "Dievas ports Moon Design System's component catalogue. "
-                'Token-driven. InheritedModel-first. Multi-brand.',
+                'Production-grade Flutter components built from the token layer up. '
+                'Your apps own the brand. The system stays out of the way.',
               ),
             ],
           ),
@@ -149,17 +149,20 @@ class Hero extends StatelessComponent {
             ],
           ),
 
-          // Stats
+          // System manifest strip
           div(
             classes:
-                'flex gap-10 flex-wrap '
+                'flex items-center flex-wrap '
                 'mt-16 pt-10 border-t border-border '
                 'opacity-0 animate-[fade-up_0.7s_ease_0.62s_forwards]',
             [
-              _stat('3', 'packages'),
-              _stat('2', 'default themes'),
-              _stat('16', 'components'),
-              _stat('∞', 'brand configs'),
+              _manifestItem('3', 'packages'),
+              _manifestSep(),
+              _manifestItem('16', 'components'),
+              _manifestSep(),
+              _manifestItem('9', 'theme aspects'),
+              _manifestSep(),
+              _manifestItem('∞', 'brands'),
             ],
           ),
 
@@ -200,7 +203,7 @@ class Hero extends StatelessComponent {
                 },
                 [],
               ),
-              div(classes: 'absolute inset-0 p-3', [_staticMobilePreview()]),
+              div(classes: 'absolute inset-0 p-3', [_animatedMobilePreview()]),
               div(
                 classes: 'pointer-events-none absolute bottom-0 left-0 right-0',
                 attributes: const {
@@ -352,31 +355,44 @@ class Hero extends StatelessComponent {
     ],
   );
 
-  // ── Static mobile preview ─────────────────────────────────────────────────
+  // ── Animated mobile preview ───────────────────────────────────────────────
   //
-  // Simplified, non-interactive snapshot used exclusively in the `lg:hidden`
-  // mobile card. Shares no IDs with _appWindow(), so the radio/checkbox
-  // CSS selectors never have duplicate-ID conflicts.
+  // Auto-cycles through four content panels (Components / Tokens / Type /
+  // Status) on a 12-second CSS-only loop — 3 seconds per panel.
+  // The four dots in the title bar animate in sync with the panels via
+  // `.mp-dot-*` keyframes defined in styles.css.
+  // Shares no IDs with _appWindow(), so radio/checkbox selectors never clash.
 
-  Component _staticMobilePreview() => div(
+  Component _animatedMobilePreview() => div(
     classes:
         'w-full h-full bg-bg-subtle rounded-2xl overflow-hidden '
         'border border-border/50 '
-        'shadow-[0_32px_80px_rgba(0,0,0,0.8)]',
+        'flex flex-col',
     [
-      // Minimal browser chrome
-      div(classes: 'bg-bg-base border-b border-border/60', [
-        div(classes: 'flex items-center justify-between px-4 py-2.5 border-b border-border/30', [
-          div(classes: 'flex items-center gap-1.5', [
-            div(classes: 'w-2 h-2 rounded-full bg-[#FF5F57]', []),
-            div(classes: 'w-2 h-2 rounded-full bg-[#FEBC2E]', []),
-            div(classes: 'w-2 h-2 rounded-full bg-[#28C840]', []),
-          ]),
-          span(classes: 'font-mono text-[9px] text-text-lo tracking-wider', [
-            Component.text('dievas / gallery'),
-          ]),
-          div(classes: 'w-10', []),
-        ]),
+      // Browser chrome
+      div(classes: 'bg-bg-base border-b border-border/60 flex-shrink-0', [
+        // Title bar: traffic lights · title · cycle dots
+        div(
+          classes: 'flex items-center justify-between px-4 py-2.5 border-b border-border/30',
+          [
+            div(classes: 'flex items-center gap-1.5', [
+              div(classes: 'w-2 h-2 rounded-full bg-[#FF5F57]', []),
+              div(classes: 'w-2 h-2 rounded-full bg-[#FEBC2E]', []),
+              div(classes: 'w-2 h-2 rounded-full bg-[#28C840]', []),
+            ]),
+            span(classes: 'font-mono text-[9px] text-text-lo tracking-wider', [
+              Component.text('dievas / gallery'),
+            ]),
+            // Panel cycle indicators — colour-animate with the panels
+            div(classes: 'flex items-center gap-1', [
+              div(classes: 'mp-dot mp-dot-1 w-[5px] h-[5px]', []),
+              div(classes: 'mp-dot mp-dot-2 w-[5px] h-[5px]', []),
+              div(classes: 'mp-dot mp-dot-3 w-[5px] h-[5px]', []),
+              div(classes: 'mp-dot mp-dot-4 w-[5px] h-[5px]', []),
+            ]),
+          ],
+        ),
+        // URL bar
         div(classes: 'flex items-center justify-center px-4 py-2', [
           div(
             classes:
@@ -391,46 +407,160 @@ class Hero extends StatelessComponent {
           ),
         ]),
       ]),
-      // Static content snapshot — buttons only
-      div(classes: 'p-4 flex flex-col gap-3', [
-        p(classes: 'font-mono text-[8px] tracking-[0.14em] uppercase text-text-lo', [Component.text('Buttons')]),
-        div(classes: 'flex items-center gap-2 flex-wrap', [
-          div(
-            classes:
-                'inline-flex items-center gap-1 px-3 py-1.5 rounded-md '
-                'bg-action text-on-brand font-mono text-[10px] font-medium',
-            [div(classes: 'w-2 h-2 rounded-sm bg-white/30', []), Component.text('Filled')],
-          ),
-          div(
-            classes:
-                'inline-flex items-center px-3 py-1.5 rounded-md '
-                'border border-border-brand text-brand font-mono text-[10px]',
-            [Component.text('Outlined')],
-          ),
-          div(classes: 'inline-flex items-center px-3 py-1.5 rounded-md text-text-mid font-mono text-[10px]', [
-            Component.text('Ghost'),
+
+      // Panels container — fills remaining height; panels are absolute children
+      div(classes: 'relative flex-1 overflow-hidden', [
+        // Ambient top glow inside the panel area
+        div(
+          classes: 'pointer-events-none absolute top-0 left-0 right-0',
+          attributes: const {
+            'style':
+                'height: 60px; '
+                'background: radial-gradient(ellipse 70% 50% at 55% 0%, rgba(129,140,248,0.10) 0%, transparent 75%);',
+          },
+          [],
+        ),
+
+        // Panel 1 — Components
+        div(classes: 'mp-panel mp-panel-1', [
+          _blockLabel('Components'),
+          div(classes: 'flex items-center gap-2 flex-wrap', [
+            div(
+              classes:
+                  'inline-flex items-center gap-1 px-3 py-1.5 rounded-md '
+                  'bg-action text-on-brand font-mono text-[10px] font-medium',
+              [Component.text('Filled')],
+            ),
+            div(
+              classes:
+                  'inline-flex items-center px-3 py-1.5 rounded-md '
+                  'border border-border-brand text-brand font-mono text-[10px]',
+              [Component.text('Outlined')],
+            ),
+            div(
+              classes:
+                  'inline-flex items-center px-3 py-1.5 rounded-md '
+                  'text-text-mid font-mono text-[10px]',
+              [Component.text('Ghost')],
+            ),
+          ]),
+          div(classes: 'border-t border-border/30', []),
+          div(classes: 'flex items-center gap-2', [
+            div(
+              classes:
+                  'w-7 h-7 rounded-full border border-border/60 bg-bg-elevated '
+                  'flex items-center justify-center flex-shrink-0',
+              [span(classes: 'font-mono text-[8px] text-text-lo', [Component.text('AB')])],
+            ),
+            div(
+              classes:
+                  'px-2 py-0.5 bg-brand/10 border border-brand/30 '
+                  'rounded-full font-mono text-[9px] text-brand',
+              [Component.text('active')],
+            ),
+            div(
+              classes:
+                  'px-2 py-0.5 border border-border/40 '
+                  'rounded-full font-mono text-[9px] text-text-off',
+              [Component.text('disabled')],
+            ),
           ]),
         ]),
-        div(classes: 'border-t border-border/40', []),
-        p(classes: 'font-mono text-[8px] tracking-[0.14em] uppercase text-text-lo', [
-          Component.text('Colour Tokens'),
+
+        // Panel 2 — Colour Tokens
+        div(classes: 'mp-panel mp-panel-2', [
+          _blockLabel('Colour Tokens'),
+          div(classes: 'flex items-center gap-2 flex-wrap', [
+            for (final item in const [
+              ('#6366F1', 'action'),
+              ('#818CF8', 'brand'),
+              ('#F8FAFC', 'text-hi'),
+              ('#0F172A', 'bg-base'),
+              ('#4ADE80', 'success'),
+              ('#EF4444', 'error'),
+            ])
+              div(classes: 'flex flex-col items-center gap-0.5', [
+                div(
+                  classes: 'w-7 h-7 rounded-md border border-border/30',
+                  attributes: {'style': 'background-color: ${item.$1}'},
+                  [],
+                ),
+                span(classes: 'font-mono text-[7px] text-text-lo', [Component.text(item.$2)]),
+              ]),
+          ]),
         ]),
-        div(classes: 'flex items-center gap-1.5 flex-wrap', [
-          for (final item in const [
-            ('#6366F1', 'action'),
-            ('#818CF8', 'brand'),
-            ('#4ADE80', 'success'),
-            ('#EF4444', 'error'),
-          ])
-            div(classes: 'flex flex-col items-center gap-0.5', [
-              div(
-                classes: 'w-7 h-7 rounded-md border border-border/30',
-                attributes: {'style': 'background-color: ${item.$1}'},
-                [],
+
+        // Panel 3 — Type Scale
+        div(classes: 'mp-panel mp-panel-3', [
+          _blockLabel('Type Scale'),
+          div(classes: 'flex flex-col gap-2', [
+            div(classes: 'flex items-baseline justify-between', [
+              span(
+                classes: 'font-display text-2xl font-black text-text-hi leading-none',
+                [Component.text('Aa')],
               ),
-              span(classes: 'font-mono text-[7px] text-text-lo', [Component.text(item.$2)]),
+              span(classes: 'font-mono text-[8px] text-text-lo', [Component.text('displayLg · Extended')]),
             ]),
+            div(classes: 'border-t border-border/30', []),
+            div(classes: 'flex items-baseline justify-between', [
+              span(
+                classes: 'font-body text-lg font-bold text-text-mid leading-none',
+                [Component.text('Aa')],
+              ),
+              span(classes: 'font-mono text-[8px] text-text-lo', [Component.text('headingMd · Maison 500')]),
+            ]),
+            div(classes: 'border-t border-border/30', []),
+            div(classes: 'flex items-baseline justify-between', [
+              span(classes: 'font-mono text-sm text-text-lo leading-none', [Component.text('Aa')]),
+              span(classes: 'font-mono text-[8px] text-text-lo', [Component.text('codeMd · Mono 400')]),
+            ]),
+          ]),
         ]),
+
+        // Panel 4 — Component Status
+        div(classes: 'mp-panel mp-panel-4', [
+          _blockLabel('Component Status'),
+          div(classes: 'flex flex-wrap gap-1.5', [
+            for (final c in const [
+              'FilledButton', 'OutlinedButton', 'Avatar',
+              'Badge', 'Checkbox', 'Switch', 'TextField',
+            ])
+              div(
+                classes:
+                    'inline-flex items-center gap-1 '
+                    'px-2.5 py-1 '
+                    'border border-border/50 rounded-full '
+                    'font-mono text-[8px] text-text-lo',
+                [
+                  div(classes: 'w-1 h-1 rounded-full bg-brand flex-shrink-0', []),
+                  Component.text(c),
+                ],
+              ),
+            for (final c in const ['BottomSheet', 'Toast'])
+              div(
+                classes:
+                    'inline-flex items-center gap-1 '
+                    'px-2.5 py-1 '
+                    'border border-border/30 rounded-full '
+                    'font-mono text-[8px] text-text-off',
+                [
+                  div(classes: 'w-1 h-1 rounded-full bg-border flex-shrink-0', []),
+                  Component.text(c),
+                ],
+              ),
+          ]),
+        ]),
+
+        // Bottom vignette
+        div(
+          classes: 'pointer-events-none absolute bottom-0 left-0 right-0',
+          attributes: const {
+            'style':
+                'height: 40px; '
+                'background: linear-gradient(to bottom, transparent, rgba(15,23,42,0.97));',
+          },
+          [],
+        ),
       ]),
     ],
   );
@@ -776,10 +906,18 @@ class Hero extends StatelessComponent {
     );
   }
 
-  Component _stat(String value, String label) => div(classes: 'flex flex-col gap-1', [
-    span(classes: 'font-display text-3xl font-black text-text-hi leading-none', [Component.text(value)]),
-    span(classes: 'font-body text-[11px] tracking-[0.12em] uppercase text-text-lo', [Component.text(label)]),
-  ]);
+  Component _manifestItem(String value, String label) => span(
+    classes: 'font-mono text-xs text-text-lo',
+    [
+      span(classes: 'text-text-mid', [Component.text(value)]),
+      Component.text(' $label'),
+    ],
+  );
+
+  Component _manifestSep() => span(
+    classes: 'font-mono text-xs text-text-off mx-3 select-none',
+    [Component.text('·')],
+  );
 
   static const _shipped = [
     'FilledButton',
