@@ -1,3 +1,4 @@
+import 'package:dievas/src/extensions/dievas_theme_context_extension.dart';
 import 'package:flutter/material.dart' show Material, showDialog;
 import 'package:flutter/widgets.dart';
 import 'package:dievas/l10n/dievas_localizations.dart';
@@ -70,9 +71,8 @@ class DievasModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = DievasTheme.colorsOf(context);
     final theme = DievasTheme.componentsOf(context).modal;
-    final l10n = DievasLocalizations.of(context);
+    final spacing = context.spacing;
 
     return Center(
       child: ConstrainedBox(
@@ -93,14 +93,17 @@ class DievasModal extends StatelessWidget {
                     Expanded(child: Text(title, style: theme.titleStyle)),
                     if (showCloseButton)
                       Semantics(
-                        label: l10n.modalCloseLabel,
+                        label: DievasLocalizations.of(context).modalCloseLabel,
                         button: true,
                         child: GestureDetector(
                           onTap: onClose ?? () => Navigator.of(context).pop(),
                           child: SizedBox.square(
                             dimension: theme.closeIconSize,
                             child: IconTheme(
-                              data: IconThemeData(color: colors.icon.iconSecondary, size: theme.closeIconSize),
+                              data: IconThemeData(
+                                color: DievasTheme.colorsOf(context).icon.iconSecondary,
+                                size: theme.closeIconSize,
+                              ),
                               child: const _CloseIcon(),
                             ),
                           ),
@@ -110,21 +113,21 @@ class DievasModal extends StatelessWidget {
                 ),
 
                 // Body
-                if (content != null) ...[
-                  const SizedBox(height: 12),
-                  content!,
-                ] else if (body != null) ...[
-                  const SizedBox(height: 12),
-                  Text(body!, style: theme.bodyStyle),
+                if (content case final content?) ...[
+                  SizedBox(height: spacing.smPlus),
+                  content,
+                ] else if (body case final body?) ...[
+                  SizedBox(height: spacing.smPlus),
+                  Text(body, style: theme.bodyStyle),
                 ],
 
                 // Actions
                 if (actions.isNotEmpty) ...[
-                  const SizedBox(height: 24),
+                  SizedBox(height: spacing.lg),
                   Row(
                     mainAxisAlignment: .end,
                     children: [
-                      for (int i = 0; i < actions.length; i++) ...[if (i > 0) const SizedBox(width: 8), actions[i]],
+                      for (int i = 0; i < actions.length; i++) ...[if (i > 0) SizedBox(width: spacing.sm), actions[i]],
                     ],
                   ),
                 ],
@@ -142,10 +145,10 @@ class _CloseIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = IconTheme.of(context);
+    final iconTheme = IconTheme.of(context);
     return Text(
-      String.fromCharCode(0xe5cd),
-      style: TextStyle(fontFamily: 'MaterialIcons', fontSize: t.size, color: t.color),
+      .fromCharCode(0xe5cd),
+      style: TextStyle(fontFamily: 'MaterialIcons', fontSize: iconTheme.size, color: iconTheme.color),
     );
   }
 }

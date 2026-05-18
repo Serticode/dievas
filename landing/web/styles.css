@@ -132,3 +132,69 @@
   .max-w-lg  { max-width: 32rem; }
   .max-w-sm  { max-width: 24rem; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+ * Hero — App window interactivity
+ * All CSS-only. No hydration required.
+ * ───────────────────────────────────────────────────────────── */
+
+/* Tab switcher — hide all panels by default */
+.app-panel { display: none; }
+
+/* Show the active panel when its radio is checked */
+#app-tab-buttons:checked ~ .app-inner .panel-buttons,
+#app-tab-tokens:checked  ~ .app-inner .panel-tokens,
+#app-tab-type:checked    ~ .app-inner .panel-type,
+#app-tab-status:checked  ~ .app-inner .panel-status {
+  display: flex;
+}
+
+/* Active tab label — brand colour + bottom border indicator */
+.tab-lbl {
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+#app-tab-buttons:checked ~ .app-inner .tab-lbl-buttons,
+#app-tab-tokens:checked  ~ .app-inner .tab-lbl-tokens,
+#app-tab-type:checked    ~ .app-inner .tab-lbl-type,
+#app-tab-status:checked  ~ .app-inner .tab-lbl-status {
+  color: var(--color-brand);
+  border-bottom-color: var(--color-brand);
+}
+
+/* Theme toggle — icon/label swap */
+.theme-icon-light,
+.theme-label-light { display: none; }
+
+#app-theme:checked ~ .app-inner .theme-icon-dark,
+#app-theme:checked ~ .app-inner .theme-label-dark  { display: none; }
+
+#app-theme:checked ~ .app-inner .theme-icon-light,
+#app-theme:checked ~ .app-inner .theme-label-light { display: inline; }
+
+/* Theme toggle — light mode CSS token overrides, cascades into all .app-inner children */
+#app-theme:checked ~ .app-inner {
+  --color-bg-base:      rgba(248, 250, 252, 1);
+  --color-bg-subtle:    rgba(241, 245, 249, 1);
+  --color-bg-elevated:  rgba(226, 232, 240, 1);
+  --color-text-hi:      rgba(2,   6,  23,  1);
+  --color-text-mid:     rgba(71,  85, 105, 1);
+  --color-text-lo:      rgba(148, 163, 184, 1);
+  --color-text-off:     rgba(203, 213, 225, 1);
+  --color-border:       rgba(203, 213, 225, 1);
+  --color-border-hi:    rgba(100, 116, 139, 1);
+  --color-border-brand: rgba(99,  102, 241, 1);
+  --color-border-focus: rgba(99,  102, 241, 1);
+  --color-brand:        rgba(79,  70,  229, 1);
+  --color-action:       rgba(99,  102, 241, 1);
+  --color-action-hover: rgba(79,  70,  229, 1);
+  --color-action-sec:   rgba(238, 242, 255, 1);
+}
+
+/* Tooltip parallax — CSS translate composes with transform (float animation) */
+.hero-tooltip {
+  --px: 0px;
+  --py: 0px;
+  translate: var(--px) var(--py);
+  transition: translate 0.15s ease-out;
+}

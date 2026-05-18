@@ -56,20 +56,16 @@ class DievasAlert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = DievasTheme.colorsOf(context);
     final theme = DievasTheme.componentsOf(context).alert;
-    final l10n = DievasLocalizations.of(context);
-
-    final p = _AlertPalette(colors.feedback);
-    final palette = _palette(tone, p);
+    final palette = _palette(tone, _AlertPalette(DievasTheme.colorsOf(context).feedback));
 
     return Semantics(
-      label: l10n.alertDismissLabel,
+      label: DievasLocalizations.of(context).alertDismissLabel,
       container: true,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: palette.background,
-          border: Border.all(color: palette.border, width: theme.borderWidth),
+          border: .all(color: palette.border, width: theme.borderWidth),
           borderRadius: theme.borderRadius,
         ),
         child: Padding(
@@ -89,9 +85,9 @@ class DievasAlert extends StatelessWidget {
                   crossAxisAlignment: .start,
                   children: [
                     Text(title, style: theme.titleStyle.copyWith(color: palette.text)),
-                    if (description != null) ...[
+                    if (description case final text?) ...[
                       const SizedBox(height: 4),
-                      Text(description!, style: theme.bodyStyle.copyWith(color: palette.text.withAlpha(200))),
+                      Text(text, style: theme.bodyStyle.copyWith(color: palette.text.withAlpha(200))),
                     ],
                   ],
                 ),
@@ -102,7 +98,7 @@ class DievasAlert extends StatelessWidget {
                 GestureDetector(
                   onTap: onDismiss,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                    padding: const .only(left: 8),
                     child: SizedBox.square(
                       dimension: theme.dismissIconSize,
                       child: IconTheme(
@@ -137,22 +133,20 @@ class _DievasAlertDefaultIcon extends StatelessWidget {
   final double size;
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox.square(
-      dimension: size,
-      child: IconTheme(
-        data: IconThemeData(color: color, size: size),
+  Widget build(BuildContext context) => SizedBox.square(
+    dimension: size,
+    child: IconTheme(
+      data: IconThemeData(color: color, size: size),
 
-        /// Simple geometric stand-ins — consumers can supply their own via leadingIcon.
-        child: switch (tone) {
-          .success => const _InlineIcon(codePoint: 0xe876), // check_circle
-          .warning => const _InlineIcon(codePoint: 0xe002), // warning
-          .error => const _InlineIcon(codePoint: 0xe000), // error
-          .info => const _InlineIcon(codePoint: 0xe88e), // info
-        },
-      ),
-    );
-  }
+      /// Simple geometric stand-ins — consumers can supply their own via leadingIcon.
+      child: switch (tone) {
+        .success => const _InlineIcon(codePoint: 0xe876), // check_circle
+        .warning => const _InlineIcon(codePoint: 0xe002), // warning
+        .error => const _InlineIcon(codePoint: 0xe000), // error
+        .info => const _InlineIcon(codePoint: 0xe88e), // info
+      },
+    ),
+  );
 }
 
 // Minimal icon that avoids a Material dependency by using IconData directly.
@@ -165,7 +159,7 @@ class _InlineIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconTheme = IconTheme.of(context);
     return Text(
-      String.fromCharCode(codePoint),
+      .fromCharCode(codePoint),
       style: TextStyle(fontFamily: 'MaterialIcons', fontSize: iconTheme.size, color: iconTheme.color),
     );
   }

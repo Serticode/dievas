@@ -64,7 +64,6 @@ class DievasBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = DievasTheme.componentsOf(context).bottomSheet;
-    final l10n = DievasLocalizations.of(context);
 
     return Column(
       mainAxisSize: .min,
@@ -72,7 +71,7 @@ class DievasBottomSheet extends StatelessWidget {
         if (showDragHandle) ...[
           SizedBox(height: theme.handleTopInset),
           Semantics(
-            label: l10n.bottomSheetDragHandleLabel,
+            label: DievasLocalizations.of(context).bottomSheetDragHandleLabel,
             child: Container(
               width: theme.handleWidth,
               height: theme.handleHeight,

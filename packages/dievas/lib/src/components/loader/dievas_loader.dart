@@ -69,7 +69,7 @@ class _DievasLoaderState extends State<DievasLoader> with SingleTickerProviderSt
           dimension: diameter,
           child: AnimatedBuilder(
             animation: _controller,
-            builder: (_, __) => CustomPaint(
+            builder: (_, _) => CustomPaint(
               painter: _SpinnerPainter(
                 progress: _controller.value,
                 color: theme.color,
@@ -79,13 +79,9 @@ class _DievasLoaderState extends State<DievasLoader> with SingleTickerProviderSt
             ),
           ),
         ),
-        if (widget.label != null) ...[
+        if (widget.label case final label?) ...[
           SizedBox(height: theme.labelSpacing),
-          Text(
-            widget.label!,
-            style: theme.labelStyle,
-            textAlign: .center,
-          ),
+          Text(label, style: theme.labelStyle, textAlign: .center),
         ],
       ],
     );
@@ -109,19 +105,20 @@ class _SpinnerPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = (size.width - strokeWidth) / 2;
-    const startAngle = -1.5707963267948966; // -π/2
+    // -π/2
+    const startAngle = -1.5707963267948966;
 
     final trackPaint = Paint()
       ..color = trackColor
       ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
+      ..style = .stroke
+      ..strokeCap = .round;
 
     final arcPaint = Paint()
       ..color = color
       ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
+      ..style = .stroke
+      ..strokeCap = .round;
 
     // Track
     canvas.drawCircle(center, radius, trackPaint);
@@ -138,8 +135,5 @@ class _SpinnerPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_SpinnerPainter old) =>
-      progress != old.progress ||
-      color != old.color ||
-      trackColor != old.trackColor ||
-      strokeWidth != old.strokeWidth;
+      progress != old.progress || color != old.color || trackColor != old.trackColor || strokeWidth != old.strokeWidth;
 }

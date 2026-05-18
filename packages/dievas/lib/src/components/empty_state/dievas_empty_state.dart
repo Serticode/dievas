@@ -45,13 +45,13 @@ class DievasEmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: .min,
         children: [
-          if (icon != null) ...[
+          if (icon case final widget?) ...[
             SizedBox.square(
               dimension: theme.iconSize,
               child: Center(
                 child: IconTheme(
                   data: IconThemeData(color: theme.iconColor, size: theme.iconSize),
-                  child: icon!,
+                  child: widget,
                 ),
               ),
             ),
@@ -68,7 +68,7 @@ class DievasEmptyState extends StatelessWidget {
             style: theme.descriptionStyle.copyWith(color: colors.text.textSecondary),
             textAlign: .center,
           ),
-          if (action != null) ...[SizedBox(height: theme.actionSpacing), action!],
+          if (action case final widget?) ...[SizedBox(height: theme.actionSpacing), widget],
         ],
       ),
     );

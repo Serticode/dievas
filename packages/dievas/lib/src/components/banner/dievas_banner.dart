@@ -1,3 +1,4 @@
+import 'package:dievas/src/extensions/dievas_theme_context_extension.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../theme/color/dievas_colour_theme_data.dart';
@@ -20,13 +21,7 @@ import '../alert/dievas_alert.dart';
 ///
 /// Moon reference: InsetBanner
 class DievasBanner extends StatelessWidget {
-  const DievasBanner({
-    super.key,
-    required this.tone,
-    required this.message,
-    this.onDismiss,
-    this.action,
-  });
+  const DievasBanner({super.key, required this.tone, required this.message, this.onDismiss, this.action});
 
   /// Semantic tone — drives colour.
   final DievasAlertTone tone;
@@ -40,23 +35,10 @@ class DievasBanner extends StatelessWidget {
   /// Optional inline action widget (e.g. a [DievasTextButton]).
   final Widget? action;
 
-  ({Color background, Color border, Color text}) _palette(
-    DievasAlertTone tone,
-    _BannerPalette p,
-  ) => switch (tone) {
-    .success => (background: p.successBg, border: p.successBorder, text: p.successText),
-    .warning => (background: p.warningBg, border: p.warningBorder, text: p.warningText),
-    .error => (background: p.errorBg, border: p.errorBorder, text: p.errorText),
-    .info => (background: p.infoBg, border: p.infoBorder, text: p.infoText),
-  };
-
   @override
   Widget build(BuildContext context) {
-    final colors = DievasTheme.colorsOf(context);
     final alertTheme = DievasTheme.componentsOf(context).alert;
-
-    final p = _BannerPalette(colors);
-    final palette = _palette(tone, p);
+    final palette = _palette(tone, _BannerPalette(DievasTheme.colorsOf(context)));
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -68,24 +50,18 @@ class DievasBanner extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: alertTheme.padding.left,
-            vertical: alertTheme.padding.top,
-          ),
+          padding: .symmetric(horizontal: alertTheme.padding.left, vertical: alertTheme.padding.top),
           child: Row(
             children: [
               Expanded(
-                child: Text(
-                  message,
-                  style: alertTheme.bodyStyle.copyWith(color: palette.text),
-                ),
+                child: Text(message, style: alertTheme.bodyStyle.copyWith(color: palette.text)),
               ),
-              if (action != null) ...[const SizedBox(width: 12), action!],
+              if (action case final widget?) ...[SizedBox(width: context.spacing.smPlus), widget],
               if (onDismiss != null)
                 GestureDetector(
                   onTap: onDismiss,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
+                    padding: .only(left: context.spacing.sm),
                     child: SizedBox.square(
                       dimension: alertTheme.dismissIconSize,
                       child: IconTheme(
@@ -101,6 +77,13 @@ class DievasBanner extends StatelessWidget {
       ),
     );
   }
+
+  _BannerAppearance _palette(DievasAlertTone tone, _BannerPalette p) => switch (tone) {
+    .success => (background: p.successBg, border: p.successBorder, text: p.successText),
+    .warning => (background: p.warningBg, border: p.warningBorder, text: p.warningText),
+    .error => (background: p.errorBg, border: p.errorBorder, text: p.errorText),
+    .info => (background: p.infoBg, border: p.infoBorder, text: p.infoText),
+  };
 }
 
 class _CloseIcon extends StatelessWidget {
@@ -110,11 +93,13 @@ class _CloseIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconTheme = IconTheme.of(context);
     return Text(
-      String.fromCharCode(0xe5cd), // MaterialIcons close
+      .fromCharCode(0xe5cd), // MaterialIcons close
       style: TextStyle(fontFamily: 'MaterialIcons', fontSize: iconTheme.size, color: iconTheme.color),
     );
   }
 }
+
+typedef _BannerAppearance = ({Color background, Color border, Color text});
 
 final class _BannerPalette {
   _BannerPalette(DievasColourThemeData colors)
