@@ -188,9 +188,7 @@ class _CodePanel extends StatelessComponent {
   @override
   Component build(BuildContext context) => div(
     classes:
-        'rounded-2xl border border - slate - 200 overflow-hidden '
-        'transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]'
-        'h-full flex flex-col',
+'rounded-2xl border border-slate-200 overflow-hidden transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] h-full flex flex-col',
     [
       div(
         classes:
