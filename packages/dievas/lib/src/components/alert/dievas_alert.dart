@@ -60,7 +60,6 @@ class DievasAlert extends StatelessWidget {
     final palette = _palette(tone, _AlertPalette(DievasTheme.colorsOf(context).feedback));
 
     return Semantics(
-      label: DievasLocalizations.of(context).alertDismissLabel,
       container: true,
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -95,10 +94,13 @@ class DievasAlert extends StatelessWidget {
 
               // Dismiss button
               if (onDismiss != null)
-                GestureDetector(
-                  onTap: onDismiss,
-                  child: Padding(
-                    padding: const .only(left: 8),
+                Semantics(
+                  label: DievasLocalizations.of(context).alertDismissLabel,
+                  button: true,
+                  child: GestureDetector(
+                    onTap: onDismiss,
+                    child: Padding(
+                      padding: const .only(left: 8),
                     child: SizedBox.square(
                       dimension: theme.dismissIconSize,
                       child: IconTheme(
@@ -108,6 +110,7 @@ class DievasAlert extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
             ],
           ),
         ),

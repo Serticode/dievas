@@ -1,3 +1,4 @@
+import 'package:dievas/l10n/dievas_localizations.dart';
 import 'package:dievas/src/extensions/dievas_theme_context_extension.dart';
 import 'package:flutter/widgets.dart';
 
@@ -58,15 +59,19 @@ class DievasBanner extends StatelessWidget {
               ),
               if (action case final widget?) ...[SizedBox(width: context.spacing.smPlus), widget],
               if (onDismiss != null)
-                GestureDetector(
-                  onTap: onDismiss,
-                  child: Padding(
-                    padding: .only(left: context.spacing.sm),
-                    child: SizedBox.square(
-                      dimension: alertTheme.dismissIconSize,
-                      child: IconTheme(
-                        data: IconThemeData(color: palette.text, size: alertTheme.dismissIconSize),
-                        child: const _CloseIcon(),
+                Semantics(
+                  label: DievasLocalizations.of(context).alertDismissLabel,
+                  button: true,
+                  child: GestureDetector(
+                    onTap: onDismiss,
+                    child: Padding(
+                      padding: .only(left: context.spacing.sm),
+                      child: SizedBox.square(
+                        dimension: alertTheme.dismissIconSize,
+                        child: IconTheme(
+                          data: IconThemeData(color: palette.text, size: alertTheme.dismissIconSize),
+                          child: const _CloseIcon(),
+                        ),
                       ),
                     ),
                   ),
