@@ -14,8 +14,12 @@
  *   footer.css       — footer
  * ───────────────────────────────────────────────────────────── */
 
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap");
+
+@import "tailwindcss";
+
 @font-face {
-  font-family: "Maison Neue Extended";
+  font-family: "MaisonNeueExtended";
   src: url("/assets/fonts/maison-neue-extended-medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
@@ -23,14 +27,12 @@
 }
 
 @font-face {
-  font-family: "Maison Neue";
+  font-family: "MaisonNeue";
   src: url("/assets/fonts/maison-neue-medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
-
-@import "tailwindcss";
 
 @source "../lib/**/*.dart";
 
@@ -73,8 +75,9 @@
   --color-static-black: rgba(0, 0, 0, 1);
 
   /* ── Typography ─────────────────────────────────────────────── */
-  --font-display: "Maison Neue Extended", system-ui, sans-serif;
-  --font-body:    "Maison Neue", system-ui, sans-serif;
+  --font-display: "MaisonNeueExtended", system-ui, sans-serif;
+  --font-body:    "MaisonNeue", system-ui, sans-serif;
+  --font-mono:    "Cascadia Code", ui-monospace, monospace;
 
   /* ── Spacing — DievasSpacingSemantic ─────────────────────── */
   --spacing-xs:   4.0px;

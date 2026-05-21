@@ -44,9 +44,18 @@ void main() {
   //    via <link> tags in app.dart — NOT via CSS @import — so the Tailwind CLI
   //    can process this file without resolving external imports.
 
+  // ── @imports FIRST (CSS spec requirement) ───────────────────────────────
+  // Cascadia Code via Google Fonts CDN.
+  buf.writeln('@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap");');
+  buf.writeln();
+
+  buf.writeln('@import "tailwindcss";');
+  buf.writeln();
+
   // ── Self-hosted fonts ────────────────────────────────────────────────────
+  // Maison Neue is not on Google Fonts — we self-host the WOFF2.
   buf.writeln('@font-face {');
-  buf.writeln('  font-family: "Maison Neue Extended";');
+  buf.writeln('  font-family: "MaisonNeueExtended";');
   buf.writeln('  src: url("/assets/fonts/maison-neue-extended-medium.woff2") format("woff2");');
   buf.writeln('  font-weight: 500;');
   buf.writeln('  font-style: normal;');
@@ -54,15 +63,12 @@ void main() {
   buf.writeln('}');
   buf.writeln();
   buf.writeln('@font-face {');
-  buf.writeln('  font-family: "Maison Neue";');
+  buf.writeln('  font-family: "MaisonNeue";');
   buf.writeln('  src: url("/assets/fonts/maison-neue-medium.woff2") format("woff2");');
   buf.writeln('  font-weight: 500;');
   buf.writeln('  font-style: normal;');
   buf.writeln('  font-display: swap;');
   buf.writeln('}');
-  buf.writeln();
-
-  buf.writeln('@import "tailwindcss";');
   buf.writeln();
   // Tell Tailwind v4 to scan Dart files for class names in addition to
   // the default sources. The path is relative to this styles.css file.
@@ -117,8 +123,9 @@ void main() {
 
   // ── Typography ─────────────────────────────────────────────────────────
   buf.writeln('  /* ── Typography ─────────────────────────────────────────────── */');
-  buf.writeln('  --font-display: "Maison Neue Extended", system-ui, sans-serif;');
-  buf.writeln('  --font-body:    "Maison Neue", system-ui, sans-serif;');
+  buf.writeln('  --font-display: "MaisonNeueExtended", system-ui, sans-serif;');
+  buf.writeln('  --font-body:    "MaisonNeue", system-ui, sans-serif;');
+  buf.writeln('  --font-mono:    "Cascadia Code", ui-monospace, monospace;');
   buf.writeln();
 
   // ── Spacing ────────────────────────────────────────────────────────────
