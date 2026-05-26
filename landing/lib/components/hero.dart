@@ -148,7 +148,10 @@ class Hero extends StatelessComponent {
                     'hover:bg-action-hover hover:-translate-y-px '
                     'hover:shadow-[0_8px_32px_rgba(129,140,248,0.35)] '
                     'cta-glow',
-                [Component.text('Gallery'), span(classes: 'text-xs arrow-slide', [Component.text('→')])],
+                [
+                  Component.text('Gallery'),
+                  span(classes: 'text-xs arrow-slide', [Component.text('→')]),
+                ],
               ),
             ],
           ),
@@ -290,9 +293,11 @@ class Hero extends StatelessComponent {
                 'shadow-[0_8px_32px_rgba(0,0,0,0.5)] '
                 'transition-all duration-200 '
                 'hover:border-brand hover:text-brand hover:-translate-y-px',
-            [div(classes: 'w-2 h-2 rounded-full bg-brand flex-shrink-0', []),
-             Component.text('Serticode Inc.'),
-             div(classes: 'badge-shine absolute inset-0 pointer-events-none rounded-xl', []),],
+            [
+              div(classes: 'w-2 h-2 rounded-full bg-brand flex-shrink-0', []),
+              Component.text('Serticode Inc.'),
+              div(classes: 'badge-shine absolute inset-0 pointer-events-none rounded-xl', []),
+            ],
           ),
           a(
             href: DievasUrls.moonDs,
@@ -306,9 +311,11 @@ class Hero extends StatelessComponent {
                 'shadow-[0_8px_32px_rgba(0,0,0,0.5)] '
                 'transition-all duration-200 '
                 'hover:border-brand/50 hover:text-brand hover:-translate-y-px',
-            [div(classes: 'w-2 h-2 rounded-full bg-brand/50 flex-shrink-0', []),
-             Component.text('Moon DS'),
-             div(classes: 'badge-shine absolute inset-0 pointer-events-none rounded-xl', []),],
+            [
+              div(classes: 'w-2 h-2 rounded-full bg-brand/50 flex-shrink-0', []),
+              Component.text('Moon DS'),
+              div(classes: 'badge-shine absolute inset-0 pointer-events-none rounded-xl', []),
+            ],
           ),
         ],
       ),

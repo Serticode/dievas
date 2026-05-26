@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-
 import 'gallery_components.dart';
 
 void main() => runApp(const DievasGallery());
@@ -45,18 +44,15 @@ class DievasGallery extends StatelessWidget {
           WidgetbookFolder(name: 'Feedback', children: [alertComponent, bannerComponent, snackbarComponent]),
           WidgetbookFolder(name: 'Overlays', children: [bottomSheetComponent, modalComponent, tooltipComponent]),
           WidgetbookFolder(name: 'Utility', children: [loaderComponent]),
+          WidgetbookFolder(name: 'Nav / Disclosure', children: [accordionComponent, drawerComponent, popoverComponent]),
         ],
       ),
     ],
     addons: [
-      DievasThemeAddon(),
       ComponentBoundaryAddon(),
-      GridAddon(10),
-      ViewportAddon([Viewports.none, ...IosViewports.all, ...AndroidViewports.all]),
-      TextScaleAddon(min: 0.75, max: 1.5, initialScale: 1),
-      // ignore: experimental_member_use
-      TimeDilationAddon(),
+      DievasThemeAddon(),
       InspectorAddon(),
+      TextScaleAddon(min: 0.75, max: 1.5, initialScale: 1),
     ],
   );
 }

@@ -69,6 +69,11 @@ export 'src/components/bottom_sheet/dievas_bottom_sheet.dart';
 export 'src/components/modal/dievas_modal.dart';
 export 'src/components/tooltip/dievas_tooltip.dart';
 
+//  Components — Navigation / Disclosure
+export 'src/components/accordion/dievas_accordion.dart';
+export 'src/components/drawer/dievas_drawer.dart';
+export 'src/components/popover/dievas_popover.dart';
+
 //  Components — Utility
 export 'src/components/loader/dievas_loader.dart';
 export 'src/components/empty_state/dievas_empty_state.dart';

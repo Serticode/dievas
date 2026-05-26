@@ -1,5 +1,9 @@
 // Gallery barrel — all Widgetbook use-case components and addons.
-//
+
+// Navigation / Disclosure
+export 'components/accordion/dievas_accordion.dart';
+export 'components/drawer/dievas_drawer.dart';
+export 'components/popover/dievas_popover.dart';
 // main.dart imports only this file; individual component files are not
 // imported directly from the entry point.
 export 'addons/component_boundary_addon.dart';

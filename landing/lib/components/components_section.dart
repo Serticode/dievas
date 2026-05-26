@@ -185,7 +185,7 @@ class ComponentsSection extends StatelessComponent {
     required String accentHex,
     required bool isFlipped,
     required int index,
-  }  ) {
+  }) {
     final rgb = _hexToRgb(accentHex);
     final content = [
       // Text side

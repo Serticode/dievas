@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import 'accordion/dievas_accordion_theme_data.dart';
 import 'alert/dievas_alert_theme_data.dart';
 import 'avatar/dievas_avatar_theme_data.dart';
 import 'badge/dievas_badge_theme_data.dart';
@@ -10,10 +11,12 @@ import 'button/dievas_outlined_button_theme_data.dart';
 import 'button/dievas_text_button_theme_data.dart';
 import 'checkbox/dievas_checkbox_theme_data.dart';
 import 'circular_progress/dievas_circular_progress_theme_data.dart';
+import 'drawer/dievas_drawer_theme_data.dart';
 import 'empty_state/dievas_empty_state_theme_data.dart';
 import 'linear_progress/dievas_linear_progress_theme_data.dart';
 import 'loader/dievas_loader_theme_data.dart';
 import 'modal/dievas_modal_theme_data.dart';
+import 'popover/dievas_popover_theme_data.dart';
 import 'radio/dievas_radio_theme_data.dart';
 import 'snackbar/dievas_snackbar_theme_data.dart';
 import 'switch/dievas_switch_theme_data.dart';
@@ -52,6 +55,9 @@ final class DievasComponentThemeData extends Equatable {
     required this.tooltip,
     required this.loader,
     required this.emptyState,
+    required this.accordion,
+    required this.drawer,
+    required this.popover,
   });
 
   /// Theme data for [DievasFilledButton] — primary, secondary, destructive variants.
@@ -116,6 +122,15 @@ final class DievasComponentThemeData extends Equatable {
   /// Theme data for [DievasEmptyState].
   final DievasEmptyStateThemeData emptyState;
 
+  /// Theme data for [DievasAccordion].
+  final DievasAccordionThemeData accordion;
+
+  /// Theme data for [DievasDrawer].
+  final DievasDrawerThemeData drawer;
+
+  /// Theme data for [DievasPopover].
+  final DievasPopoverThemeData popover;
+
   DievasComponentThemeData copyWith({
     DievasFilledButtonGroupThemeData? filledButton,
     DievasOutlinedButtonGroupThemeData? outlinedButton,
@@ -137,6 +152,9 @@ final class DievasComponentThemeData extends Equatable {
     DievasTooltipThemeData? tooltip,
     DievasLoaderThemeData? loader,
     DievasEmptyStateThemeData? emptyState,
+    DievasAccordionThemeData? accordion,
+    DievasDrawerThemeData? drawer,
+    DievasPopoverThemeData? popover,
   }) => DievasComponentThemeData(
     filledButton: filledButton ?? this.filledButton,
     outlinedButton: outlinedButton ?? this.outlinedButton,
@@ -158,6 +176,9 @@ final class DievasComponentThemeData extends Equatable {
     tooltip: tooltip ?? this.tooltip,
     loader: loader ?? this.loader,
     emptyState: emptyState ?? this.emptyState,
+    accordion: accordion ?? this.accordion,
+    drawer: drawer ?? this.drawer,
+    popover: popover ?? this.popover,
   );
 
   @override
@@ -182,5 +203,8 @@ final class DievasComponentThemeData extends Equatable {
     tooltip,
     loader,
     emptyState,
+    accordion,
+    drawer,
+    popover,
   ];
 }
