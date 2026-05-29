@@ -22,6 +22,7 @@ import 'snackbar/dievas_snackbar_theme_data.dart';
 import 'switch/dievas_switch_theme_data.dart';
 import 'tag/dievas_tag_theme_data.dart';
 import 'text_input/dievas_text_input_theme_data.dart';
+import 'text_input_group/dievas_text_input_group_theme_data.dart';
 import 'tooltip/dievas_tooltip_theme_data.dart';
 
 /// The component-level theme sub-system for a Dievas theme.
@@ -48,6 +49,7 @@ final class DievasComponentThemeData extends Equatable {
     required this.toggle,
     required this.radio,
     required this.textInput,
+    required this.textInputGroup,
     required this.alert,
     required this.snackbar,
     required this.bottomSheet,
@@ -101,6 +103,9 @@ final class DievasComponentThemeData extends Equatable {
   /// Theme data for [DievasTextInput] and [DievasTextArea].
   final DievasTextInputThemeData textInput;
 
+  /// Theme data for [DievasTextInputGroup].
+  final DievasTextInputGroupThemeData textInputGroup;
+
   /// Theme data for [DievasAlert].
   final DievasAlertThemeData alert;
 
@@ -145,6 +150,7 @@ final class DievasComponentThemeData extends Equatable {
     DievasSwitchThemeData? toggle,
     DievasRadioThemeData? radio,
     DievasTextInputThemeData? textInput,
+    DievasTextInputGroupThemeData? textInputGroup,
     DievasAlertThemeData? alert,
     DievasSnackbarThemeData? snackbar,
     DievasBottomSheetThemeData? bottomSheet,
@@ -169,6 +175,7 @@ final class DievasComponentThemeData extends Equatable {
     toggle: toggle ?? this.toggle,
     radio: radio ?? this.radio,
     textInput: textInput ?? this.textInput,
+    textInputGroup: textInputGroup ?? this.textInputGroup,
     alert: alert ?? this.alert,
     snackbar: snackbar ?? this.snackbar,
     bottomSheet: bottomSheet ?? this.bottomSheet,
@@ -196,6 +203,7 @@ final class DievasComponentThemeData extends Equatable {
     toggle,
     radio,
     textInput,
+    textInputGroup,
     alert,
     snackbar,
     bottomSheet,

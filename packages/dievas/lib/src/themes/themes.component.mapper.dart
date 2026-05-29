@@ -28,6 +28,7 @@ DievasComponentThemeData _deriveDievasComponentThemeData(
     toggle: override?.toggle ?? _createSwitchTheme(colors, typography, spacing, animation),
     radio: override?.radio ?? _createRadioTheme(colors, typography, spacing, border),
     textInput: override?.textInput ?? _createTextInputTheme(colors, typography, spacing, sizing, border),
+    textInputGroup: override?.textInputGroup ?? _createTextInputGroupTheme(colors, sizing, spacing, border),
     alert: override?.alert ?? _createAlertTheme(typography, spacing, border),
     snackbar: override?.snackbar ?? _createSnackbarTheme(colors, typography, spacing, border),
     bottomSheet: override?.bottomSheet ?? _createBottomSheetTheme(colors, border),
@@ -450,6 +451,30 @@ DievasTextInputThemeData _createTextInputTheme(
   iconSpacing: spacing.xs,
   labelSpacing: spacing.xs,
   helperSpacing: spacing.xs,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+);
+
+// TextInputGroup
+DievasTextInputGroupThemeData _createTextInputGroupTheme(
+  DievasColourThemeData colors,
+  DievasSizingThemeData sizing,
+  DievasSpacingThemeData spacing,
+  DievasBorderThemeData border,
+) => DievasTextInputGroupThemeData(
+  height: (sm: sizing.inputHeightSm, md: sizing.inputHeightMd, lg: sizing.inputHeightLg),
+  contentPadding: (
+    sm: EdgeInsets.symmetric(horizontal: spacing.smPlus, vertical: spacing.xs),
+    md: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.sm),
+    lg: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
+  ),
+  borderRadius: border.md,
+  strokeWidth: border.strokeThin,
+  strokeWidthFocused: border.strokeDefault,
+  bgColor: colors.input.inputBg,
+  borderColor: colors.input.inputBorder,
+  borderColorFocused: colors.input.inputBorderFocus,
+  dividerColor: colors.border.borderDefault,
+  dividerWidth: border.strokeThin,
   disabledOpacity: DievasOpacitySemantic.disabled,
 );
 

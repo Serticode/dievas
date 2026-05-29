@@ -49,6 +49,9 @@ export 'src/components/radio/dievas_radio.dart';
 export 'src/components/switch/dievas_switch.dart';
 export 'src/components/text_area/dievas_text_area.dart';
 export 'src/components/text_input/dievas_text_input.dart';
+export 'src/components/text_input_group/dievas_text_input_group.dart';
+export 'src/components/search/dievas_search_with_list.dart';
+export 'src/components/search/dievas_search_with_dropdown.dart';
 
 //  Components — Display
 export 'src/components/avatar/dievas_avatar.dart';

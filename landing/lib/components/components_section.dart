@@ -26,9 +26,9 @@ class ComponentsSection extends StatelessComponent {
                 'font-display font-black text-[clamp(36px,5vw,60px)] '
                 'leading-[0.95] tracking-[-0.025em] text-slate-900',
             [
-              Component.text('25 shipped.'),
+              Component.text('28 shipped.'),
               br(),
-              span(classes: 'text-slate-400', [Component.text('17 in progress.')]),
+              span(classes: 'text-slate-400', [Component.text('14 in progress.')]),
             ],
           ),
           p(
@@ -114,6 +114,21 @@ class ComponentsSection extends StatelessComponent {
         index: 3,
       ),
 
+      // ── Nav / Disclosure ─────────────────────────────────────────────────────
+      _categoryRow(
+        label: 'Nav / Disclosure',
+        count: '3',
+        description:
+            'Accordion, drawer, and popover provide progressive disclosure '
+            'and contextual navigation. All surfaces are token-driven and '
+            'animated via DievasAnimationThemeData.',
+        preview: _navPreview(),
+        components: const ['Accordion', 'Drawer', 'Popover'],
+        accentHex: 'A78BFA',
+        isFlipped: false,
+        index: 4,
+      ),
+
       // ── In progress ─────────────────────────────────────────────────────────
       div(classes: 'max-w-5xl mx-auto px-3 lg:px-6 w-full py-12 reveal', [
         div(classes: 'flex items-center gap-3 mb-5', [
@@ -125,7 +140,7 @@ class ComponentsSection extends StatelessComponent {
                 'inline-block px-3 py-1 rounded-full '
                 'border border-slate-200 bg-slate-100 '
                 'font-mono text-xs text-slate-400',
-            [Component.text('17')],
+            [Component.text('14')],
           ),
         ]),
         div(classes: 'flex flex-wrap gap-2', [for (final c in _wip) _wipPill(c)]),
@@ -248,6 +263,40 @@ class ComponentsSection extends StatelessComponent {
       ],
     );
   }
+
+  Component _navPreview() => div(classes: 'flex flex-col gap-3 w-full', [
+    // Accordion (expanded)
+    div(classes: 'rounded-lg border border-slate-200 bg-white overflow-hidden', [
+      div(
+        classes: 'flex items-center justify-between px-3 py-2',
+        attributes: const {'style': 'background: rgba(167,139,250,0.08);'},
+        [
+          span(classes: 'font-mono text-xs text-slate-700', [Component.text('Section')]),
+          span(classes: 'font-mono text-xs', attributes: const {'style': 'color: #A78BFA;'}, [
+            Component.text('−'),
+          ]),
+        ],
+      ),
+      div(classes: 'px-3 py-2 border-t border-slate-100', [
+        span(classes: 'font-mono text-[10px] text-slate-400', [Component.text('Content')]),
+      ]),
+    ]),
+    // Drawer (mini preview)
+    div(classes: 'flex gap-2', [
+      div(
+        classes: 'w-24 rounded-lg border border-slate-200 bg-white p-2 flex flex-col gap-1.5',
+        [
+          div(classes: 'h-1.5 w-3/4 rounded-full bg-slate-300', []),
+          div(classes: 'h-1.5 w-1/2 rounded-full bg-slate-200', []),
+          div(classes: 'h-1.5 w-2/3 rounded-full bg-slate-200', []),
+        ],
+      ),
+      // Popover (mini tooltip)
+      div(classes: 'rounded-lg border border-slate-200 bg-white p-2 shadow-sm', [
+        span(classes: 'font-mono text-[10px] text-slate-500', [Component.text('Popover')]),
+      ]),
+    ]),
+  ]);
 
   // ── Mini previews ───────────────────────────────────────────────────────────
 
@@ -493,6 +542,9 @@ class ComponentsSection extends StatelessComponent {
     'Snackbar': 'snackbar',
     'Banner': 'banner',
     'Tooltip': 'tooltip',
+    'Accordion': 'accordion',
+    'Drawer': 'drawer',
+    'Popover': 'popover',
   };
 
   static const _galleryFolder = <String, String>{
@@ -521,18 +573,18 @@ class ComponentsSection extends StatelessComponent {
     'Snackbar': 'overlays',
     'Banner': 'overlays',
     'Tooltip': 'overlays',
+    'Accordion': 'nav-disclosure',
+    'Drawer': 'nav-disclosure',
+    'Popover': 'nav-disclosure',
   };
 
   static const _wip = [
-    'Accordion',
     'AuthCode',
     'BreadCrumb',
     'Carousel',
     'DotIndicator',
-    'Drawer',
     'Dropdown',
     'MenuItem',
-    'Popover',
     'SegmentedControl',
     'TabBar',
     'Table',
