@@ -24,9 +24,13 @@ dev_dependencies:
 
 flutter:
     fonts:
-        - family: MaisonNeue
+        - family: MartianMono
           fonts:
-              - asset: packages/dievas/assets/fonts/maison_neue_medium.ttf
-        - family: MaisonNeueExtended
-          fonts:
-              - asset: packages/dievas/assets/fonts/maison_neue_extended_medium.otf
+              - asset: lib/assets/fonts/MartianMono-Light.ttf
+                weight: 300
+              - asset: lib/assets/fonts/MartianMono-Regular.ttf
+                weight: 400
+              - asset: lib/assets/fonts/MartianMono-Medium.ttf
+                weight: 500
+              - asset: lib/assets/fonts/MartianMono-SemiBold.ttf
+                weight: 600
