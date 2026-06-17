@@ -6,6 +6,8 @@ export 'components/search/dievas_search_with_list.dart';
 
 // Navigation / Disclosure
 export 'components/nav_disclosure/dievas_breadcrumb.dart';
+export 'components/nav_disclosure/dievas_menu_item.dart';
+export 'components/nav_disclosure/dievas_tab_bar.dart';
 export 'components/accordion/dievas_accordion.dart';
 export 'components/drawer/dievas_drawer.dart';
 export 'components/popover/dievas_popover.dart';
@@ -37,6 +39,8 @@ export 'components/display/dievas_tag.dart';
 // Form
 export 'components/form/dievas_auth_code.dart';
 export 'components/form/dievas_checkbox.dart';
+export 'components/form/dievas_dropdown.dart';
+export 'components/form/dievas_segmented_control.dart';
 export 'components/form/dievas_radio.dart';
 export 'components/form/dievas_switch.dart';
 export 'components/form/dievas_text_area.dart';

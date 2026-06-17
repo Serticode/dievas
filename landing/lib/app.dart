@@ -167,8 +167,16 @@ class App extends StatelessComponent {
     },
     head: [
       link(rel: 'preconnect', href: 'https://fonts.googleapis.com'),
-      link(rel: 'preconnect', href: 'https://fonts.gstatic.com', attributes: const {'crossorigin': ''}),
-      link(rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap'),
+      link(
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        attributes: const {'crossorigin': ''},
+      ),
+      link(
+        rel: 'stylesheet',
+        href:
+            'https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap',
+      ),
       link(rel: 'stylesheet', href: '/output.css'),
       link(rel: 'stylesheet', href: '/base.css'),
       link(rel: 'stylesheet', href: '/nav.css'),
@@ -287,15 +295,19 @@ class _AppBody extends StatelessComponent {
   const _AppBody();
 
   @override
-  Component build(BuildContext context) => div(id: 'main', classes: 'bg-bg-base text-text-hi antialiased', [
-    RawText(_jsLoadedScript),
-    RawText(_scrollProgressScript),
-    const Nav(),
-    const Hero(),
-    const ManifestoSection(),
-    const ArchitectureSection(),
-    div(attributes: const {'style': 'background: #FFFFFF;'}, [const ComponentsSection(), const FooterComponent()]),
-    RawText(_scrollRevealScript),
-    RawText(_navScrollScript),
-  ]);
+  Component build(BuildContext context) =>
+      div(id: 'main', classes: 'bg-bg-base text-text-hi antialiased', [
+        RawText(_jsLoadedScript),
+        RawText(_scrollProgressScript),
+        const Nav(),
+        const Hero(),
+        const ManifestoSection(),
+        const ArchitectureSection(),
+        div(
+          attributes: const {'style': 'background: #FFFFFF;'},
+          [const ComponentsSection(), const FooterComponent()],
+        ),
+        RawText(_scrollRevealScript),
+        RawText(_navScrollScript),
+      ]);
 }

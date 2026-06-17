@@ -15,15 +15,19 @@ import 'checkbox/dievas_checkbox_theme_data.dart';
 import 'circular_progress/dievas_circular_progress_theme_data.dart';
 import 'dot_indicator/dievas_dot_indicator_theme_data.dart';
 import 'drawer/dievas_drawer_theme_data.dart';
+import 'dropdown/dievas_dropdown_theme_data.dart';
 import 'empty_state/dievas_empty_state_theme_data.dart';
 import 'linear_progress/dievas_linear_progress_theme_data.dart';
 import 'loader/dievas_loader_theme_data.dart';
+import 'menu_item/dievas_menu_item_theme_data.dart';
 import 'modal/dievas_modal_theme_data.dart';
 import 'popover/dievas_popover_theme_data.dart';
 import 'radio/dievas_radio_theme_data.dart';
 import 'search/dievas_search_theme_data.dart';
+import 'segmented_control/dievas_segmented_control_theme_data.dart';
 import 'snackbar/dievas_snackbar_theme_data.dart';
 import 'switch/dievas_switch_theme_data.dart';
+import 'tab_bar/dievas_tab_bar_theme_data.dart';
 import 'tag/dievas_tag_theme_data.dart';
 import 'text_input/dievas_text_input_theme_data.dart';
 import 'text_input_group/dievas_text_input_group_theme_data.dart';
@@ -61,12 +65,16 @@ final class DievasComponentThemeData extends Equatable {
     required this.modal,
     required this.tooltip,
     required this.loader,
+    required this.menuItem,
     required this.emptyState,
     required this.authCode,
     required this.accordion,
     required this.dotIndicator,
     required this.drawer,
+    required this.dropdown,
     required this.search,
+    required this.segmentedControl,
+    required this.tabBar,
     required this.popover,
   });
 
@@ -141,6 +149,9 @@ final class DievasComponentThemeData extends Equatable {
   /// Theme data for [DievasLoader].
   final DievasLoaderThemeData loader;
 
+  /// Theme data for [DievasMenuItem].
+  final DievasMenuItemThemeData menuItem;
+
   /// Theme data for [DievasEmptyState].
   final DievasEmptyStateThemeData emptyState;
 
@@ -152,6 +163,15 @@ final class DievasComponentThemeData extends Equatable {
 
   /// Theme data for [DievasDrawer].
   final DievasDrawerThemeData drawer;
+
+  /// Theme data for [DievasDropdown].
+  final DievasDropdownThemeData dropdown;
+
+  /// Theme data for [DievasSegmentedControl].
+  final DievasSegmentedControlThemeData segmentedControl;
+
+  /// Theme data for [DievasTabBar].
+  final DievasTabBarThemeData tabBar;
 
   /// Theme data for [DievasPopover].
   final DievasPopoverThemeData popover;
@@ -178,12 +198,16 @@ final class DievasComponentThemeData extends Equatable {
     DievasModalThemeData? modal,
     DievasTooltipThemeData? tooltip,
     DievasLoaderThemeData? loader,
+    DievasMenuItemThemeData? menuItem,
     DievasEmptyStateThemeData? emptyState,
     DievasAuthCodeThemeData? authCode,
     DievasAccordionThemeData? accordion,
     DievasDotIndicatorThemeData? dotIndicator,
     DievasDrawerThemeData? drawer,
+    DievasDropdownThemeData? dropdown,
     DievasSearchThemeData? search,
+    DievasSegmentedControlThemeData? segmentedControl,
+    DievasTabBarThemeData? tabBar,
     DievasPopoverThemeData? popover,
   }) => DievasComponentThemeData(
     filledButton: filledButton ?? this.filledButton,
@@ -207,12 +231,16 @@ final class DievasComponentThemeData extends Equatable {
     modal: modal ?? this.modal,
     tooltip: tooltip ?? this.tooltip,
     loader: loader ?? this.loader,
+    menuItem: menuItem ?? this.menuItem,
     emptyState: emptyState ?? this.emptyState,
     authCode: authCode ?? this.authCode,
     accordion: accordion ?? this.accordion,
     dotIndicator: dotIndicator ?? this.dotIndicator,
     drawer: drawer ?? this.drawer,
+    dropdown: dropdown ?? this.dropdown,
     search: search ?? this.search,
+    segmentedControl: segmentedControl ?? this.segmentedControl,
+    tabBar: tabBar ?? this.tabBar,
     popover: popover ?? this.popover,
   );
 
@@ -239,12 +267,16 @@ final class DievasComponentThemeData extends Equatable {
     modal,
     tooltip,
     loader,
+    menuItem,
     emptyState,
     authCode,
     accordion,
     dotIndicator,
     drawer,
+    dropdown,
     search,
+    segmentedControl,
+    tabBar,
     popover,
   ];
 }

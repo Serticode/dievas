@@ -33,15 +33,22 @@ DievasComponentThemeData _deriveDievasComponentThemeData(
     authCode: override?.authCode ?? _createAuthCodeTheme(colors, typography, sizing, spacing, border),
     textInputGroup: override?.textInputGroup ?? _createTextInputGroupTheme(colors, sizing, spacing, border),
     search: override?.search ?? _createSearchTheme(colors, typography, sizing, spacing, border),
+    segmentedControl:
+        override?.segmentedControl ??
+        _createSegmentedControlTheme(colors, typography, spacing, sizing, border, animation),
     alert: override?.alert ?? _createAlertTheme(typography, spacing, border),
     snackbar: override?.snackbar ?? _createSnackbarTheme(colors, typography, spacing, border),
     bottomSheet: override?.bottomSheet ?? _createBottomSheetTheme(colors, border),
     modal: override?.modal ?? _createModalTheme(colors, typography, spacing, border),
     tooltip: override?.tooltip ?? _createTooltipTheme(colors, typography, spacing, border, animation),
     loader: override?.loader ?? _createLoaderTheme(colors, typography, spacing, animation),
+    menuItem: override?.menuItem ?? _createMenuItemTheme(colors, typography, spacing, sizing, border),
     emptyState: override?.emptyState ?? _createEmptyStateTheme(colors, typography, spacing),
     accordion: override?.accordion ?? _createAccordionTheme(typography, spacing, border, animation, elevation),
     drawer: override?.drawer ?? _createDrawerTheme(colors, border, animation),
+    dropdown:
+        override?.dropdown ?? _createDropdownTheme(colors, typography, spacing, sizing, border, elevation, animation),
+    tabBar: override?.tabBar ?? _createTabBarTheme(colors, typography, spacing, sizing, border, animation),
     popover: override?.popover ?? _createPopoverTheme(colors, typography, spacing, border, animation),
   );
 }
@@ -498,9 +505,9 @@ DievasTextInputGroupThemeData _createTextInputGroupTheme(
 ) => DievasTextInputGroupThemeData(
   height: (sm: sizing.inputHeightSm, md: sizing.inputHeightMd, lg: sizing.inputHeightLg),
   contentPadding: (
-    sm: EdgeInsets.symmetric(horizontal: spacing.smPlus, vertical: spacing.xs),
-    md: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.sm),
-    lg: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
+    sm: .symmetric(horizontal: spacing.smPlus, vertical: spacing.xs),
+    md: .symmetric(horizontal: spacing.md, vertical: spacing.sm),
+    lg: .symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
   ),
   borderRadius: border.md,
   strokeWidth: border.strokeThin,
@@ -557,9 +564,9 @@ DievasSearchThemeData _createSearchTheme(
   borderColorFocused: colors.input.inputBorderFocus,
   iconColor: colors.icon.iconSecondary,
   iconSize: DievasSizingPrimitives.s20,
-  contentPadding: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.sm),
+  contentPadding: .symmetric(horizontal: spacing.md, vertical: spacing.sm),
   resultItemStyle: typography.bodyMd,
-  resultItemPadding: EdgeInsets.symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
+  resultItemPadding: .symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
   resultMaxHeight: 240.0,
   dividerColor: colors.border.borderDefault,
   dividerIndent: spacing.md,
@@ -730,6 +737,110 @@ DievasDrawerThemeData _createDrawerTheme(
     elevation: DievasElevationSemantic.lg,
   );
 }
+
+// SegmentedControl
+DievasSegmentedControlThemeData _createSegmentedControlTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+  DievasAnimationThemeData animation,
+) => DievasSegmentedControlThemeData(
+  labelStyle: typography.bodyMd.copyWith(color: colors.text.textPrimary),
+  selectedLabelStyle: typography.labelSm.copyWith(color: colors.core.onBrand),
+  borderRadius: border.md,
+  padding: .symmetric(horizontal: spacing.smPlus, vertical: spacing.sm),
+  bgColor: colors.background.bgSubtle,
+  selectedBgColor: colors.action.actionPrimary,
+  borderColor: colors.border.borderDefault,
+  textColor: colors.text.textPrimary,
+  selectedTextColor: colors.core.onBrand,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  animationDuration: animation.standard,
+  minSegmentWidth: DievasSizingPrimitives.s64,
+  minHeight: DievasSizingPrimitives.s32,
+);
+
+// MenuItem
+DievasMenuItemThemeData _createMenuItemTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+) => DievasMenuItemThemeData(
+  textStyle: typography.titleXsm.copyWith(color: colors.text.textPrimary),
+  subtitleStyle: typography.bodyXs.copyWith(color: colors.text.textSecondary),
+  iconSize: sizing.iconSm,
+  iconSpacing: spacing.sm,
+  padding: .symmetric(horizontal: spacing.sm, vertical: spacing.sm),
+  densePadding: .symmetric(horizontal: spacing.sm, vertical: spacing.xs),
+  borderRadius: border.sm,
+  textColor: colors.text.textPrimary,
+  textColorDisabled: colors.text.textDisabled,
+  subtitleColor: colors.text.textSecondary,
+  subtitleColorDisabled: colors.text.textDisabled,
+  iconColor: colors.icon.iconPrimary,
+  iconColorDisabled: colors.icon.iconDisabled,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+);
+
+// Dropdown
+DievasDropdownThemeData _createDropdownTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+  DievasElevationThemeData elevation,
+  DievasAnimationThemeData animation,
+) => DievasDropdownThemeData(
+  triggerStyle: typography.bodyMd.copyWith(color: colors.text.textPrimary),
+  hintStyle: typography.bodyMd.copyWith(color: colors.input.inputPlaceholder),
+  labelStyle: typography.labelSm.copyWith(color: colors.text.textSecondary),
+  labelSpacing: spacing.sm,
+  triggerBgColor: colors.input.inputBg,
+  triggerBorderColor: colors.border.borderDefault,
+  triggerBorderColorFocused: colors.action.actionPrimary,
+  borderRadius: border.md,
+  triggerPadding: .symmetric(horizontal: spacing.md, vertical: spacing.sm),
+  iconSize: sizing.iconSm,
+  iconColor: colors.icon.iconSecondary,
+  overlayBgColor: colors.background.bgElevated,
+  overlayBorderColor: colors.border.borderDefault,
+  overlayBorderRadius: border.md,
+  overlayElevation: elevation.md,
+  optionStyle: typography.bodyMd,
+  optionSelectedColor: colors.background.bgSubtle,
+  optionTextColor: colors.text.textPrimary,
+  optionTextColorDisabled: colors.text.textDisabled,
+  optionPadding: .symmetric(horizontal: spacing.md, vertical: spacing.smPlus),
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  animationDuration: animation.standard,
+  minHeight: sizing.inputHeightMd,
+);
+
+// TabBar
+DievasTabBarThemeData _createTabBarTheme(
+  DievasColourThemeData colors,
+  DievasTypographyThemeData typography,
+  DievasSpacingThemeData spacing,
+  DievasSizingThemeData sizing,
+  DievasBorderThemeData border,
+  DievasAnimationThemeData animation,
+) => DievasTabBarThemeData(
+  labelStyle: typography.bodySm.copyWith(color: colors.text.textSecondary),
+  selectedLabelStyle: typography.titleXsm.copyWith(color: colors.text.textPrimary),
+  indicatorColor: colors.action.actionPrimary,
+  indicatorHeight: border.strokeThick,
+  dividerColor: colors.border.borderDefault,
+  tabPadding: .symmetric(horizontal: spacing.md, vertical: spacing.sm),
+  animationDuration: animation.standard,
+  disabledOpacity: DievasOpacitySemantic.disabled,
+  minTabWidth: DievasSizingPrimitives.s64,
+  height: sizing.inputHeightMd,
+);
 
 // Popover
 DievasPopoverThemeData _createPopoverTheme(

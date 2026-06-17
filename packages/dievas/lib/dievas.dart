@@ -44,9 +44,14 @@ export 'src/components/buttons/button_types/dievas_button_state.dart';
 export 'src/components/buttons/button_types/dievas_button_style.dart';
 
 //  Components — Form
+export 'src/components/dropdown/dievas_dropdown.dart';
+
+//  Components — Nav / Disclosure
+export 'src/components/tab_bar/dievas_tab_bar.dart';
 export 'src/components/auth_code/dievas_auth_code.dart';
 export 'src/components/checkbox/dievas_checkbox.dart';
 export 'src/components/radio/dievas_radio.dart';
+export 'src/components/segmented_control/dievas_segmented_control.dart';
 export 'src/components/switch/dievas_switch.dart';
 export 'src/components/text_area/dievas_text_area.dart';
 export 'src/components/text_input/dievas_text_input.dart';
@@ -78,6 +83,7 @@ export 'src/components/tooltip/dievas_tooltip.dart';
 export 'src/components/accordion/dievas_accordion.dart';
 export 'src/components/breadcrumb/dievas_breadcrumb.dart';
 export 'src/components/drawer/dievas_drawer.dart';
+export 'src/components/menu_item/dievas_menu_item.dart';
 export 'src/components/popover/dievas_popover.dart';
 
 //  Components — Utility

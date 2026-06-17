@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../theme/dievas_theme.dart';
+import 'package:dievas/src/theme/dievas_theme.dart';
 
 /// Size variants for [DievasLoader].
 enum DievasLoaderSize {
@@ -43,8 +43,13 @@ class _DievasLoaderState extends State<DievasLoader> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    final theme = DievasTheme.componentsOf(context).loader;
-    _controller = AnimationController(vsync: this, duration: theme.animationDuration)..repeat();
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 800))..repeat();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = DievasTheme.componentsOf(context).loader.animationDuration;
   }
 
   @override

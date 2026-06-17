@@ -1,7 +1,7 @@
 import 'package:dievas/src/theme/component/switch/dievas_switch_theme_data.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../theme/dievas_theme.dart';
+import 'package:dievas/src/theme/dievas_theme.dart';
 
 /// A custom-drawn animated toggle switch that uses only Dievas theme tokens.
 ///
@@ -38,10 +38,15 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    final theme = DievasTheme.componentsOf(context).toggle;
-    _controller = AnimationController(vsync: this, duration: theme.animationDuration);
+    _controller = AnimationController(vsync: this);
     _curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     if (widget.value) _controller.value = 1.0;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = DievasTheme.componentsOf(context).toggle.animationDuration;
   }
 
   @override
