@@ -120,8 +120,8 @@ class Hero extends StatelessComponent {
             attributes: const {'style': 'animation-delay: 0.82s'},
             [
               /// *** Keep the below for a forth night till we decide if we want to send this to pub.dev.
-              /* a(
-                href: DievasUrls.pubDev,
+              a(
+                href: DievasUrls.dievasPubDevURL,
                 attributes: const {'target': '_blank', 'rel': 'noopener'},
                 classes:
                     'inline-flex items-center gap-2 '
@@ -135,7 +135,7 @@ class Hero extends StatelessComponent {
                   Component.text('View on pub.dev'),
                   span(classes: 'text-xs', [Component.text('→')]),
                 ],
-              ), */
+              ),
               a(
                 href: DievasUrls.gallery,
                 attributes: const {'target': '_blank', 'rel': 'noopener'},

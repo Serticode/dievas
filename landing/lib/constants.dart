@@ -8,6 +8,9 @@ abstract final class DievasUrls {
   /// Serticode publisher page on pub.dev.
   static const String pubDev = 'https://pub.dev/publishers/serticode.com/packages';
 
+  /// Dievas on pub.dev.
+  static const String dievasPubDevURL = 'https://pub.dev/packages/dievas';
+
   /// Serticode personal portfolio.
   static const String portfolio = 'https://portfolio.serticode.com';
 

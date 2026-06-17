@@ -157,7 +157,7 @@ class App extends StatelessComponent {
 
   @override
   Component build(BuildContext context) => Document(
-    title: 'Dievas — Flutter Design System',
+    title: 'Dievas | Flutter Design System',
     lang: 'en',
     meta: const {
       'description':
