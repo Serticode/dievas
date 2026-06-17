@@ -38,10 +38,15 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    final theme = DievasTheme.componentsOf(context).toggle;
-    _controller = AnimationController(vsync: this, duration: theme.animationDuration);
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
     _curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     if (widget.value) _controller.value = 1.0;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = DievasTheme.componentsOf(context).toggle.animationDuration;
   }
 
   @override
