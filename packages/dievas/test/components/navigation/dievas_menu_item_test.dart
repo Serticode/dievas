@@ -14,7 +14,9 @@ void main() {
 
     testWidgets('renders with leading icon', (tester) async {
       await tester.pumpWidget(
-        Harness(child: const DievasMenuItem(label: 'Settings', leadingIcon: Icon(Icons.settings))),
+        Harness(
+          child: const DievasMenuItem(label: 'Settings', leadingIcon: Icon(Icons.settings)),
+        ),
       );
       expect(tester.takeException(), isNull);
       expect(find.byIcon(Icons.settings), findsOneWidget);
@@ -22,7 +24,9 @@ void main() {
 
     testWidgets('renders with subtitle', (tester) async {
       await tester.pumpWidget(
-        Harness(child: const DievasMenuItem(label: 'Delete', subtitle: 'This cannot be undone')),
+        Harness(
+          child: const DievasMenuItem(label: 'Delete', subtitle: 'This cannot be undone'),
+        ),
       );
       expect(tester.takeException(), isNull);
       expect(find.text('This cannot be undone'), findsOneWidget);
@@ -30,7 +34,9 @@ void main() {
 
     testWidgets('renders with trailing widget', (tester) async {
       await tester.pumpWidget(
-        Harness(child: const DievasMenuItem(label: 'Profile', trailing: Icon(Icons.chevron_right))),
+        Harness(
+          child: const DievasMenuItem(label: 'Profile', trailing: Icon(Icons.chevron_right)),
+        ),
       );
       expect(tester.takeException(), isNull);
       expect(find.byIcon(Icons.chevron_right), findsOneWidget);
@@ -39,7 +45,9 @@ void main() {
     testWidgets('fires onTap callback', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
-        Harness(child: DievasMenuItem(label: 'Tap me', onTap: () => tapped = true)),
+        Harness(
+          child: DievasMenuItem(label: 'Tap me', onTap: () => tapped = true),
+        ),
       );
       await tester.tap(find.text('Tap me'));
       expect(tapped, isTrue);
@@ -48,7 +56,9 @@ void main() {
     testWidgets('does not fire onTap when disabled', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
-        Harness(child: DievasMenuItem(label: 'Disabled', onTap: () => tapped = true, enabled: false)),
+        Harness(
+          child: DievasMenuItem(label: 'Disabled', onTap: () => tapped = true, enabled: false),
+        ),
       );
       await tester.tap(find.text('Disabled'));
       expect(tapped, isFalse);
