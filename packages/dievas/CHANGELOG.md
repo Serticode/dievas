@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.2
+
+- Added `repository:` and `homepage:` to pubspec.
+- Added `example/` directory.
+- Improved dartdoc coverage.
+
 ## 0.0.1
 
 - Initial release.
