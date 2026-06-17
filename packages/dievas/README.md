@@ -23,7 +23,7 @@ import 'package:dievas/dievas.dart';
 
 void main() => runApp(
     DievasScope(
-      theme: DievasLightThemeData(),
+      lightTheme: DievasLightThemeData(),
       darkTheme: DievasDarkThemeData(),
       child: const MyApp(),
     ),
