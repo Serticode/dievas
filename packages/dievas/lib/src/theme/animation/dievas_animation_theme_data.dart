@@ -1,11 +1,15 @@
 import 'package:dievas_tokens/dievas_tokens.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/animation.dart' show Curve, Cubic;
 
 /// The animation sub-system for a Dievas theme.
 ///
 /// Durations are organized by motion speed intent — components reference
 /// the semantic name that matches their transition character rather than
 /// hardcoding millisecond values.
+///
+/// Curve fields are resolved from [DievasEasingPrimitives] to Flutter [Curve]
+/// objects at construction time.
 final class DievasAnimationThemeData extends Equatable {
   const DievasAnimationThemeData({
     this.instant = DievasAnimationSemantic.instant,
@@ -19,6 +23,10 @@ final class DievasAnimationThemeData extends Equatable {
     this.loader = DievasAnimationSemantic.loader,
     this.tooltipShow = DievasAnimationSemantic.tooltipShow,
     this.snackbarDismiss = DievasAnimationSemantic.snackbarDismiss,
+    this.easingStandard = const Cubic(0.2, 0.0, 0.0, 1.0),
+    this.easingEnter = const Cubic(0.0, 0.0, 0.2, 1.0),
+    this.easingExit = const Cubic(0.4, 0.0, 1.0, 1.0),
+    this.easingEmphasize = const Cubic(0.2, 0.0, 0.0, 1.0),
   });
 
   /// 50ms — micro-interactions, ripple, press feedback.
@@ -54,6 +62,22 @@ final class DievasAnimationThemeData extends Equatable {
   /// 3s — snackbar auto-dismiss.
   final Duration snackbarDismiss;
 
+  /// Standard UI transitions — toggles, accordions, popovers.
+  /// Derived from [DievasEasingSemantic.standard].
+  final Curve easingStandard;
+
+  /// Elements entering the screen — modals, sheets, panels, indicators.
+  /// Derived from [DievasEasingSemantic.enter] (decelerate curve).
+  final Curve easingEnter;
+
+  /// Elements leaving the screen — dismissals, removals.
+  /// Derived from [DievasEasingSemantic.exit] (accelerate curve).
+  final Curve easingExit;
+
+  /// Hero animations and emphatic transitions.
+  /// Derived from [DievasEasingSemantic.emphasize].
+  final Curve easingEmphasize;
+
   DievasAnimationThemeData copyWith({
     Duration? instant,
     Duration? quick,
@@ -66,6 +90,10 @@ final class DievasAnimationThemeData extends Equatable {
     Duration? loader,
     Duration? tooltipShow,
     Duration? snackbarDismiss,
+    Curve? easingStandard,
+    Curve? easingEnter,
+    Curve? easingExit,
+    Curve? easingEmphasize,
   }) => DievasAnimationThemeData(
     instant: instant ?? this.instant,
     quick: quick ?? this.quick,
@@ -78,6 +106,10 @@ final class DievasAnimationThemeData extends Equatable {
     loader: loader ?? this.loader,
     tooltipShow: tooltipShow ?? this.tooltipShow,
     snackbarDismiss: snackbarDismiss ?? this.snackbarDismiss,
+    easingStandard: easingStandard ?? this.easingStandard,
+    easingEnter: easingEnter ?? this.easingEnter,
+    easingExit: easingExit ?? this.easingExit,
+    easingEmphasize: easingEmphasize ?? this.easingEmphasize,
   );
 
   @override
@@ -93,5 +125,9 @@ final class DievasAnimationThemeData extends Equatable {
     loader,
     tooltipShow,
     snackbarDismiss,
+    easingStandard,
+    easingEnter,
+    easingExit,
+    easingEmphasize,
   ];
 }

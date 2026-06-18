@@ -102,7 +102,7 @@ class _Tab extends StatelessWidget {
     onTap: onTap,
     child: AnimatedContainer(
       duration: animationDuration,
-      curve: Curves.easeOutCubic,
+      curve: DievasTheme.animationOf(context).easingEnter,
       constraints: BoxConstraints(minWidth: minTabWidth),
       padding: padding,
       decoration: BoxDecoration(

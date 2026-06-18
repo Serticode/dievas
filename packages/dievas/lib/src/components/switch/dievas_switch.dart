@@ -39,7 +39,7 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
-    _curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+    _curve = CurvedAnimation(parent: _controller, curve: const Cubic(0.2, 0.0, 0.0, 1.0));
     if (widget.value) _controller.value = 1.0;
   }
 
@@ -47,6 +47,7 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
   void didChangeDependencies() {
     super.didChangeDependencies();
     _controller.duration = DievasTheme.componentsOf(context).toggle.animationDuration;
+    _curve.curve = DievasTheme.animationOf(context).easingStandard;
   }
 
   @override
@@ -63,6 +64,7 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
 
   @override
   void dispose() {
+    _curve.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -86,49 +88,45 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
       );
     }
 
-    if (widget.onChanged == null) {
-      return Opacity(opacity: theme.disabledOpacity, child: track);
-    }
-
-    return GestureDetector(onTap: () => widget.onChanged!(!widget.value), behavior: .opaque, child: track);
+    return switch (widget.onChanged) {
+      null => Opacity(opacity: theme.disabledOpacity, child: track),
+      final onChanged => GestureDetector(onTap: () => onChanged(!widget.value), behavior: .opaque, child: track),
+    };
   }
 }
 
-class _DievasSwitchTrackBuilder extends StatelessWidget {
-  const _DievasSwitchTrackBuilder({required this.curve, required this.theme});
+class _DievasSwitchTrackBuilder extends AnimatedWidget {
+  const _DievasSwitchTrackBuilder({required this.curve, required this.theme}) : super(listenable: curve);
 
   final CurvedAnimation curve;
   final DievasSwitchThemeData theme;
 
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-    animation: curve,
-    builder: (context, _) {
-      final t = curve.value;
-      final thumbOffset = t * (theme.trackWidth - theme.thumbSize - theme.thumbPadding * 2);
+  Widget build(BuildContext context) {
+    final t = curve.value;
+    final thumbOffset = t * (theme.trackWidth - theme.thumbSize - theme.thumbPadding * 2);
 
-      return Container(
-        width: theme.trackWidth,
-        height: theme.trackHeight,
-        decoration: BoxDecoration(
-          color: .lerp(theme.trackColorOff, theme.trackColorOn, t)!,
-          borderRadius: theme.trackRadius,
-        ),
-        child: Stack(
-          clipBehavior: .none,
-          children: [
-            Positioned(
-              left: theme.thumbPadding + thumbOffset,
-              top: theme.thumbPadding,
-              child: Container(
-                width: theme.thumbSize,
-                height: theme.thumbSize,
-                decoration: BoxDecoration(color: theme.thumbColor, borderRadius: theme.thumbRadius),
-              ),
+    return Container(
+      width: theme.trackWidth,
+      height: theme.trackHeight,
+      decoration: BoxDecoration(
+        color: .lerp(theme.trackColorOff, theme.trackColorOn, t) ?? theme.trackColorOff,
+        borderRadius: theme.trackRadius,
+      ),
+      child: Stack(
+        clipBehavior: .none,
+        children: [
+          Positioned(
+            left: theme.thumbPadding + thumbOffset,
+            top: theme.thumbPadding,
+            child: Container(
+              width: theme.thumbSize,
+              height: theme.thumbSize,
+              decoration: BoxDecoration(color: theme.thumbColor, borderRadius: theme.thumbRadius),
             ),
-          ],
-        ),
-      );
-    },
-  );
+          ),
+        ],
+      ),
+    );
+  }
 }

@@ -13,6 +13,7 @@ export 'theme/color/sets/feedback_colours.dart';
 export 'theme/color/sets/icon_colours.dart';
 export 'theme/color/sets/input_colours.dart';
 export 'theme/color/sets/static_colours.dart';
+export 'theme/color/sets/surface_colours.dart';
 export 'theme/color/sets/switch_colours.dart';
 export 'theme/color/sets/text_colours.dart';
 export 'theme/component/accordion/dievas_accordion_theme_data.dart';

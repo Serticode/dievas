@@ -87,6 +87,12 @@ final class DievasDarkThemeData extends DievasGlobalThemeData {
       inputText: Color(DievasColourSemanticDark.inputText),
       inputPlaceholder: Color(DievasColourSemanticDark.inputPlaceholder),
     ),
+    surface: const SurfaceColours(
+      surfaceCanvas: Color(DievasColourSemanticDark.surfaceCanvas),
+      surfaceCode: Color(DievasColourSemanticDark.surfaceCode),
+      surfaceSidebar: Color(DievasColourSemanticDark.surfaceSidebar),
+      surfaceTableStriped: Color(DievasColourSemanticDark.surfaceTableStriped),
+    ),
     switchColours: const SwitchColours(
       switchTrackOn: Color(DievasColourSemanticDark.switchTrackOn),
       switchTrackOff: Color(DievasColourSemanticDark.switchTrackOff),

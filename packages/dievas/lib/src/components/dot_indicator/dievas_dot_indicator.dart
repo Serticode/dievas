@@ -79,7 +79,7 @@ class _Dot extends StatelessWidget {
       onTap: enabled ? onTap : null,
       child: AnimatedContainer(
         duration: theme.animationDuration,
-        curve: Curves.easeOutCubic,
+        curve: DievasTheme.animationOf(context).easingEnter,
         width: size,
         height: size,
         decoration: BoxDecoration(color: color, shape: BoxShape.circle),

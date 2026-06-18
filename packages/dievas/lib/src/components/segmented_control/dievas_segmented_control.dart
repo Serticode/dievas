@@ -122,7 +122,7 @@ class _SegmentTile extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: animationDuration,
-        curve: Curves.easeOutCubic,
+        curve: DievasTheme.animationOf(context).easingEnter,
         constraints: BoxConstraints(minWidth: minSegmentWidth, minHeight: minHeight),
         padding: padding,
         decoration: BoxDecoration(color: isSelected ? selectedBgColor : null, borderRadius: borderRadius),

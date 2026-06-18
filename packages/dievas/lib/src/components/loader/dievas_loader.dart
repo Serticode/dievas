@@ -73,16 +73,11 @@ class _DievasLoaderState extends State<DievasLoader> with SingleTickerProviderSt
       children: [
         SizedBox.square(
           dimension: diameter,
-          child: AnimatedBuilder(
-            animation: _controller,
-            builder: (_, _) => CustomPaint(
-              painter: _SpinnerPainter(
-                progress: _controller.value,
-                color: theme.color,
-                trackColor: theme.trackColor,
-                strokeWidth: theme.strokeWidth,
-              ),
-            ),
+          child: _SpinnerAnimation(
+            controller: _controller,
+            color: theme.color,
+            trackColor: theme.trackColor,
+            strokeWidth: theme.strokeWidth,
           ),
         ),
         if (widget.label case final label?) ...[
@@ -92,6 +87,30 @@ class _DievasLoaderState extends State<DievasLoader> with SingleTickerProviderSt
       ],
     );
   }
+}
+
+class _SpinnerAnimation extends AnimatedWidget {
+  const _SpinnerAnimation({
+    required this.controller,
+    required this.color,
+    required this.trackColor,
+    required this.strokeWidth,
+  }) : super(listenable: controller);
+
+  final AnimationController controller;
+  final Color color;
+  final Color trackColor;
+  final double strokeWidth;
+
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+    painter: _SpinnerPainter(
+      progress: controller.value,
+      color: color,
+      trackColor: trackColor,
+      strokeWidth: strokeWidth,
+    ),
+  );
 }
 
 class _SpinnerPainter extends CustomPainter {

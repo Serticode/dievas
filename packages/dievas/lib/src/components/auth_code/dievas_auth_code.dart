@@ -190,41 +190,51 @@ class _DigitBox extends StatelessWidget {
         border: Border.all(color: borderColor, width: strokeWidth),
       ),
       alignment: .center,
-      child: _buildContent(theme),
+      child: switch ((_isFilled, _isActive)) {
+        (true, _) => _FilledDigit(index: index, controller: controller, obscureText: obscureText, theme: theme),
+        (_, true) => _Cursor(cursorController: cursorController, theme: theme),
+        _ => const SizedBox.shrink(),
+      },
     );
   }
+}
 
-  Widget _buildContent(DievasAuthCodeThemeData theme) {
-    if (_isFilled) {
-      if (obscureText) {
-        final r = theme.cursorHeight / 3;
-        return Container(
-          width: r,
-          height: r,
-          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
-        );
-      }
-      final char = controller.text[index];
-      return Text(char, style: theme.digitStyle);
-    }
+class _FilledDigit extends StatelessWidget {
+  const _FilledDigit({required this.index, required this.controller, required this.obscureText, required this.theme});
 
-    if (_isActive) {
-      return AnimatedBuilder(
-        animation: cursorController,
-        builder: (_, child) => Opacity(
-          opacity: cursorController.value,
-          child: Container(
-            width: theme.cursorWidth,
-            height: theme.cursorHeight,
-            decoration: BoxDecoration(
-              color: theme.cursorColor,
-              borderRadius: BorderRadius.circular(theme.cursorWidth / 2),
-            ),
-          ),
-        ),
+  final int index;
+  final TextEditingController controller;
+  final bool obscureText;
+  final DievasAuthCodeThemeData theme;
+
+  @override
+  Widget build(BuildContext context) {
+    if (obscureText) {
+      final r = theme.cursorHeight / 3;
+      final dotColor = theme.digitStyle.color ?? DievasTheme.colorsOf(context).text.textPrimary;
+      return Container(
+        width: r,
+        height: r,
+        decoration: BoxDecoration(shape: .circle, color: dotColor),
       );
     }
-
-    return const SizedBox.shrink();
+    return Text(controller.text[index], style: theme.digitStyle);
   }
+}
+
+class _Cursor extends AnimatedWidget {
+  const _Cursor({required this.cursorController, required this.theme}) : super(listenable: cursorController);
+
+  final AnimationController cursorController;
+  final DievasAuthCodeThemeData theme;
+
+  @override
+  Widget build(BuildContext context) => Opacity(
+    opacity: cursorController.value,
+    child: Container(
+      width: theme.cursorWidth,
+      height: theme.cursorHeight,
+      decoration: BoxDecoration(color: theme.cursorColor, borderRadius: .circular(theme.cursorWidth / 2)),
+    ),
+  );
 }
