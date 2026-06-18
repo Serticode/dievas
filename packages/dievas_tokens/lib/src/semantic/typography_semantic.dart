@@ -124,7 +124,7 @@ abstract final class DievasTypographySemantic {
     fontFamily: DievasFontFamilyPrimitives.sans,
   );
 
-  /// Title small. Compact sub-headings, sidebar labels, dense list headers.
+  /// Title extra-small. Compact sub-headings, sidebar labels, dense list headers.
   static const DievasTextStyleToken titleSm = (
     fontSize: DievasFontSizePrimitives.md,
     fontWeight: DievasFontWeightPrimitives.semiBold,
@@ -133,7 +133,7 @@ abstract final class DievasTypographySemantic {
     fontFamily: DievasFontFamilyPrimitives.sans,
   );
 
-  /// Title small. Compact sub-headings, sidebar labels, dense list headers.
+  /// Title extra-small. Compact sub-headings, sidebar labels, dense list headers.
   static const DievasTextStyleToken titleXsm = (
     fontSize: DievasFontSizePrimitives.sm,
     fontWeight: DievasFontWeightPrimitives.semiBold,
