@@ -87,6 +87,12 @@ final class DievasLightThemeData extends DievasGlobalThemeData {
       inputText: Color(DievasColourSemanticLight.inputText),
       inputPlaceholder: Color(DievasColourSemanticLight.inputPlaceholder),
     ),
+    surface: const SurfaceColours(
+      surfaceCanvas: Color(DievasColourSemanticLight.surfaceCanvas),
+      surfaceCode: Color(DievasColourSemanticLight.surfaceCode),
+      surfaceSidebar: Color(DievasColourSemanticLight.surfaceSidebar),
+      surfaceTableStriped: Color(DievasColourSemanticLight.surfaceTableStriped),
+    ),
     switchColours: const SwitchColours(
       switchTrackOn: Color(DievasColourSemanticLight.switchTrackOn),
       switchTrackOff: Color(DievasColourSemanticLight.switchTrackOff),

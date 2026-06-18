@@ -9,6 +9,7 @@ import 'sets/feedback_colours.dart';
 import 'sets/icon_colours.dart';
 import 'sets/input_colours.dart';
 import 'sets/static_colours.dart';
+import 'sets/surface_colours.dart';
 import 'sets/switch_colours.dart';
 import 'sets/text_colours.dart';
 
@@ -31,6 +32,7 @@ final class DievasColourThemeData extends Equatable {
     required this.action,
     required this.feedback,
     required this.input,
+    required this.surface,
     required this.switchColours,
     required this.staticColours,
   });
@@ -62,6 +64,9 @@ final class DievasColourThemeData extends Equatable {
   /// Input field colour roles.
   final InputColours input;
 
+  /// Specialised surface colour roles (canvas, code, sidebar, table).
+  final SurfaceColours surface;
+
   /// Toggle switch colour roles.
   final SwitchColours switchColours;
 
@@ -78,6 +83,7 @@ final class DievasColourThemeData extends Equatable {
     ActionColours? action,
     FeedbackColours? feedback,
     InputColours? input,
+    SurfaceColours? surface,
     SwitchColours? switchColours,
     StaticColours? staticColours,
   }) => DievasColourThemeData(
@@ -90,6 +96,7 @@ final class DievasColourThemeData extends Equatable {
     action: action ?? this.action,
     feedback: feedback ?? this.feedback,
     input: input ?? this.input,
+    surface: surface ?? this.surface,
     switchColours: switchColours ?? this.switchColours,
     staticColours: staticColours ?? this.staticColours,
   );
@@ -105,6 +112,7 @@ final class DievasColourThemeData extends Equatable {
         action: ActionColours.lerp(a.action, b.action, t),
         feedback: FeedbackColours.lerp(a.feedback, b.feedback, t),
         input: InputColours.lerp(a.input, b.input, t),
+        surface: SurfaceColours.lerp(a.surface, b.surface, t),
         switchColours: SwitchColours.lerp(a.switchColours, b.switchColours, t),
         staticColours: StaticColours.lerp(a.staticColours, b.staticColours, t),
       );
@@ -120,6 +128,7 @@ final class DievasColourThemeData extends Equatable {
     action,
     feedback,
     input,
+    surface,
     switchColours,
     staticColours,
   ];
