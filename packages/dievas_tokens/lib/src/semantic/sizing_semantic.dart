@@ -61,5 +61,5 @@ abstract final class DievasSizingSemantic {
   static const double avatarXl = DievasSizingPrimitives.s64;
 
   /// Minimum touch target dimension.
-  static const double touchTargetMin = DievasSizingPrimitives.s44;
+  static const double touchMin = DievasSizingPrimitives.s44;
 }

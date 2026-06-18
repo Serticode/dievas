@@ -25,7 +25,7 @@ final class DievasSizingThemeData extends Equatable {
     this.avatarMd = DievasSizingSemantic.avatarMd,
     this.avatarLg = DievasSizingSemantic.avatarLg,
     this.avatarXl = DievasSizingSemantic.avatarXl,
-    this.touchTargetMin = DievasSizingSemantic.touchTargetMin,
+    this.touchMin = DievasSizingSemantic.touchMin,
   });
 
   final double buttonHeightXs;
@@ -50,7 +50,7 @@ final class DievasSizingThemeData extends Equatable {
   final double avatarXl;
 
   /// Minimum touch target dimension per WCAG 2.5.5. Applied to all interactive widgets.
-  final double touchTargetMin;
+  final double touchMin;
 
   DievasSizingThemeData copyWith({
     double? buttonHeightXs,
@@ -70,7 +70,7 @@ final class DievasSizingThemeData extends Equatable {
     double? avatarMd,
     double? avatarLg,
     double? avatarXl,
-    double? touchTargetMin,
+    double? touchMin,
   }) => DievasSizingThemeData(
     buttonHeightXs: buttonHeightXs ?? this.buttonHeightXs,
     buttonHeightSm: buttonHeightSm ?? this.buttonHeightSm,
@@ -89,7 +89,7 @@ final class DievasSizingThemeData extends Equatable {
     avatarMd: avatarMd ?? this.avatarMd,
     avatarLg: avatarLg ?? this.avatarLg,
     avatarXl: avatarXl ?? this.avatarXl,
-    touchTargetMin: touchTargetMin ?? this.touchTargetMin,
+    touchMin: touchMin ?? this.touchMin,
   );
 
   @override
@@ -111,6 +111,6 @@ final class DievasSizingThemeData extends Equatable {
     avatarMd,
     avatarLg,
     avatarXl,
-    touchTargetMin,
+    touchMin,
   ];
 }

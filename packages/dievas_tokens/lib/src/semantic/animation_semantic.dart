@@ -1,6 +1,6 @@
 // Semantic animation tokens.
 //
-// Pure Dart aliases over DievasDurationPrimitives organiZed by motion
+// Pure Dart aliases over DievasDurationPrimitives organized by motion
 // speed intent (instant → xSlow) plus component-specific timers.
 
 import '../primitives/duration_primitives.dart';
