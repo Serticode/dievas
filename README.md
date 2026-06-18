@@ -81,8 +81,11 @@ Colour roles use **grouped semantic naming** — `textPrimary`, `bgBase`, `actio
 | Duration   | `duration_primitives.dart`   | —                                 |
 | Offset     | `offset_primitives.dart`     | `offset_semantic.dart`            |
 | Animation  | —                            | `animation_semantic.dart`         |
+| Breakpoint | `breakpoint_primitives.dart` | `breakpoint_semantic.dart`        |
+| Easing     | `easing_primitives.dart`     | `easing_semantic.dart`            |
+| Z-Index    | —                            | `z_index_semantic.dart`           |
 
-Typography uses **Maison Neue** (body, label, title) and **Maison Neue Extended** (display, heading), with JetBrains Mono for code.
+Typography uses **MartianMono** (body, label, title, display, heading) with **Cascadia Code** for inline code and code blocks.
 
 ## Theme Architecture
 
@@ -163,18 +166,19 @@ Rules components always follow:
 
 ## Components
 
-35 components shipped across eight groups:
+37 components shipped across nine groups:
 
-| Group                | Count | Components                                                                                                                                                                                                          |
-| -------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Buttons**          | 4     | `DievasFilledButton`, `DievasOutlinedButton`, `DievasTextButton`, `DievasIconButton`                                                                                                                                |
-| **Display**          | 11    | `DievasAvatar`, `DievasBadge`, `DievasCircularLoader`, `DievasCircularProgress`, `DievasDivider`, `DievasDotIndicator`, `DievasEmptyState`, `DievasIcon`, `DievasLinearLoader`, `DievasLinearProgress`, `DievasTag` |
-| **Form**             | 7     | `DievasAuthCode`, `DievasCheckbox`, `DievasRadio`, `DievasSwitch`, `DievasTextArea`, `DievasTextInput`, `DievasTextInputGroup`                                                                                      |
-| **Feedback**         | 3     | `DievasAlert`, `DievasBanner`, `DievasSnackbar`                                                                                                                                                                     |
-| **Overlays**         | 3     | `DievasBottomSheet`, `DievasModal`, `DievasTooltip`                                                                                                                                                                 |
-| **Search**           | 2     | `DievasSearchWithList`, `DievasSearchWithDropdown`                                                                                                                                                                  |
-| **Nav / Disclosure** | 4     | `DievasAccordion`, `DievasBreadcrumb`, `DievasDrawer`, `DievasPopover`                                                                                                                                              |
-| **Utility**          | 1     | `DievasLoader`                                                                                                                                                                                                      |
+| Group                | Count | Components                                                                                                                                                                                                     |
+| -------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Buttons**          | 4     | `DievasFilledButton`, `DievasOutlinedButton`, `DievasTextButton`, `DievasIconButton`                                                                                                                           |
+| **Display**          | 9     | `DievasAvatar`, `DievasBadge`, `DievasCircularProgress`, `DievasDivider`, `DievasDotIndicator`, `DievasEmptyState`, `DievasIcon`, `DievasLinearProgress`, `DievasTag`                                          |
+| **Form**             | 8     | `DievasAuthCode`, `DievasCheckbox`, `DievasRadio`, `DievasSegmentedControl`, `DievasSwitch`, `DievasTextArea`, `DievasTextInput`, `DievasTextInputGroup`                                                       |
+| **Feedback**         | 3     | `DievasAlert`, `DievasBanner`, `DievasSnackbar`                                                                                                                                                                |
+| **Menu**             | 2     | `DievasDropdown`, `DievasMenuItem`                                                                                                                                                                             |
+| **Overlays**         | 3     | `DievasBottomSheet`, `DievasModal`, `DievasTooltip`                                                                                                                                                            |
+| **Search**           | 2     | `DievasSearchWithList`, `DievasSearchWithDropdown`                                                                                                                                                             |
+| **Nav / Disclosure** | 5     | `DievasAccordion`, `DievasBreadcrumb`, `DievasDrawer`, `DievasPopover`, `DievasTabBar`                                                                                                                         |
+| **Utility**          | 1     | `DievasLoader`                                                                                                                                                                                                 |
 
 ## Grid System
 
