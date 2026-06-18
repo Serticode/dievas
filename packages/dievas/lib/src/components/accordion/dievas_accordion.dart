@@ -178,7 +178,7 @@ class _AccordionCardState extends State<_AccordionCard> with SingleTickerProvide
             ),
             AnimatedSize(
               duration: theme.animationDuration,
-              curve: Curves.easeInOut,
+              curve: DievasTheme.animationOf(context).easingStandard,
               alignment: .topCenter,
               child: switch (_expanded) {
                 true => Column(

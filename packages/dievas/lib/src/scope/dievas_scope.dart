@@ -253,7 +253,7 @@ class _DievasOverlaySlot extends StatelessWidget {
                 position: Tween<Offset>(
                   begin: const Offset(0, 0.1),
                   end: .zero,
-                ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutCubic)),
+                ).animate(CurvedAnimation(parent: animation, curve: DievasTheme.animationOf(context).easingEnter)),
                 child: builder(context, animation),
               ),
             ),

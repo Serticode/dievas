@@ -33,13 +33,12 @@ class DievasSwitch extends StatefulWidget {
 
 class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
-  late final CurvedAnimation _curve;
+  late CurvedAnimation _curve;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
-    _curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     if (widget.value) _controller.value = 1.0;
   }
 
@@ -47,6 +46,7 @@ class _DievasSwitchState extends State<DievasSwitch> with SingleTickerProviderSt
   void didChangeDependencies() {
     super.didChangeDependencies();
     _controller.duration = DievasTheme.componentsOf(context).toggle.animationDuration;
+    _curve = CurvedAnimation(parent: _controller, curve: DievasTheme.animationOf(context).easingStandard);
   }
 
   @override
