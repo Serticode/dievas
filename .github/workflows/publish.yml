@@ -8,7 +8,6 @@ name: Publish to pub.dev
 #     - Repository:  Serticode/dievas
 #     - Tag pattern: dievas_tokens-v{{version}}  (for dievas_tokens)
 #     - Tag pattern: dievas-v{{version}}          (for dievas)
-#   Optionally require the GitHub environment matching the job below.
 #
 # Triggers:
 #   Tag → dievas_tokens-v<version> or dievas-v<version>
@@ -45,15 +44,16 @@ jobs:
         permissions:
             contents: read
             id-token: write
-        environment:
-            name: pub.dev-dievas
-            url: https://pub.dev/packages/dievas
         steps:
             - uses: actions/checkout@v6
+            - uses: dart-lang/setup-dart@v1
             - uses: subosito/flutter-action@v2
               with:
                   channel: stable
                   cache: true
-            - name: Publish
+            - name: Publish (dry run)
               working-directory: packages/dievas
-              run: flutter pub publish --force
+              run: dart pub publish --dry-run
+            - name: Publish to pub.dev
+              working-directory: packages/dievas
+              run: dart pub publish -f
