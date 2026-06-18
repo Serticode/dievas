@@ -79,6 +79,24 @@ abstract final class DievasColourSemanticLight {
   /// Scrim / overlay behind modals and bottom sheets.
   static const int bgOverlay = 0x80000000;
 
+  //Surface
+
+  /// Canvas / drawing surface. Distinguishable from [bgBase] for creative
+  /// workspaces, whiteboards, and illustration areas.
+  static const int surfaceCanvas = DievasColourPrimitives.white;
+
+  /// Code block / inline code background. Visually distinct from [bgBase]
+  /// so code stands apart from surrounding content.
+  static const int surfaceCode = DievasColourPrimitives.slate100;
+
+  /// Sidebar / navigation rail background. Provides a visual anchor for
+  /// persistent navigation alongside the main content area.
+  static const int surfaceSidebar = DievasColourPrimitives.white;
+
+  /// Alternating table row background. Applied to every other row for
+  /// horizontal scanability in data tables and list views.
+  static const int surfaceTableStriped = DievasColourPrimitives.slate50;
+
   //Border
 
   /// Default dividers and container strokes.
