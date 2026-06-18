@@ -1,4 +1,4 @@
-# Change Logs
+# Change Log
 
 ## 0.0.2
 

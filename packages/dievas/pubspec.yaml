@@ -4,6 +4,8 @@ version: 0.0.2
 repository: https://github.com/Serticode/dievas
 homepage: https://dievas.serticode.com
 resolution: workspace
+issue_tracker: https://github.com/Serticode/dievas/issues
+topics: [design-system, flutter, ui, theming]
 
 environment:
     sdk: ">=3.11.4 <4.0.0"
@@ -13,7 +15,7 @@ dependencies:
     flutter:
         sdk: flutter
     equatable: ^2.0.5
-    dievas_tokens: ^0.0.1
+    dievas_tokens: ^0.0.2
     meta: ">=1.17.0 <2.0.0"
 
 dev_dependencies:

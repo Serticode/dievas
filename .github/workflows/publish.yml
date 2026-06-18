@@ -1,25 +1,22 @@
 name: Publish to pub.dev
 
 # Publishes dievas_tokens (pure Dart) and/or dievas (Flutter) to pub.dev.
-# Uses trusted publishing (OIDC) so no PUB_DEV_PUBLISH_ACCESS_TOKEN is needed.
+# Uses OIDC trusted publishing — no tokens needed.
+#
+# Prerequisites — one-time setup on pub.dev (per package):
+#   Admin tab → Automated publishing → Enable publishing from GitHub Actions
+#     - Repository:  Serticode/dievas
+#     - Tag pattern: dievas_tokens-v{{version}}  (for dievas_tokens)
+#     - Tag pattern: dievas-v{{version}}          (for dievas)
+#   Optionally require the GitHub environment matching the job below.
 #
 # Triggers:
-#   Manual  → Actions tab → Run workflow → select package
-#   Tag     → dievas_tokens-v<version> or dievas-v<version>
+#   Tag → dievas_tokens-v<version> or dievas-v<version>
 #
-# Each job has its own GitHub Environment entry for deployment tracking.
+# Note: OIDC only works on tag pushes, NOT workflow_dispatch.
+# dievas_tokens must be published before dievas (dievas depends on it).
 
 on:
-    workflow_dispatch:
-        inputs:
-            package:
-                description: Package to publish
-                required: true
-                type: choice
-                options:
-                    - dievas_tokens
-                    - dievas
-                    - both
     push:
         tags:
             - 'dievas_tokens-v*'
@@ -33,47 +30,30 @@ jobs:
     publish-dievas-tokens:
         name: Publish dievas_tokens
         needs: [analyze-format-test]
-        if: |
-            startsWith(github.ref_name, 'dievas_tokens-v') ||
-            (github.event_name == 'workflow_dispatch' &&
-             contains(fromJson('["dievas_tokens", "both"]'), github.event.inputs.package))
-        runs-on: ubuntu-latest
-        environment:
-            name: pub.dev-dievas_tokens
-            url: https://pub.dev/packages/dievas_tokens
+        if: startsWith(github.ref_name, 'dievas_tokens-v')
         permissions:
-            contents: read
             id-token: write
-        steps:
-            - uses: actions/checkout@v6
-            - uses: subosito/flutter-action@v2
-              with:
-                  channel: stable
-                  cache: true
-            - name: Publish to pub.dev
-              working-directory: packages/dievas_tokens
-              run: dart pub publish --force
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+        with:
+            working-directory: packages/dievas_tokens
 
     publish-dievas:
         name: Publish dievas
         needs: [analyze-format-test]
-        if: |
-            startsWith(github.ref_name, 'dievas-v') ||
-            (github.event_name == 'workflow_dispatch' &&
-             contains(fromJson('["dievas", "both"]'), github.event.inputs.package))
+        if: startsWith(github.ref_name, 'dievas-v')
         runs-on: ubuntu-latest
-        environment:
-            name: pub.dev-dievas
-            url: https://pub.dev/packages/dievas
         permissions:
             contents: read
             id-token: write
+        environment:
+            name: pub.dev-dievas
+            url: https://pub.dev/packages/dievas
         steps:
             - uses: actions/checkout@v6
             - uses: subosito/flutter-action@v2
               with:
                   channel: stable
                   cache: true
-            - name: Publish to pub.dev
+            - name: Publish
               working-directory: packages/dievas
               run: flutter pub publish --force
