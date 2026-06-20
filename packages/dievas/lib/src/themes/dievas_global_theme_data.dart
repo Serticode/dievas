@@ -24,7 +24,7 @@ part of '../themes.dart';
 ///       CadenceLightThemeData(components: components ?? this.components);
 /// }
 /// ```
-sealed class DievasGlobalThemeData implements DievasThemeData {
+base class DievasGlobalThemeData implements DievasThemeData {
   DievasGlobalThemeData({
     required DievasColourThemeData colors,
     DievasAnimationThemeData animation = const DievasAnimationThemeData(),
@@ -34,13 +34,14 @@ sealed class DievasGlobalThemeData implements DievasThemeData {
     DievasElevationThemeData? elevation,
     DievasOpacityThemeData opacity = const DievasOpacityThemeData(),
     DievasComponentThemeData? components,
+    DievasTypographyThemeData? typography,
   }) : _animation = animation,
        _colors = colors,
        _border = border,
        _spacing = spacing,
        _sizing = sizing,
        _opacity = opacity {
-    _typography = _createTypographyData(colors.text.textPrimary);
+    _typography = typography ?? _createTypographyData(colors.text.textPrimary);
     _elevation = elevation ?? _buildDefaultElevation(colors);
     _components = _deriveDievasComponentThemeData(
       colors,
@@ -95,6 +96,20 @@ sealed class DievasGlobalThemeData implements DievasThemeData {
 
   @override
   ThemeData get material => _material;
+
+  @override
+  DievasThemeData copyWith({DievasComponentThemeData? components}) =>
+      DievasGlobalThemeData(
+        colors: _colors,
+        animation: _animation,
+        border: _border,
+        spacing: _spacing,
+        sizing: _sizing,
+        elevation: _elevation,
+        opacity: _opacity,
+        typography: _typography,
+        components: components ?? _components,
+      );
 
   static DievasElevationThemeData _buildDefaultElevation(DievasColourThemeData colors) {
     // Shadow colour: always derived from the overlay base — not the brand colour.

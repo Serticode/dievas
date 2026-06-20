@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.0.4
+
+- **New:** `DievasGlobalThemeData` now accepts an optional `DievasTypographyThemeData? typography` parameter for custom type scales (instead of hardcoded `DievasTypographySemantic` defaults).
+- **Change:** `DievasGlobalThemeData` relaxed from `sealed` to `base` to allow consumer app extension. Added `copyWith` implementation.
+
 ## 0.0.3
 
 - **Surface colours:** Added `SurfaceColours` value object with canvas, code, sidebar, and table striped tokens; wired into light/dark themes.
