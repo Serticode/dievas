@@ -58,5 +58,5 @@ abstract interface class DievasThemeData {
   ThemeData get material;
 
   /// Returns a copy of this theme with the given component overrides applied.
-  DievasThemeData copyWith({DievasComponentThemeData? components});
+  DievasThemeData copyWith({DievasComponentThemeData? components, DievasTypographyThemeData? typography});
 }
