@@ -108,5 +108,5 @@ final class DievasLightThemeData extends DievasGlobalThemeData {
 
   @override
   DievasThemeData copyWith({DievasComponentThemeData? components, DievasTypographyThemeData? typography}) =>
-      DievasLightThemeData(components: components ?? this.components, typography: typography);
+      DievasLightThemeData(components: components, typography: typography);
 }
