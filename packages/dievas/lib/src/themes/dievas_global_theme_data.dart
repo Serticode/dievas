@@ -56,6 +56,28 @@ base class DievasGlobalThemeData implements DievasThemeData {
     _material = _buildMaterial(colors);
   }
 
+  DievasGlobalThemeData._raw({
+    required DievasColourThemeData colors,
+    required DievasTypographyThemeData typography,
+    required DievasElevationThemeData elevation,
+    required DievasComponentThemeData components,
+    required ThemeData material,
+    required DievasAnimationThemeData animation,
+    required DievasBorderThemeData border,
+    required DievasSpacingThemeData spacing,
+    required DievasSizingThemeData sizing,
+    required DievasOpacityThemeData opacity,
+  }) : _animation = animation,
+       _colors = colors,
+       _border = border,
+       _spacing = spacing,
+       _sizing = sizing,
+       _opacity = opacity,
+       _typography = typography,
+       _elevation = elevation,
+       _components = components,
+       _material = material;
+
   final DievasAnimationThemeData _animation;
   final DievasColourThemeData _colors;
   final DievasBorderThemeData _border;
@@ -98,18 +120,39 @@ base class DievasGlobalThemeData implements DievasThemeData {
   ThemeData get material => _material;
 
   @override
-  DievasThemeData copyWith({DievasComponentThemeData? components}) =>
-      DievasGlobalThemeData(
-        colors: _colors,
-        animation: _animation,
-        border: _border,
-        spacing: _spacing,
-        sizing: _sizing,
-        elevation: _elevation,
-        opacity: _opacity,
-        typography: _typography,
-        components: components ?? _components,
-      );
+  DievasThemeData copyWith({
+    DievasComponentThemeData? components,
+    DievasTypographyThemeData? typography,
+  }) {
+    final typographyChanged = typography != null;
+    final componentsChanged = components != null;
+    if (!typographyChanged && !componentsChanged) return this;
+
+    final newTypography = typography ?? _typography;
+    final newComponents = _deriveDievasComponentThemeData(
+      _colors,
+      newTypography,
+      _spacing,
+      _sizing,
+      _border,
+      _animation,
+      _elevation,
+      components,
+    );
+
+    return DievasGlobalThemeData._raw(
+      colors: _colors,
+      animation: _animation,
+      border: _border,
+      spacing: _spacing,
+      sizing: _sizing,
+      elevation: _elevation,
+      opacity: _opacity,
+      typography: newTypography,
+      components: newComponents,
+      material: _material,
+    );
+  }
 
   static DievasElevationThemeData _buildDefaultElevation(DievasColourThemeData colors) {
     // Shadow colour: always derived from the overlay base — not the brand colour.

@@ -6,7 +6,7 @@ part of '../themes.dart';
 /// [DievasColourSemanticDark] token values. Consumer apps do not subclass this —
 /// they subclass [DievasGlobalThemeData] with their own brand tokens.
 final class DievasDarkThemeData extends DievasGlobalThemeData {
-  DievasDarkThemeData({super.components}) : super(colors: _darkColors);
+  DievasDarkThemeData({super.components, super.typography}) : super(colors: _darkColors);
 
   static final DievasColourThemeData _darkColors = DievasColourThemeData(
     brightness: .dark,
@@ -107,6 +107,12 @@ final class DievasDarkThemeData extends DievasGlobalThemeData {
   );
 
   @override
-  DievasThemeData copyWith({DievasComponentThemeData? components}) =>
-      DievasDarkThemeData(components: components ?? this.components);
+  DievasThemeData copyWith({
+    DievasComponentThemeData? components,
+    DievasTypographyThemeData? typography,
+  }) =>
+      DievasDarkThemeData(
+        components: components ?? this.components,
+        typography: typography,
+      );
 }

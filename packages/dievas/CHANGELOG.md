@@ -3,7 +3,11 @@
 ## 0.0.4
 
 - **New:** `DievasGlobalThemeData` now accepts an optional `DievasTypographyThemeData? typography` parameter for custom type scales (instead of hardcoded `DievasTypographySemantic` defaults).
-- **Change:** `DievasGlobalThemeData` relaxed from `sealed` to `base` to allow consumer app extension. Added `copyWith` implementation.
+- **Change:** `DievasGlobalThemeData` relaxed from `sealed` to `base` to allow consumer app extension.
+- **New:** Private `_raw` constructor added — bypasses all derivation (typography, elevation, components, material) for use by `copyWith`.
+- **Optimization:** `copyWith` now returns `this` immediately when nothing changed, and reuses pre computed `_material`, `_elevation`, and `_typography` when only components change. Only component derivation is re-run.
+- **API:** `copyWith` now also accepts `DievasTypographyThemeData? typography` for dynamic type scale overrides.
+- **Internal:** `DievasLightThemeData.copyWith` and `DievasDarkThemeData.copyWith` pass `typography` through to match the updated method signature.
 
 ## 0.0.3
 
