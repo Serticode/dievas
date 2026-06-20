@@ -120,10 +120,7 @@ base class DievasGlobalThemeData implements DievasThemeData {
   ThemeData get material => _material;
 
   @override
-  DievasThemeData copyWith({
-    DievasComponentThemeData? components,
-    DievasTypographyThemeData? typography,
-  }) {
+  DievasThemeData copyWith({DievasComponentThemeData? components, DievasTypographyThemeData? typography}) {
     final typographyChanged = typography != null;
     final componentsChanged = components != null;
     if (!typographyChanged && !componentsChanged) return this;

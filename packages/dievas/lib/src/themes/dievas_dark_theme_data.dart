@@ -107,12 +107,6 @@ final class DievasDarkThemeData extends DievasGlobalThemeData {
   );
 
   @override
-  DievasThemeData copyWith({
-    DievasComponentThemeData? components,
-    DievasTypographyThemeData? typography,
-  }) =>
-      DievasDarkThemeData(
-        components: components ?? this.components,
-        typography: typography,
-      );
+  DievasThemeData copyWith({DievasComponentThemeData? components, DievasTypographyThemeData? typography}) =>
+      DievasDarkThemeData(components: components ?? this.components, typography: typography);
 }
